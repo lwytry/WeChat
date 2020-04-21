@@ -1,0 +1,6 @@
+framework module YSMChineseSort {
+  umbrella header "YSMChineseSort-umbrella.h"
+
+  export *
+  module * { export * }
+}

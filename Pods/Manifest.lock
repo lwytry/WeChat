@@ -1,0 +1,62 @@
+PODS:
+  - DACircularProgress (2.3.1)
+  - IDMPhotoBrowser (1.11.3):
+    - DACircularProgress
+    - pop
+    - SDWebImage (= 4.0.0)
+  - Masonry (1.1.0)
+  - MJRefresh (3.4.1)
+  - PinYin4Objc (1.1.1)
+  - pop (1.0.12)
+  - ReactiveObjC (3.1.1)
+  - SDAutoLayout (1.53)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - TTTAttributedLabel (2.0.0)
+  - "UITableView+FDTemplateLayoutCell (1.6)"
+  - YSMChineseSort (0.1.1):
+    - PinYin4Objc (~> 1.1.1)
+
+DEPENDENCIES:
+  - IDMPhotoBrowser
+  - Masonry (~> 1.1.0)
+  - MJRefresh
+  - ReactiveObjC (~> 3.1.0)
+  - SDAutoLayout (~> 1.51)
+  - TTTAttributedLabel
+  - "UITableView+FDTemplateLayoutCell"
+  - YSMChineseSort (~> 0.1.0)
+
+SPEC REPOS:
+  trunk:
+    - DACircularProgress
+    - IDMPhotoBrowser
+    - Masonry
+    - MJRefresh
+    - PinYin4Objc
+    - pop
+    - ReactiveObjC
+    - SDAutoLayout
+    - SDWebImage
+    - TTTAttributedLabel
+    - "UITableView+FDTemplateLayoutCell"
+    - YSMChineseSort
+
+SPEC CHECKSUMS:
+  DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
+  IDMPhotoBrowser: b96159fe4adb991a844068eb17dab9c0b7d7e51a
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
+  PinYin4Objc: 3fa9673610368330e2dfb688b1d19a35c3930a78
+  pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+  SDAutoLayout: ea6e2ae9fbb438aa2feb0c4363dba9297e98638a
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  YSMChineseSort: ef532bfe993ff1b4dc9bcd644ead1a43b2632b88
+
+PODFILE CHECKSUM: 0ea8517c622d1dc75c6f9e4e592fb26c343f026c
+
+COCOAPODS: 1.9.1
