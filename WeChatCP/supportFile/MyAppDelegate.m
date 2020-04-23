@@ -8,14 +8,22 @@
 
 #import "MyAppDelegate.h"
 #import "RootTabBarController.h"
-@interface MyAppDelegate()
+#import "BootLoginViewController.h"
 
+@interface MyAppDelegate()
+@property (nonatomic, strong) UIViewController *rootVC;
 @end
 @implementation MyAppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> *)launchOptions
 {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[RootTabBarController alloc]init];
+    
+    if (false) {
+//        self.rootVC = [[RootTabBarController alloc]init];
+    } else {
+        self.rootVC = [[BootLoginViewController alloc] init];
+    }
+    self.window.rootViewController = self.rootVC;
     [self.window makeKeyAndVisible];
     [self changeNav];
     return YES;
