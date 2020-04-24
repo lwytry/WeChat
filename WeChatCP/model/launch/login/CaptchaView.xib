@@ -32,7 +32,7 @@
                         <constraint firstAttribute="height" constant="0.5" id="gyJ-qe-tlg"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-Gy-fmG" userLabel="captchaBtn">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncj-Gy-fmG" userLabel="captchaBt">
                     <rect key="frame" x="335" y="33" width="95" height="26"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="95" id="a1t-fZ-9SX"/>
@@ -58,7 +58,7 @@
                     </userDefinedRuntimeAttributes>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="0.95294117649999999" green="0.95294117649999999" blue="0.95294117649999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="zMS-qB-206" secondAttribute="bottom" id="2Iq-Zi-Hxx"/>
                 <constraint firstItem="p4v-YQ-2uw" firstAttribute="leading" secondItem="upM-f1-oke" secondAttribute="trailing" constant="45" id="7kh-Ua-rGL"/>
@@ -76,7 +76,7 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="captchaBtn" destination="ncj-Gy-fmG" id="uO8-Uz-SS4"/>
+                <outlet property="captchaBt" destination="ncj-Gy-fmG" id="LmN-qb-DwO"/>
                 <outlet property="captchaField" destination="p4v-YQ-2uw" id="Rj7-UV-ZaI"/>
             </connections>
             <point key="canvasLocation" x="-270" y="-91"/>

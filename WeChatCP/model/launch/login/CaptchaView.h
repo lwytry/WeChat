@@ -12,8 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CaptchaView : UIView
 @property (weak, nonatomic) IBOutlet UITextField *captchaField;
-@property (weak, nonatomic) IBOutlet UIButton *captchaBtn;
 + (instancetype)captchaView;
+@property (weak, nonatomic) IBOutlet UIButton *captchaBt;
 @end
 
 NS_ASSUME_NONNULL_END

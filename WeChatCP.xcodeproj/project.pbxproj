@@ -15,6 +15,8 @@
 		A96A66B12450994700399267 /* MobileLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66AF2450994700399267 /* MobileLoginViewController.m */; };
 		A96A66B22450994700399267 /* MobileLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66B02450994700399267 /* MobileLoginViewController.xib */; };
 		A96A66B524517D5600399267 /* LoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66B424517D5600399267 /* LoginBaseViewController.m */; };
+		A96A66C32452A3FA00399267 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66C12452A3FA00399267 /* RegisterViewController.m */; };
+		A96A66C42452A3FA00399267 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66C22452A3FA00399267 /* RegisterViewController.xib */; };
 		A97998252442C458009B6096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97998242442C458009B6096 /* Assets.xcassets */; };
 		A979982B2442C458009B6096 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A979982A2442C458009B6096 /* main.m */; };
 		A97998522442C690009B6096 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97998512442C690009B6096 /* RootTabBarController.m */; };
@@ -65,6 +67,9 @@
 		A96A66B324517D5600399267 /* LoginBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginBaseViewController.h; sourceTree = "<group>"; };
 		A96A66B424517D5600399267 /* LoginBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginBaseViewController.m; sourceTree = "<group>"; };
 		A96A66BC2451A8B200399267 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A96A66C02452A3FA00399267 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		A96A66C12452A3FA00399267 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		A96A66C22452A3FA00399267 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		A97998152442C456009B6096 /* WeChatCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChatCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97998242442C458009B6096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97998272442C458009B6096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -189,6 +194,9 @@
 				A96A66AE2450994700399267 /* MobileLoginViewController.h */,
 				A96A66AF2450994700399267 /* MobileLoginViewController.m */,
 				A96A66B02450994700399267 /* MobileLoginViewController.xib */,
+				A96A66C02452A3FA00399267 /* RegisterViewController.h */,
+				A96A66C12452A3FA00399267 /* RegisterViewController.m */,
+				A96A66C22452A3FA00399267 /* RegisterViewController.xib */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -486,6 +494,7 @@
 				A9B821AF244C80D800517C58 /* AddMenu.xcassets in Resources */,
 				A9B821EA2450248D00517C58 /* MobileView.xib in Resources */,
 				A97998252442C458009B6096 /* Assets.xcassets in Resources */,
+				A96A66C42452A3FA00399267 /* RegisterViewController.xib in Resources */,
 				A9B821D9244FDEC100517C58 /* BootLoginViewController.xib in Resources */,
 				A9B821B7244D487400517C58 /* Contact.xcassets in Resources */,
 				A96A66B22450994700399267 /* MobileLoginViewController.xib in Resources */,
@@ -565,6 +574,7 @@
 				A97998522442C690009B6096 /* RootTabBarController.m in Sources */,
 				A9B821C7244DA52400517C58 /* Person.m in Sources */,
 				A9B821CA244DAAB800517C58 /* HomeTableViewCell.m in Sources */,
+				A96A66C32452A3FA00399267 /* RegisterViewController.m in Sources */,
 				A96A66B12450994700399267 /* MobileLoginViewController.m in Sources */,
 				A96A66AB245095B200399267 /* CaptchaView.m in Sources */,
 				A979988124440FFA009B6096 /* WeChatDetailViewController.m in Sources */,

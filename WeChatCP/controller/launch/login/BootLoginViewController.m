@@ -9,6 +9,8 @@
 #import "BootLoginViewController.h"
 #import "LoginViewController.h"
 #import "LoginBaseViewController.h"
+#import "RegisterViewController.h"
+
 @interface BootLoginViewController ()
 - (IBAction)LoginBt:(id)sender;
 - (IBAction)RegisterBt:(id)sender;
@@ -33,6 +35,8 @@
 */
 
 - (IBAction)RegisterBt:(id)sender {
+    RegisterViewController *registerVC = [[RegisterViewController alloc] init];
+    [self presentViewController:registerVC animated:YES completion:nil];
 }
 
 - (IBAction)LoginBt:(id)sender {
