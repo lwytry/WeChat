@@ -23,7 +23,7 @@
                     <rect key="frame" x="117" y="0.0" width="178" height="91.5"/>
                     <color key="tintColor" red="0.039215686270000001" green="0.75686274509999996" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMS-qB-206" userLabel="dividerView">
                     <rect key="frame" x="20" y="91.5" width="410" height="0.5"/>

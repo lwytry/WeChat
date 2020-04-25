@@ -239,7 +239,7 @@
 		A97998172442C456009B6096 /* WeChatCP */ = {
 			isa = PBXGroup;
 			children = (
-				A9E0DDF02449614500E8AF43 /* Utils */,
+				A9E0DDF02449614500E8AF43 /* utils */,
 				A979983F2442C563009B6096 /* model */,
 				A96A66B62451A4E800399267 /* controller */,
 				A97998352442C52C009B6096 /* view */,
@@ -423,11 +423,11 @@
 			path = regitster;
 			sourceTree = "<group>";
 		};
-		A9E0DDF02449614500E8AF43 /* Utils */ = {
+		A9E0DDF02449614500E8AF43 /* utils */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Utils;
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

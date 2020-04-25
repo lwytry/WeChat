@@ -9,10 +9,12 @@
 #import "RegisterViewController.h"
 #import "CaptchaView.h"
 #import <Masonry/Masonry.h>
+#import <AFNetworking.h>
 
 @interface RegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneFieldView;
 @property (weak, nonatomic) IBOutlet CaptchaView *captchaView;
+@property (nonatomic, strong) CaptchaView *captcha;
 - (IBAction)registerBt:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *registerBt;
 @property (nonatomic, assign) NSInteger timeOut;
@@ -36,6 +38,7 @@
     CaptchaView *captchaView = [CaptchaView captchaView];
     [captchaView.captchaBt.layer setCornerRadius:5];
     [captchaView.captchaBt.layer setBorderWidth:1.0];
+    self.captcha = captchaView;
     [self.captchaView addSubview:captchaView];
     [captchaView.captchaBt addTarget:self action:@selector(captchaBtClick) forControlEvents:UIControlEventTouchUpInside];
     [captchaView.captchaField addTarget:self action:@selector(captchaFieldTextChange:) forControlEvents:UIControlEventEditingChanged];
@@ -124,5 +127,46 @@
 }
 
 - (IBAction)registerBt:(UIButton *)sender {
+    NSString *phone = self.phoneFieldView.text;
+    NSString *code = self.captcha.captchaField.text;
+    NSDictionary *dic = @{@"phone":phone, @"code":code};
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"text/plain", nil];
+    NSString *url = @"http://localhost:8080/v1/register";
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+
+    [manager POST:url parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@", responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+    }];
+    
+//    NSMutableURLRequest* formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://localhost:8080/v1/register" parameters:dic error:nil];
+//
+//    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
+//
+//    AFHTTPSessionManager*manager = [AFHTTPSessionManager manager];
+//
+//    AFJSONResponseSerializer* responseSerializer = [AFJSONResponseSerializer serializer];
+//
+//    [responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",nil]];
+//
+//    manager.responseSerializer= responseSerializer;
+//
+//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+//
+//    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+//
+//    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+//
+//        NSLog(@"%@ %@", response, responseObject);
+//    }];
+//
+//    [dataTask resume];
 }
 @end

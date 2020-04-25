@@ -1,4 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-WeChatCP/Pods-WeChatCP-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework
 ${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework
 ${BUILT_PRODUCTS_DIR}/IDMPhotoBrowser/IDMPhotoBrowser.framework
 ${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework

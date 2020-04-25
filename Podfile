@@ -14,4 +14,5 @@ target 'WeChatCP' do
   pod 'MJRefresh'
   pod 'IDMPhotoBrowser'
   pod 'SDAutoLayout', '~> 1.51'
+  pod 'AFNetworking', '~> 3.0'
 end
