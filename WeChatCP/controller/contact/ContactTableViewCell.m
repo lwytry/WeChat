@@ -8,8 +8,8 @@
 
 #import "ContactTableViewCell.h"
 
-static NSInteger const kContentInsetH = 10;
-static NSInteger const kContentInsetV = 6;
+//static NSInteger const kContentInsetH = 10;
+//static NSInteger const kContentInsetV = 6;
 
 @interface ContactTableViewCell ()
 @property (nonatomic, strong) UIImageView *avatarImageView;

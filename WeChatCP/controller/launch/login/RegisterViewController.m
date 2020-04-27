@@ -10,13 +10,15 @@
 #import "CaptchaView.h"
 #import <Masonry/Masonry.h>
 #import <AFNetworking.h>
+#import <MBProgressHUD/MBProgressHUD.h>
 
-@interface RegisterViewController ()
+@interface RegisterViewController ()<MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneFieldView;
 @property (weak, nonatomic) IBOutlet CaptchaView *captchaView;
 @property (nonatomic, strong) CaptchaView *captcha;
 - (IBAction)registerBt:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UIButton *registerBt;
+- (IBAction)cancelBt:(UIButton *)sender;
 @property (nonatomic, assign) NSInteger timeOut;
 @end
 
@@ -25,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_cancel_black"] style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
+    
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -34,13 +37,15 @@
 #pragma mark - 设置子控件
 - (void)_setupSubViews
 {
-    
     CaptchaView *captchaView = [CaptchaView captchaView];
     [captchaView.captchaBt.layer setCornerRadius:5];
     [captchaView.captchaBt.layer setBorderWidth:1.0];
     self.captcha = captchaView;
     [self.captchaView addSubview:captchaView];
+    [captchaView.captchaBt setEnabled:NO];
     [captchaView.captchaBt addTarget:self action:@selector(captchaBtClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.phoneFieldView addTarget:self action:@selector(phoneFieldTextChange:) forControlEvents:UIControlEventEditingChanged];
+    
     [captchaView.captchaField addTarget:self action:@selector(captchaFieldTextChange:) forControlEvents:UIControlEventEditingChanged];
     [captchaView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.top.bottom.width.equalTo(self.captchaView);
@@ -52,10 +57,16 @@
 
 - (void)captchaBtClick
 {
-    NSLog(@"发送雁阵吗");
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确认手机号码" message:[NSString stringWithFormat:@"我们将发送短信到这个号码: %@", self.phoneFieldView.text] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // 发送验证码
+//        [MBProgressHUD showSuccess:@"加持成"];
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:
+        [UIApplication sharedApplication].keyWindow animated:YES];
+            hud.label.text = @"请稍等...";
+//        [hud hideAnimated:YES];
+        [hud hideAnimated:YES afterDelay:2.0];
+        
         // 成功则启动定时器
         [self sentPhoneCodeTimeMethod];
     }];
@@ -113,7 +124,14 @@
     });
     dispatch_resume(timer);
 }
-
+-(void)phoneFieldTextChange:(UITextField *)textField
+{
+    if (textField.text.length != 0) {
+        [self.captcha.captchaBt setEnabled:YES];
+    } else {
+        [self.captcha.captchaBt setEnabled:NO];
+    }
+}
 -(void)captchaFieldTextChange:(UITextField *)textField
 {
     if ((textField.text.length != 0) && (self.phoneFieldView.text.length != 0)) {
@@ -129,44 +147,29 @@
 - (IBAction)registerBt:(UIButton *)sender {
     NSString *phone = self.phoneFieldView.text;
     NSString *code = self.captcha.captchaField.text;
-    NSDictionary *dic = @{@"phone":phone, @"code":code};
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html", @"text/json", @"text/javascript",@"text/plain", nil];
-    NSString *url = @"http://localhost:8080/v1/register";
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-
-    [manager POST:url parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@", responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-
-    }];
     
-//    NSMutableURLRequest* formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://localhost:8080/v1/register" parameters:dic error:nil];
-//
-//    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
-//
-//    AFHTTPSessionManager*manager = [AFHTTPSessionManager manager];
-//
-//    AFJSONResponseSerializer* responseSerializer = [AFJSONResponseSerializer serializer];
-//
-//    [responseSerializer setAcceptableContentTypes:[NSSet setWithObjects:@"application/json",@"text/json",@"text/javascript",@"text/html",@"text/plain",nil]];
-//
-//    manager.responseSerializer= responseSerializer;
-//
-//    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
-//
-//    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
-//
-//    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-//
-//        NSLog(@"%@ %@", response, responseObject);
-//    }];
-//
-//    [dataTask resume];
+    NSDictionary *dic = @{@"phone":phone, @"code":code};
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+
+    NSMutableURLRequest* formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://localhost:8080/v1/register" parameters:dic error:nil];
+    
+    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if ([responseObject[@"errCode"]  isEqual: @0]) {
+            NSLog(@"请求成功");
+        } else {
+            NSLog(@"请求失败");
+        }
+    }];
+    [dataTask resume];
+}
+- (IBAction)cancelBt:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 @end

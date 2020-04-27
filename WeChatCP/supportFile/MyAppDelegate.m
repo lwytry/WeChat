@@ -17,9 +17,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> *)launchOptions
 {
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    
-    if (false) {
-//        self.rootVC = [[RootTabBarController alloc]init];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *phone = [userDefault objectForKey:@"phone"];
+    if (phone) {
+        self.rootVC = [[RootTabBarController alloc]init];
     } else {
         self.rootVC = [[BootLoginViewController alloc] init];
     }

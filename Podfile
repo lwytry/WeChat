@@ -15,5 +15,5 @@ target 'WeChatCP' do
   pod 'IDMPhotoBrowser'
   pod 'SDAutoLayout', '~> 1.51'
   pod 'AFNetworking', '~> 3.0'
-  pod 'MBProgressHUD', '1.0.0'
+  pod 'MBProgressHUD', '1.2.0'
 end

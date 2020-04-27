@@ -10,6 +10,8 @@
 #import "PasswordView.h"
 #import "CaptchaView.h"
 #import <Masonry/Masonry.h>
+#import <AFNetworking/AFNetworking.h>
+#import "RootTabBarController.h"
 
 @interface MobileLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
@@ -63,6 +65,7 @@
     self.captchaView = captchaView;
     [self.passwordBaseView addSubview:captchaView];
     [self.captchaView.captchaBt addTarget:self action:@selector(captchaBtClick) forControlEvents:UIControlEventTouchUpInside];
+    [captchaView.captchaField addTarget:self action:@selector(captchaFieldTextChange:) forControlEvents:UIControlEventEditingChanged];
     [captchaView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.passwordBaseView.mas_left).offset([[UIScreen mainScreen] bounds].size.width);
         make.top.bottom.equalTo(self.passwordBaseView);
@@ -73,11 +76,34 @@
     
 }
 
+-(void)captchaFieldTextChange:(UITextField *)textField
+{
+    if (textField.text.length != 0) {
+        [self.nextBt setBackgroundColor:[UIColor colorWithRed:101/255.0 green:210/255.0 blue:109/255.0 alpha:1]];
+        [self.nextBt setEnabled:YES];
+    } else {
+        [self.nextBt setEnabled:NO];
+        
+        [self.nextBt setBackgroundColor:[UIColor colorWithRed:225/255.0 green:225/255.0 blue:225/255.0 alpha:1]];
+    }
+}
+
 - (void)captchaBtClick
 {
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确认手机号码" message:[NSString stringWithFormat:@"我们将发送短信到这个号码: %@", self.phoneText] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // 发送验证码
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSString *url = [NSString stringWithFormat:@"http://localhost:8080/v1/sendCaptcha?phone=%@", self.phoneText];
+        [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            NSLog(@"%@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
         // 成功则启动定时器
         [self sentPhoneCodeTimeMethod];
     }];
@@ -148,6 +174,40 @@
     }
 }
 - (IBAction)loginBt:(UIButton *)sender {
+    [self.captchaView.captchaField resignFirstResponder];
+    NSString *phone = self.phoneText;
+    NSString *code = self.captchaView.captchaField.text;
+    
+    NSDictionary *dic = @{@"phone":phone, @"code":code};
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+
+    NSMutableURLRequest* formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://localhost:8080/v1/login" parameters:dic error:nil];
+    
+    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if ([responseObject[@"errCode"]  isEqual: @0]) {
+            NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+            [userDefault setObject:self.phoneText forKey:@"phone"];
+            [userDefault setObject:responseObject[@"data"] forKey:@"token"];
+            [userDefault synchronize];
+            
+            RootTabBarController *tabBar = [[RootTabBarController alloc] init];
+            CATransition *transtition = [CATransition animation];
+            transtition.duration = 0.5;
+            transtition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+            [UIApplication sharedApplication].keyWindow.rootViewController = tabBar;
+            [[UIApplication sharedApplication].keyWindow.layer addAnimation:transtition forKey:@"animation"];
+        } else {
+            NSLog(@"请求失败");
+        }
+    }];
+    [dataTask resume];
 }
 
 - (IBAction)changeBt:(UIButton *)sender {
