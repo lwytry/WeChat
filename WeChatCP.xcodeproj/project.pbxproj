@@ -42,6 +42,10 @@
 		A98FC9DA245C142E009B691C /* BaseKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9D9245C142E009B691C /* BaseKeyboard.m */; };
 		A98FC9DF245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9DE245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m */; };
 		A98FC9E4245D492A009B691C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9E3245D492A009B691C /* Message.m */; };
+		A98FC9E8245D4BE3009B691C /* MessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9E7245D4BE3009B691C /* MessageFrame.m */; };
+		A98FC9EC245D56A5009B691C /* TextMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9EB245D56A5009B691C /* TextMessage.m */; };
+		A98FC9F1245D5FD4009B691C /* MessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9F0245D5FD4009B691C /* MessageManager.m */; };
+		A98FC9F7245D7FB6009B691C /* ChatBaseViewController+Proxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9F6245D7FB6009B691C /* ChatBaseViewController+Proxy.m */; };
 		A9B8219A244C34FB00517C58 /* MyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B82199244C34FB00517C58 /* MyAppDelegate.m */; };
 		A9B8219C244C63E400517C58 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B8219B244C63E400517C58 /* Conversation.xcassets */; };
 		A9B8219E244C7CF700517C58 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B8219D244C7CF700517C58 /* Discover.xcassets */; };
@@ -132,6 +136,18 @@
 		A98FC9DE245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatBaseViewController+MessageDisplayView.m"; sourceTree = "<group>"; };
 		A98FC9E2245D492A009B691C /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		A98FC9E3245D492A009B691C /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		A98FC9E5245D4B31009B691C /* MessageProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageProtocol.h; sourceTree = "<group>"; };
+		A98FC9E6245D4BE3009B691C /* MessageFrame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageFrame.h; sourceTree = "<group>"; };
+		A98FC9E7245D4BE3009B691C /* MessageFrame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageFrame.m; sourceTree = "<group>"; };
+		A98FC9E9245D4DBD009B691C /* MessageConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageConstants.h; sourceTree = "<group>"; };
+		A98FC9EA245D56A5009B691C /* TextMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextMessage.h; sourceTree = "<group>"; };
+		A98FC9EB245D56A5009B691C /* TextMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextMessage.m; sourceTree = "<group>"; };
+		A98FC9EF245D5FD4009B691C /* MessageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageManager.h; sourceTree = "<group>"; };
+		A98FC9F0245D5FD4009B691C /* MessageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageManager.m; sourceTree = "<group>"; };
+		A98FC9F2245D5FF6009B691C /* MessageManagerChatVCDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageManagerChatVCDelegate.h; sourceTree = "<group>"; };
+		A98FC9F3245D6015009B691C /* MessageManagerConvVCDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageManagerConvVCDelegate.h; sourceTree = "<group>"; };
+		A98FC9F5245D7FB6009B691C /* ChatBaseViewController+Proxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatBaseViewController+Proxy.h"; sourceTree = "<group>"; };
+		A98FC9F6245D7FB6009B691C /* ChatBaseViewController+Proxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatBaseViewController+Proxy.m"; sourceTree = "<group>"; };
 		A9B82198244C34FB00517C58 /* MyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAppDelegate.h; sourceTree = "<group>"; };
 		A9B82199244C34FB00517C58 /* MyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAppDelegate.m; sourceTree = "<group>"; };
 		A9B8219B244C63E400517C58 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
@@ -258,6 +274,8 @@
 				A96A66CA2457FA6900399267 /* ChatBaseViewController.m */,
 				A98FC9D4245C0C78009B691C /* ChatBaseViewController+ChatBar.h */,
 				A98FC9D5245C0C78009B691C /* ChatBaseViewController+ChatBar.m */,
+				A98FC9F5245D7FB6009B691C /* ChatBaseViewController+Proxy.h */,
+				A98FC9F6245D7FB6009B691C /* ChatBaseViewController+Proxy.m */,
 				A98FC9DD245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.h */,
 				A98FC9DE245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m */,
 			);
@@ -488,6 +506,9 @@
 		A98FC9E0245D48FE009B691C /* messageCenter */ = {
 			isa = PBXGroup;
 			children = (
+				A98FC9F4245D6028009B691C /* conversation */,
+				A98FC9EE245D5FB2009B691C /* store */,
+				A98FC9ED245D5F93009B691C /* messageManager */,
 				A98FC9E1245D48FE009B691C /* message */,
 			);
 			name = messageCenter;
@@ -499,8 +520,39 @@
 			children = (
 				A98FC9E2245D492A009B691C /* Message.h */,
 				A98FC9E3245D492A009B691C /* Message.m */,
+				A98FC9EA245D56A5009B691C /* TextMessage.h */,
+				A98FC9EB245D56A5009B691C /* TextMessage.m */,
+				A98FC9E5245D4B31009B691C /* MessageProtocol.h */,
+				A98FC9E6245D4BE3009B691C /* MessageFrame.h */,
+				A98FC9E7245D4BE3009B691C /* MessageFrame.m */,
+				A98FC9E9245D4DBD009B691C /* MessageConstants.h */,
 			);
 			path = message;
+			sourceTree = "<group>";
+		};
+		A98FC9ED245D5F93009B691C /* messageManager */ = {
+			isa = PBXGroup;
+			children = (
+				A98FC9EF245D5FD4009B691C /* MessageManager.h */,
+				A98FC9F0245D5FD4009B691C /* MessageManager.m */,
+				A98FC9F2245D5FF6009B691C /* MessageManagerChatVCDelegate.h */,
+				A98FC9F3245D6015009B691C /* MessageManagerConvVCDelegate.h */,
+			);
+			path = messageManager;
+			sourceTree = "<group>";
+		};
+		A98FC9EE245D5FB2009B691C /* store */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
+		A98FC9F4245D6028009B691C /* conversation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = conversation;
 			sourceTree = "<group>";
 		};
 		A9B821A3244C7D7C00517C58 /* chat */ = {
@@ -680,15 +732,19 @@
 			files = (
 				A96A66ED2458087400399267 /* MessageDisplayView.m in Sources */,
 				A979989124445CB7009B6096 /* GetContactPermisson.m in Sources */,
+				A98FC9E8245D4BE3009B691C /* MessageFrame.m in Sources */,
 				A9B821CE244E828700517C58 /* DiscoverViewController.m in Sources */,
 				A96A66CF2457FBDD00399267 /* User.m in Sources */,
 				A9B821B5244D402800517C58 /* ContactTableViewCell.m in Sources */,
 				A98FC9D32459B59B009B691C /* TEST.m in Sources */,
 				A97998572442C7E8009B6096 /* WeChatTableViewCell.m in Sources */,
+				A98FC9F1245D5FD4009B691C /* MessageManager.m in Sources */,
 				A979985A2442CEFA009B6096 /* WeChat.m in Sources */,
 				A97998972444621A009B6096 /* Contact.m in Sources */,
+				A98FC9EC245D56A5009B691C /* TextMessage.m in Sources */,
 				A979982B2442C458009B6096 /* main.m in Sources */,
 				A9B8219A244C34FB00517C58 /* MyAppDelegate.m in Sources */,
+				A98FC9F7245D7FB6009B691C /* ChatBaseViewController+Proxy.m in Sources */,
 				A98FC9DF245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m in Sources */,
 				A979986E24430846009B6096 /* ContactViewController.m in Sources */,
 				A98FC9E4245D492A009B691C /* Message.m in Sources */,

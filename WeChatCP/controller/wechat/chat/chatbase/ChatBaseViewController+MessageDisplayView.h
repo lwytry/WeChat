@@ -12,6 +12,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ChatBaseViewController (MessageDisplayView) <MessageDisplayViewDelegate>
 
+/**
+ *  添加展示消息（添加到chatVC）
+ */
+//- (void)addToShowMessage:(Message *)message;
+//
+//- (void)resetChatTVC;
+
 @end
 
 NS_ASSUME_NONNULL_END

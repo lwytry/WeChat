@@ -8,6 +8,8 @@
 
 #import "ChatBaseViewController+ChatBar.h"
 #import <Masonry/Masonry.h>
+#import "ChatBaseViewController+Proxy.h"
+#import "TextMessage.h"
 
 @implementation ChatBaseViewController (ChatBar)
 
@@ -108,7 +110,9 @@
 
 - (void)chatBar:(ChatBar *)chatBar sendText:(NSString *)text
 {
-    
+    TextMessage *message = [[TextMessage alloc] init];
+    message.text = text;
+    [self sendMessage: message];
 }
 
 #pragma mark - KeyboardDelegate

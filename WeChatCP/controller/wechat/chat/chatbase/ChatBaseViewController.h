@@ -11,6 +11,7 @@
 #import "MessageDisplayView.h"
 #import "Macro.h"
 #import "ChatBar.h"
+#import "MessageManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

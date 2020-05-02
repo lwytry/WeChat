@@ -7,42 +7,42 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MessageProtocol.h"
+#import "MessageFrame.h"
+#import "MessageConstants.h"
+#import "ChatUserProtocol.h"
 
-/**
- *  消息所有者类型
- */
-typedef NS_ENUM(NSInteger, TLPartnerType){
-    TLPartnerTypeUser,          // 用户
-    TLPartnerTypeGroup,         // 群聊
-};
+@interface Message : NSObject <MessageProtocol>
+{
+    MessageFrame *messageFrame;
+}
 
-/**
- *  消息拥有者
- */
-typedef NS_ENUM(NSInteger, TLMessageOwnerType){
-    TLMessageOwnerTypeUnknown,  // 未知的消息拥有者
-    TLMessageOwnerTypeSystem,   // 系统消息
-    TLMessageOwnerTypeSelf,     // 自己发送的消息
-    TLMessageOwnerTypeFriend,   // 接收到的他人消息
-};
+@property (nonatomic, strong) NSString *messageID;                  // 消息ID
+@property (nonatomic, strong) NSString *userID;                     // 发送者ID
+@property (nonatomic, strong) NSString *friendID;                   // 接收者ID
+@property (nonatomic, strong) NSString *groupID;                    // 讨论组ID（无则为nil）
 
-/**
- *  消息发送状态
- */
-typedef NS_ENUM(NSInteger, TLMessageSendState){
-    TLMessageSendSuccess,       // 消息发送成功
-    TLMessageSendFail,          // 消息发送失败
-};
+@property (nonatomic, strong) NSDate *date;                         // 发送时间
 
-/**
- *  消息读取状态
- */
-typedef NS_ENUM(NSInteger, TLMessageReadState) {
-    TLMessageUnRead,            // 消息未读
-    TLMessageReaded,            // 消息已读
-};
+@property (nonatomic, strong) id<ChatUserProtocol> fromUser;      // 发送者
 
-@interface Message : NSObject
+@property (nonatomic, assign) BOOL showTime;
+@property (nonatomic, assign) BOOL showName;
+
+@property (nonatomic, assign) PartnerType partnerType;            // 对方类型
+@property (nonatomic, assign) MessageType messageType;            // 消息类型
+@property (nonatomic, assign) MessageOwnerType ownerTyper;        // 发送者类型
+@property (nonatomic, assign) MessageReadState readState;         // 读取状态
+@property (nonatomic, assign) MessageSendState sendState;         // 发送状态
+
+@property (nonatomic, strong) NSMutableDictionary *content;
+
+@property (nonatomic, strong, readonly) MessageFrame *messageFrame;         // 消息frame
+
++ (Message *)createMessageByType:(MessageType)type;
+
+- (void)resetMessageFrame;
+
 
 @end
 
