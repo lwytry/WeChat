@@ -8,15 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		74B136A589813FF765CBD5F5 /* Pods_WeChatCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6D58A871783E5A159C94641 /* Pods_WeChatCP.framework */; };
-		A96A66A6245092E000399267 /* PasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66A5245092E000399267 /* PasswordView.m */; };
-		A96A66A82450942600399267 /* PasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66A72450942600399267 /* PasswordView.xib */; };
-		A96A66AB245095B200399267 /* CaptchaView.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66AA245095B200399267 /* CaptchaView.m */; };
-		A96A66AD245095BE00399267 /* CaptchaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66AC245095BE00399267 /* CaptchaView.xib */; };
 		A96A66B12450994700399267 /* MobileLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66AF2450994700399267 /* MobileLoginViewController.m */; };
 		A96A66B22450994700399267 /* MobileLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66B02450994700399267 /* MobileLoginViewController.xib */; };
 		A96A66B524517D5600399267 /* LoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66B424517D5600399267 /* LoginBaseViewController.m */; };
 		A96A66C32452A3FA00399267 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66C12452A3FA00399267 /* RegisterViewController.m */; };
 		A96A66C42452A3FA00399267 /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66C22452A3FA00399267 /* RegisterViewController.xib */; };
+		A96A66CB2457FA6900399267 /* ChatBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66CA2457FA6900399267 /* ChatBaseViewController.m */; };
+		A96A66CF2457FBDD00399267 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66CE2457FBDD00399267 /* User.m */; };
+		A96A66E12458076500399267 /* PasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66D52458076400399267 /* PasswordView.m */; };
+		A96A66E22458076500399267 /* CaptchaView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66D62458076400399267 /* CaptchaView.xib */; };
+		A96A66E32458076500399267 /* MobileView.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66D72458076400399267 /* MobileView.m */; };
+		A96A66E42458076500399267 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66D82458076400399267 /* AccountView.m */; };
+		A96A66E52458076500399267 /* MobileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66DA2458076400399267 /* MobileView.xib */; };
+		A96A66E62458076500399267 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66DD2458076400399267 /* AccountView.xib */; };
+		A96A66E72458076500399267 /* PasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66DE2458076400399267 /* PasswordView.xib */; };
+		A96A66E82458076500399267 /* CaptchaView.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66E02458076400399267 /* CaptchaView.m */; };
+		A96A66ED2458087400399267 /* MessageDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66EC2458087400399267 /* MessageDisplayView.m */; };
+		A96A66F124582EF400399267 /* MessageDisplayView+Delegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66F024582EF400399267 /* MessageDisplayView+Delegate.m */; };
+		A96A66F5245858DE00399267 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66F4245858DD00399267 /* ChatViewController.m */; };
+		A96A66F92459353400399267 /* ChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66F82459353300399267 /* ChatBar.m */; };
 		A97998252442C458009B6096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A97998242442C458009B6096 /* Assets.xcassets */; };
 		A979982B2442C458009B6096 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A979982A2442C458009B6096 /* main.m */; };
 		A97998522442C690009B6096 /* RootTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97998512442C690009B6096 /* RootTabBarController.m */; };
@@ -25,9 +35,13 @@
 		A9799864244307CD009B6096 /* WeChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9799862244307CD009B6096 /* WeChatViewController.m */; };
 		A97998692443082C009B6096 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A97998672443082C009B6096 /* HomeViewController.m */; };
 		A979986E24430846009B6096 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A979986C24430846009B6096 /* ContactViewController.m */; };
-		A979988124440FFA009B6096 /* WeChatDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A979988024440FFA009B6096 /* WeChatDetailViewController.m */; };
 		A979989124445CB7009B6096 /* GetContactPermisson.m in Sources */ = {isa = PBXBuildFile; fileRef = A979989024445CB7009B6096 /* GetContactPermisson.m */; };
 		A97998972444621A009B6096 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = A97998962444621A009B6096 /* Contact.m */; };
+		A98FC9D32459B59B009B691C /* TEST.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9D22459B59B009B691C /* TEST.m */; };
+		A98FC9D6245C0C78009B691C /* ChatBaseViewController+ChatBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9D5245C0C78009B691C /* ChatBaseViewController+ChatBar.m */; };
+		A98FC9DA245C142E009B691C /* BaseKeyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9D9245C142E009B691C /* BaseKeyboard.m */; };
+		A98FC9DF245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9DE245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m */; };
+		A98FC9E4245D492A009B691C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FC9E3245D492A009B691C /* Message.m */; };
 		A9B8219A244C34FB00517C58 /* MyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B82199244C34FB00517C58 /* MyAppDelegate.m */; };
 		A9B8219C244C63E400517C58 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B8219B244C63E400517C58 /* Conversation.xcassets */; };
 		A9B8219E244C7CF700517C58 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B8219D244C7CF700517C58 /* Discover.xcassets */; };
@@ -40,27 +54,16 @@
 		A9B821B2244C840F00517C58 /* SearchResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821B1244C840F00517C58 /* SearchResultController.m */; };
 		A9B821B5244D402800517C58 /* ContactTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821B4244D402800517C58 /* ContactTableViewCell.m */; };
 		A9B821B7244D487400517C58 /* Contact.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B821B6244D487300517C58 /* Contact.xcassets */; };
-		A9B821C7244DA52400517C58 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821C6244DA52400517C58 /* Person.m */; };
 		A9B821CA244DAAB800517C58 /* HomeTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821C9244DAAB800517C58 /* HomeTableViewCell.m */; };
 		A9B821CE244E828700517C58 /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821CD244E828700517C58 /* DiscoverViewController.m */; };
 		A9B821D8244FDEC100517C58 /* BootLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821D6244FDEC100517C58 /* BootLoginViewController.m */; };
 		A9B821D9244FDEC100517C58 /* BootLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B821D7244FDEC100517C58 /* BootLoginViewController.xib */; };
 		A9B821DF244FF7EE00517C58 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821DD244FF7EE00517C58 /* LoginViewController.m */; };
 		A9B821E0244FF7EE00517C58 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B821DE244FF7EE00517C58 /* LoginViewController.xib */; };
-		A9B821EA2450248D00517C58 /* MobileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B821E82450248D00517C58 /* MobileView.xib */; };
-		A9B821ED2450295500517C58 /* MobileView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821EB2450295500517C58 /* MobileView.m */; };
-		A9B821F4245038CC00517C58 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B821F3245038CC00517C58 /* AccountView.xib */; };
-		A9B821F724503C7400517C58 /* AccountView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B821F624503C7400517C58 /* AccountView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		34A075BCC309FA8AB043E297 /* Pods-WeChatCP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatCP.release.xcconfig"; path = "Target Support Files/Pods-WeChatCP/Pods-WeChatCP.release.xcconfig"; sourceTree = "<group>"; };
-		A96A66A4245092E000399267 /* PasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordView.h; sourceTree = "<group>"; };
-		A96A66A5245092E000399267 /* PasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordView.m; sourceTree = "<group>"; };
-		A96A66A72450942600399267 /* PasswordView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordView.xib; sourceTree = "<group>"; };
-		A96A66A9245095B200399267 /* CaptchaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CaptchaView.h; sourceTree = "<group>"; };
-		A96A66AA245095B200399267 /* CaptchaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CaptchaView.m; sourceTree = "<group>"; };
-		A96A66AC245095BE00399267 /* CaptchaView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CaptchaView.xib; sourceTree = "<group>"; };
 		A96A66AE2450994700399267 /* MobileLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileLoginViewController.h; sourceTree = "<group>"; };
 		A96A66AF2450994700399267 /* MobileLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobileLoginViewController.m; sourceTree = "<group>"; };
 		A96A66B02450994700399267 /* MobileLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileLoginViewController.xib; sourceTree = "<group>"; };
@@ -70,6 +73,34 @@
 		A96A66C02452A3FA00399267 /* RegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		A96A66C12452A3FA00399267 /* RegisterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		A96A66C22452A3FA00399267 /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		A96A66C92457FA6900399267 /* ChatBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatBaseViewController.h; sourceTree = "<group>"; };
+		A96A66CA2457FA6900399267 /* ChatBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatBaseViewController.m; sourceTree = "<group>"; };
+		A96A66CD2457FBDD00399267 /* User.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		A96A66CE2457FBDD00399267 /* User.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		A96A66D12458008700399267 /* ChatUserProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatUserProtocol.h; sourceTree = "<group>"; };
+		A96A66D52458076400399267 /* PasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordView.m; sourceTree = "<group>"; };
+		A96A66D62458076400399267 /* CaptchaView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CaptchaView.xib; sourceTree = "<group>"; };
+		A96A66D72458076400399267 /* MobileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileView.m; sourceTree = "<group>"; };
+		A96A66D82458076400399267 /* AccountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountView.m; sourceTree = "<group>"; };
+		A96A66D92458076400399267 /* CaptchaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CaptchaView.h; sourceTree = "<group>"; };
+		A96A66DA2458076400399267 /* MobileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MobileView.xib; sourceTree = "<group>"; };
+		A96A66DB2458076400399267 /* PasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordView.h; sourceTree = "<group>"; };
+		A96A66DC2458076400399267 /* MobileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileView.h; sourceTree = "<group>"; };
+		A96A66DD2458076400399267 /* AccountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountView.xib; sourceTree = "<group>"; };
+		A96A66DE2458076400399267 /* PasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordView.xib; sourceTree = "<group>"; };
+		A96A66DF2458076400399267 /* AccountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountView.h; sourceTree = "<group>"; };
+		A96A66E02458076400399267 /* CaptchaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CaptchaView.m; sourceTree = "<group>"; };
+		A96A66EB2458087400399267 /* MessageDisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageDisplayView.h; sourceTree = "<group>"; };
+		A96A66EC2458087400399267 /* MessageDisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageDisplayView.m; sourceTree = "<group>"; };
+		A96A66EF24582EF400399267 /* MessageDisplayView+Delegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessageDisplayView+Delegate.h"; sourceTree = "<group>"; };
+		A96A66F024582EF400399267 /* MessageDisplayView+Delegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MessageDisplayView+Delegate.m"; sourceTree = "<group>"; };
+		A96A66F22458307A00399267 /* MessageDisplayViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageDisplayViewDelegate.h; sourceTree = "<group>"; };
+		A96A66F3245858DD00399267 /* ChatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		A96A66F4245858DD00399267 /* ChatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		A96A66F72459353300399267 /* ChatBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatBar.h; sourceTree = "<group>"; };
+		A96A66F82459353300399267 /* ChatBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatBar.m; sourceTree = "<group>"; };
+		A96A66FC2459368000399267 /* ChatBarDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatBarDelegate.h; sourceTree = "<group>"; };
+		A96A66FD245937FA00399267 /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		A97998152442C456009B6096 /* WeChatCP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeChatCP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A97998242442C458009B6096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A97998272442C458009B6096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,12 +117,21 @@
 		A97998672443082C009B6096 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		A979986B24430846009B6096 /* ContactViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		A979986C24430846009B6096 /* ContactViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
-		A979987F24440FFA009B6096 /* WeChatDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeChatDetailViewController.h; sourceTree = "<group>"; };
-		A979988024440FFA009B6096 /* WeChatDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeChatDetailViewController.m; sourceTree = "<group>"; };
 		A979988F24445CB7009B6096 /* GetContactPermisson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetContactPermisson.h; sourceTree = "<group>"; };
 		A979989024445CB7009B6096 /* GetContactPermisson.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetContactPermisson.m; sourceTree = "<group>"; };
 		A97998952444621A009B6096 /* Contact.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		A97998962444621A009B6096 /* Contact.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		A98FC9D22459B59B009B691C /* TEST.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TEST.m; sourceTree = "<group>"; };
+		A98FC9D4245C0C78009B691C /* ChatBaseViewController+ChatBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatBaseViewController+ChatBar.h"; sourceTree = "<group>"; };
+		A98FC9D5245C0C78009B691C /* ChatBaseViewController+ChatBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatBaseViewController+ChatBar.m"; sourceTree = "<group>"; };
+		A98FC9D8245C142E009B691C /* BaseKeyboard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseKeyboard.h; sourceTree = "<group>"; };
+		A98FC9D9245C142E009B691C /* BaseKeyboard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseKeyboard.m; sourceTree = "<group>"; };
+		A98FC9DB245C1468009B691C /* KeyboardDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardDelegate.h; sourceTree = "<group>"; };
+		A98FC9DC245C1487009B691C /* KeyboardProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardProtocol.h; sourceTree = "<group>"; };
+		A98FC9DD245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChatBaseViewController+MessageDisplayView.h"; sourceTree = "<group>"; };
+		A98FC9DE245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChatBaseViewController+MessageDisplayView.m"; sourceTree = "<group>"; };
+		A98FC9E2245D492A009B691C /* Message.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		A98FC9E3245D492A009B691C /* Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		A9B82198244C34FB00517C58 /* MyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAppDelegate.h; sourceTree = "<group>"; };
 		A9B82199244C34FB00517C58 /* MyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAppDelegate.m; sourceTree = "<group>"; };
 		A9B8219B244C63E400517C58 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
@@ -107,8 +147,6 @@
 		A9B821B3244D402800517C58 /* ContactTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactTableViewCell.h; sourceTree = "<group>"; };
 		A9B821B4244D402800517C58 /* ContactTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewCell.m; sourceTree = "<group>"; };
 		A9B821B6244D487300517C58 /* Contact.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Contact.xcassets; sourceTree = "<group>"; };
-		A9B821C5244DA52400517C58 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
-		A9B821C6244DA52400517C58 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		A9B821C8244DAAB800517C58 /* HomeTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeTableViewCell.h; sourceTree = "<group>"; };
 		A9B821C9244DAAB800517C58 /* HomeTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeTableViewCell.m; sourceTree = "<group>"; };
 		A9B821CC244E828700517C58 /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
@@ -119,12 +157,6 @@
 		A9B821DC244FF7EE00517C58 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A9B821DD244FF7EE00517C58 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A9B821DE244FF7EE00517C58 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		A9B821E82450248D00517C58 /* MobileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileView.xib; sourceTree = "<group>"; };
-		A9B821EB2450295500517C58 /* MobileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MobileView.m; sourceTree = "<group>"; };
-		A9B821EC2450295500517C58 /* MobileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobileView.h; sourceTree = "<group>"; };
-		A9B821F3245038CC00517C58 /* AccountView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountView.xib; sourceTree = "<group>"; };
-		A9B821F524503C7400517C58 /* AccountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountView.h; sourceTree = "<group>"; };
-		A9B821F624503C7400517C58 /* AccountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountView.m; sourceTree = "<group>"; };
 		C6D58A871783E5A159C94641 /* Pods_WeChatCP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeChatCP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF7A7FB2497731B9EAFCCD96 /* Pods-WeChatCP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatCP.debug.xcconfig"; path = "Target Support Files/Pods-WeChatCP/Pods-WeChatCP.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +236,7 @@
 		A96A66BF2451AB0400399267 /* supportFile */ = {
 			isa = PBXGroup;
 			children = (
+				A9B821A4244C7DAA00517C58 /* Chat.xcassets */,
 				A9B821AB244C7F3F00517C58 /* Common.xcassets */,
 				A9B821A1244C7D1B00517C58 /* Mine.xcassets */,
 				A9B821B6244D487300517C58 /* Contact.xcassets */,
@@ -216,6 +249,112 @@
 				A9B82199244C34FB00517C58 /* MyAppDelegate.m */,
 			);
 			path = supportFile;
+			sourceTree = "<group>";
+		};
+		A96A66C82457FA5100399267 /* chatbase */ = {
+			isa = PBXGroup;
+			children = (
+				A96A66C92457FA6900399267 /* ChatBaseViewController.h */,
+				A96A66CA2457FA6900399267 /* ChatBaseViewController.m */,
+				A98FC9D4245C0C78009B691C /* ChatBaseViewController+ChatBar.h */,
+				A98FC9D5245C0C78009B691C /* ChatBaseViewController+ChatBar.m */,
+				A98FC9DD245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.h */,
+				A98FC9DE245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m */,
+			);
+			path = chatbase;
+			sourceTree = "<group>";
+		};
+		A96A66CC2457FBCA00399267 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				A96A66CD2457FBDD00399267 /* User.h */,
+				A96A66CE2457FBDD00399267 /* User.m */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		A96A66D02458005C00399267 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				A96A66D12458008700399267 /* ChatUserProtocol.h */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		A96A66D22458076400399267 /* launch */ = {
+			isa = PBXGroup;
+			children = (
+				A96A66D32458076400399267 /* regitster */,
+				A96A66D42458076400399267 /* login */,
+			);
+			path = launch;
+			sourceTree = "<group>";
+		};
+		A96A66D32458076400399267 /* regitster */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = regitster;
+			sourceTree = "<group>";
+		};
+		A96A66D42458076400399267 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				A96A66D52458076400399267 /* PasswordView.m */,
+				A96A66D62458076400399267 /* CaptchaView.xib */,
+				A96A66D72458076400399267 /* MobileView.m */,
+				A96A66D82458076400399267 /* AccountView.m */,
+				A96A66D92458076400399267 /* CaptchaView.h */,
+				A96A66DA2458076400399267 /* MobileView.xib */,
+				A96A66DB2458076400399267 /* PasswordView.h */,
+				A96A66DC2458076400399267 /* MobileView.h */,
+				A96A66DD2458076400399267 /* AccountView.xib */,
+				A96A66DE2458076400399267 /* PasswordView.xib */,
+				A96A66DF2458076400399267 /* AccountView.h */,
+				A96A66E02458076400399267 /* CaptchaView.m */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		A96A66E9245807EE00399267 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				A98FC9E0245D48FE009B691C /* messageCenter */,
+				A98FC9D7245C13ED009B691C /* keyboard */,
+				A96A66F62459351D00399267 /* chatBar */,
+				A96A66EA2458084800399267 /* messageDisplayView */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		A96A66EA2458084800399267 /* messageDisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				A96A66EE24582E9D00399267 /* messageCellView */,
+				A96A66EB2458087400399267 /* MessageDisplayView.h */,
+				A96A66EC2458087400399267 /* MessageDisplayView.m */,
+				A96A66EF24582EF400399267 /* MessageDisplayView+Delegate.h */,
+				A96A66F024582EF400399267 /* MessageDisplayView+Delegate.m */,
+				A96A66F22458307A00399267 /* MessageDisplayViewDelegate.h */,
+			);
+			path = messageDisplayView;
+			sourceTree = "<group>";
+		};
+		A96A66EE24582E9D00399267 /* messageCellView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = messageCellView;
+			sourceTree = "<group>";
+		};
+		A96A66F62459351D00399267 /* chatBar */ = {
+			isa = PBXGroup;
+			children = (
+				A96A66F72459353300399267 /* ChatBar.h */,
+				A96A66F82459353300399267 /* ChatBar.m */,
+				A96A66FC2459368000399267 /* ChatBarDelegate.h */,
+			);
+			path = chatBar;
 			sourceTree = "<group>";
 		};
 		A979980C2442C456009B6096 = {
@@ -252,7 +391,8 @@
 		A97998352442C52C009B6096 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				A9B821CF244E848800517C58 /* launch */,
+				A96A66E9245807EE00399267 /* chat */,
+				A96A66D22458076400399267 /* launch */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -290,10 +430,9 @@
 				A97998562442C7E8009B6096 /* WeChatTableViewCell.m */,
 				A9799861244307CD009B6096 /* WeChatViewController.h */,
 				A9799862244307CD009B6096 /* WeChatViewController.m */,
-				A979987F24440FFA009B6096 /* WeChatDetailViewController.h */,
-				A979988024440FFA009B6096 /* WeChatDetailViewController.m */,
 				A9B821B0244C840F00517C58 /* SearchResultController.h */,
 				A9B821B1244C840F00517C58 /* SearchResultController.m */,
+				A98FC9D22459B59B009B691C /* TEST.m */,
 			);
 			path = wechat;
 			sourceTree = "<group>";
@@ -304,7 +443,6 @@
 				A97998402442C563009B6096 /* home */,
 				A97998412442C563009B6096 /* contact */,
 				A97998422442C563009B6096 /* wechat */,
-				A97998432442C563009B6096 /* find */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -312,7 +450,7 @@
 		A97998402442C563009B6096 /* home */ = {
 			isa = PBXGroup;
 			children = (
-				A9B821C4244DA52400517C58 /* person */,
+				A96A66CC2457FBCA00399267 /* user */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -329,24 +467,49 @@
 		A97998422442C563009B6096 /* wechat */ = {
 			isa = PBXGroup;
 			children = (
+				A96A66D02458005C00399267 /* chat */,
 				A97998582442CEFA009B6096 /* WeChat.h */,
 				A97998592442CEFA009B6096 /* WeChat.m */,
 			);
 			path = wechat;
 			sourceTree = "<group>";
 		};
-		A97998432442C563009B6096 /* find */ = {
+		A98FC9D7245C13ED009B691C /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				A98FC9D8245C142E009B691C /* BaseKeyboard.h */,
+				A98FC9D9245C142E009B691C /* BaseKeyboard.m */,
+				A98FC9DB245C1468009B691C /* KeyboardDelegate.h */,
+				A98FC9DC245C1487009B691C /* KeyboardProtocol.h */,
 			);
-			path = find;
+			path = keyboard;
+			sourceTree = "<group>";
+		};
+		A98FC9E0245D48FE009B691C /* messageCenter */ = {
+			isa = PBXGroup;
+			children = (
+				A98FC9E1245D48FE009B691C /* message */,
+			);
+			name = messageCenter;
+			path = WeChatCP/controller/wechat/messageCenter;
+			sourceTree = SOURCE_ROOT;
+		};
+		A98FC9E1245D48FE009B691C /* message */ = {
+			isa = PBXGroup;
+			children = (
+				A98FC9E2245D492A009B691C /* Message.h */,
+				A98FC9E3245D492A009B691C /* Message.m */,
+			);
+			path = message;
 			sourceTree = "<group>";
 		};
 		A9B821A3244C7D7C00517C58 /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				A9B821A4244C7DAA00517C58 /* Chat.xcassets */,
+				A96A66C82457FA5100399267 /* chatbase */,
 				A9B821A5244C7DAA00517C58 /* DefaultEmoji */,
+				A96A66F3245858DD00399267 /* ChatViewController.h */,
+				A96A66F4245858DD00399267 /* ChatViewController.m */,
 			);
 			path = chat;
 			sourceTree = "<group>";
@@ -368,15 +531,6 @@
 			path = addMenu;
 			sourceTree = "<group>";
 		};
-		A9B821C4244DA52400517C58 /* person */ = {
-			isa = PBXGroup;
-			children = (
-				A9B821C5244DA52400517C58 /* Person.h */,
-				A9B821C6244DA52400517C58 /* Person.m */,
-			);
-			path = person;
-			sourceTree = "<group>";
-		};
 		A9B821CB244E828700517C58 /* discover  */ = {
 			isa = PBXGroup;
 			children = (
@@ -387,45 +541,10 @@
 			path = "WeChatCP/controller/discover ";
 			sourceTree = SOURCE_ROOT;
 		};
-		A9B821CF244E848800517C58 /* launch */ = {
-			isa = PBXGroup;
-			children = (
-				A9B821D0244E84D600517C58 /* login */,
-				A9B821D1244E84D600517C58 /* regitster */,
-			);
-			name = launch;
-			path = WeChatCP/model/launch;
-			sourceTree = SOURCE_ROOT;
-		};
-		A9B821D0244E84D600517C58 /* login */ = {
-			isa = PBXGroup;
-			children = (
-				A9B821EC2450295500517C58 /* MobileView.h */,
-				A9B821EB2450295500517C58 /* MobileView.m */,
-				A9B821E82450248D00517C58 /* MobileView.xib */,
-				A9B821F524503C7400517C58 /* AccountView.h */,
-				A9B821F624503C7400517C58 /* AccountView.m */,
-				A9B821F3245038CC00517C58 /* AccountView.xib */,
-				A96A66A4245092E000399267 /* PasswordView.h */,
-				A96A66A5245092E000399267 /* PasswordView.m */,
-				A96A66A72450942600399267 /* PasswordView.xib */,
-				A96A66A9245095B200399267 /* CaptchaView.h */,
-				A96A66AA245095B200399267 /* CaptchaView.m */,
-				A96A66AC245095BE00399267 /* CaptchaView.xib */,
-			);
-			path = login;
-			sourceTree = "<group>";
-		};
-		A9B821D1244E84D600517C58 /* regitster */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = regitster;
-			sourceTree = "<group>";
-		};
 		A9E0DDF02449614500E8AF43 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				A96A66FD245937FA00399267 /* Macro.h */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -489,11 +608,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A96A66AD245095BE00399267 /* CaptchaView.xib in Resources */,
+				A96A66E62458076500399267 /* AccountView.xib in Resources */,
 				A9B821AA244C7DAA00517C58 /* FaceEmoji.json in Resources */,
 				A9B821AF244C80D800517C58 /* AddMenu.xcassets in Resources */,
-				A9B821EA2450248D00517C58 /* MobileView.xib in Resources */,
+				A96A66E52458076500399267 /* MobileView.xib in Resources */,
 				A97998252442C458009B6096 /* Assets.xcassets in Resources */,
+				A96A66E72458076500399267 /* PasswordView.xib in Resources */,
 				A96A66C42452A3FA00399267 /* RegisterViewController.xib in Resources */,
 				A9B821D9244FDEC100517C58 /* BootLoginViewController.xib in Resources */,
 				A9B821B7244D487400517C58 /* Contact.xcassets in Resources */,
@@ -501,12 +621,11 @@
 				A9B8219E244C7CF700517C58 /* Discover.xcassets in Resources */,
 				A9B8219C244C63E400517C58 /* Conversation.xcassets in Resources */,
 				A9B821A2244C7D1C00517C58 /* Mine.xcassets in Resources */,
-				A9B821F4245038CC00517C58 /* AccountView.xib in Resources */,
 				A9B821E0244FF7EE00517C58 /* LoginViewController.xib in Resources */,
 				A9B821AC244C7F3F00517C58 /* Common.xcassets in Resources */,
+				A96A66E22458076500399267 /* CaptchaView.xib in Resources */,
 				A9B821A9244C7DAA00517C58 /* SystemEmoji.json in Resources */,
 				A9B821A8244C7DAA00517C58 /* Chat.xcassets in Resources */,
-				A96A66A82450942600399267 /* PasswordView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -559,31 +678,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96A66ED2458087400399267 /* MessageDisplayView.m in Sources */,
 				A979989124445CB7009B6096 /* GetContactPermisson.m in Sources */,
 				A9B821CE244E828700517C58 /* DiscoverViewController.m in Sources */,
+				A96A66CF2457FBDD00399267 /* User.m in Sources */,
 				A9B821B5244D402800517C58 /* ContactTableViewCell.m in Sources */,
-				A9B821ED2450295500517C58 /* MobileView.m in Sources */,
-				A9B821F724503C7400517C58 /* AccountView.m in Sources */,
-				A96A66A6245092E000399267 /* PasswordView.m in Sources */,
+				A98FC9D32459B59B009B691C /* TEST.m in Sources */,
 				A97998572442C7E8009B6096 /* WeChatTableViewCell.m in Sources */,
 				A979985A2442CEFA009B6096 /* WeChat.m in Sources */,
 				A97998972444621A009B6096 /* Contact.m in Sources */,
 				A979982B2442C458009B6096 /* main.m in Sources */,
 				A9B8219A244C34FB00517C58 /* MyAppDelegate.m in Sources */,
+				A98FC9DF245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m in Sources */,
 				A979986E24430846009B6096 /* ContactViewController.m in Sources */,
+				A98FC9E4245D492A009B691C /* Message.m in Sources */,
 				A97998522442C690009B6096 /* RootTabBarController.m in Sources */,
-				A9B821C7244DA52400517C58 /* Person.m in Sources */,
+				A96A66F124582EF400399267 /* MessageDisplayView+Delegate.m in Sources */,
+				A96A66E12458076500399267 /* PasswordView.m in Sources */,
 				A9B821CA244DAAB800517C58 /* HomeTableViewCell.m in Sources */,
+				A98FC9D6245C0C78009B691C /* ChatBaseViewController+ChatBar.m in Sources */,
+				A96A66F5245858DE00399267 /* ChatViewController.m in Sources */,
 				A96A66C32452A3FA00399267 /* RegisterViewController.m in Sources */,
 				A96A66B12450994700399267 /* MobileLoginViewController.m in Sources */,
-				A96A66AB245095B200399267 /* CaptchaView.m in Sources */,
-				A979988124440FFA009B6096 /* WeChatDetailViewController.m in Sources */,
+				A96A66CB2457FA6900399267 /* ChatBaseViewController.m in Sources */,
+				A98FC9DA245C142E009B691C /* BaseKeyboard.m in Sources */,
+				A96A66E82458076500399267 /* CaptchaView.m in Sources */,
+				A96A66F92459353400399267 /* ChatBar.m in Sources */,
 				A9799864244307CD009B6096 /* WeChatViewController.m in Sources */,
+				A96A66E32458076500399267 /* MobileView.m in Sources */,
 				A9B821DF244FF7EE00517C58 /* LoginViewController.m in Sources */,
 				A97998692443082C009B6096 /* HomeViewController.m in Sources */,
 				A9B821D8244FDEC100517C58 /* BootLoginViewController.m in Sources */,
 				A9B821B2244C840F00517C58 /* SearchResultController.m in Sources */,
 				A96A66B524517D5600399267 /* LoginBaseViewController.m in Sources */,
+				A96A66E42458076500399267 /* AccountView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

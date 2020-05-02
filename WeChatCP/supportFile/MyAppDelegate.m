@@ -25,6 +25,7 @@
         self.rootVC = [[BootLoginViewController alloc] init];
     }
     self.window.rootViewController = self.rootVC;
+    
     [self.window makeKeyAndVisible];
     [self changeNav];
     return YES;

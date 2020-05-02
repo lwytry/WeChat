@@ -9,8 +9,9 @@
 #import "WeChatViewController.h"
 #import "WeChat.h"
 #import "WeChatTableViewCell.h"
-#import "WeChatDetailViewController.h"
+#import "ChatViewController.h"
 #import "SearchResultController.h"
+
 @interface WeChatViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tabView;
 @property (copy, nonatomic) NSMutableArray<WeChat *> *wechats;
@@ -74,9 +75,9 @@ static NSString *ID = @"wechatCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    WeChatDetailViewController *view = [[WeChatDetailViewController alloc] init];
-    view.passedValue = self.wechats[indexPath.row].titleText;
-    [self.navigationController pushViewController:view animated:YES];
+    ChatViewController *chatVC = [[ChatViewController alloc] init];
+    chatVC.hidesBottomBarWhenPushed = true;
+    [self.navigationController pushViewController:chatVC animated:YES];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {

@@ -7,7 +7,7 @@
 //
 
 #import "HomeViewController.h"
-#import "Person.h"
+#import "User.h"
 #import "HomeTableViewCell.h"
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tabView;
@@ -27,7 +27,7 @@ static NSString *ID = @"homeCell";
 }
 -(void)initializeData
 {
-    Person* user = [[Person alloc] init];
+    User* user = [[User alloc] init];
     user.avatar = @"IMG_0595";
     user.name = @"Try";
     user.wechatId = @"2020783236";

@@ -20,7 +20,7 @@
 
     // Configure the view for the selected state
 }
--(void)setUserInfo:(Person *)userInfo
+-(void)setUserInfo:(User *)userInfo
 {
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     self.avatarImageView.image = [UIImage imageNamed:userInfo.avatar];

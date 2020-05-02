@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Person.h"
+#import "User.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomeTableViewCell : UITableViewCell
 /**
  *  model
  */
-@property (nonatomic, strong) Person *userInfo;
+@property (nonatomic, strong) User *userInfo;
 
 /**
  *  用户头像ImgView
@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  二维码ImgView
  */
 @property (nonatomic, strong) UIImageView* barcodeImageView;
-- (void)setUserInfo:(Person * _Nonnull)userInfo;
+- (void)setUserInfo:(User * _Nonnull)userInfo;
 @end
 
 NS_ASSUME_NONNULL_END
