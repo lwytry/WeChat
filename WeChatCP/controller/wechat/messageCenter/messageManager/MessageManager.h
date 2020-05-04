@@ -10,7 +10,7 @@
 #import "Message.h"
 #import "MessageManagerChatVCDelegate.h"
 #import "MessageManagerConvVCDelegate.h"
-
+#import <SRWebSocket.h>
 
 @interface MessageManager : NSObject
 
@@ -22,6 +22,10 @@
 //@property (nonatomic, strong) DBMessageStore *messageStore;
 
 //@property (nonatomic, strong) DBConversationStore *conversationStore;
+
+- (void)createWebSocekt;
+
+- (void)closeWebSocekt;
 
 + (MessageManager *)sharedInstance;
 

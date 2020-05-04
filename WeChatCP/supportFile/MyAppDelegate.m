@@ -9,6 +9,7 @@
 #import "MyAppDelegate.h"
 #import "RootTabBarController.h"
 #import "BootLoginViewController.h"
+#import "MessageManager.h"
 
 @interface MyAppDelegate()
 @property (nonatomic, strong) UIViewController *rootVC;
@@ -21,6 +22,7 @@
     NSString *phone = [userDefault objectForKey:@"phone"];
     if (phone) {
         self.rootVC = [[RootTabBarController alloc]init];
+        [[MessageManager sharedInstance] createWebSocekt];
     } else {
         self.rootVC = [[BootLoginViewController alloc] init];
     }
@@ -29,6 +31,30 @@
     [self.window makeKeyAndVisible];
     [self changeNav];
     return YES;
+}
+
+// 进入活动状态
+- (void)applicationDidBecomeActive:(UIApplication *)application
+{
+    
+}
+
+// 进入非活动状态
+- (void)applicationWillResignActive:(UIApplication *)application
+{
+    
+}
+
+// 进入后台
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+    
+}
+
+// 终止
+- (void)applicationWillTerminate:(UIApplication *)application
+{
+    [[MessageManager sharedInstance] closeWebSocekt];
 }
 
 - (void)changeNav
