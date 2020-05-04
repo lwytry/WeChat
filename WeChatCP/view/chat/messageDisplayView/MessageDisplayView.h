@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MessageDisplayViewDelegate.h"
+#import "TextMessage.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MessageDisplayView : UIView
@@ -27,18 +28,18 @@ NS_ASSUME_NONNULL_BEGIN
 /*
     发送消息
  */
-- (void)sendMessage:(UIView *)message;
+- (void)sendMessage:(Message *)message;
 
 /**
     删除消息
 */
-- (void)deleteMessage:(UIView *)message;
-- (void)deleteMessage:(UIView *)message withAnimation:(BOOL)animation;
+- (void)deleteMessage:(Message *)message;
+- (void)deleteMessage:(Message *)message withAnimation:(BOOL)animation;
 
 /*
     更新消息
  */
-- (void)updateMessage:(UIView *)message;
+- (void)updateMessage:(Message *)message;
 - (void)reloadData;
 
 /**

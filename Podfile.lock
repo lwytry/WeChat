@@ -29,6 +29,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - SocketRocket (0.5.1)
   - TTTAttributedLabel (2.0.0)
   - "UITableView+FDTemplateLayoutCell (1.6)"
   - YSMChineseSort (0.1.1):
@@ -42,12 +43,13 @@ DEPENDENCIES:
   - MJRefresh
   - ReactiveObjC (~> 3.1.0)
   - SDAutoLayout (~> 1.51)
+  - SocketRocket
   - TTTAttributedLabel
   - "UITableView+FDTemplateLayoutCell"
   - YSMChineseSort (~> 0.1.0)
 
 SPEC REPOS:
-  trunk:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
     - AFNetworking
     - DACircularProgress
     - IDMPhotoBrowser
@@ -59,6 +61,7 @@ SPEC REPOS:
     - ReactiveObjC
     - SDAutoLayout
     - SDWebImage
+    - SocketRocket
     - TTTAttributedLabel
     - "UITableView+FDTemplateLayoutCell"
     - YSMChineseSort
@@ -75,10 +78,11 @@ SPEC CHECKSUMS:
   ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
   SDAutoLayout: ea6e2ae9fbb438aa2feb0c4363dba9297e98638a
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  SocketRocket: d57c7159b83c3c6655745cd15302aa24b6bae531
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YSMChineseSort: ef532bfe993ff1b4dc9bcd644ead1a43b2632b88
 
-PODFILE CHECKSUM: c497ede84593840e2893e089e20112a8fe613707
+PODFILE CHECKSUM: 1a0f332385af6c9ba1ce6f2e9c726d7844285ae3
 
 COCOAPODS: 1.9.1
