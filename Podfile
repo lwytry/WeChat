@@ -17,4 +17,5 @@ target 'WeChatCP' do
   pod 'AFNetworking', '~> 3.0'
   pod 'MBProgressHUD', '1.2.0'
   pod 'SocketRocket'
+  pod 'MJExtension', '~> 3.0.13'
 end

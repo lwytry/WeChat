@@ -21,6 +21,7 @@ PODS:
     - SDWebImage (= 4.0.0)
   - Masonry (1.1.0)
   - MBProgressHUD (1.2.0)
+  - MJExtension (3.0.17)
   - MJRefresh (3.4.1)
   - PinYin4Objc (1.1.1)
   - pop (1.0.12)
@@ -40,6 +41,7 @@ DEPENDENCIES:
   - IDMPhotoBrowser
   - Masonry (~> 1.1.0)
   - MBProgressHUD (= 1.2.0)
+  - MJExtension (~> 3.0.13)
   - MJRefresh
   - ReactiveObjC (~> 3.1.0)
   - SDAutoLayout (~> 1.51)
@@ -55,6 +57,7 @@ SPEC REPOS:
     - IDMPhotoBrowser
     - Masonry
     - MBProgressHUD
+    - MJExtension
     - MJRefresh
     - PinYin4Objc
     - pop
@@ -72,6 +75,7 @@ SPEC CHECKSUMS:
   IDMPhotoBrowser: b96159fe4adb991a844068eb17dab9c0b7d7e51a
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: 3153c59a363159092c08b2177ec3a7d09f90bfaf
   PinYin4Objc: 3fa9673610368330e2dfb688b1d19a35c3930a78
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
@@ -83,6 +87,6 @@ SPEC CHECKSUMS:
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
   YSMChineseSort: ef532bfe993ff1b4dc9bcd644ead1a43b2632b88
 
-PODFILE CHECKSUM: 1a0f332385af6c9ba1ce6f2e9c726d7844285ae3
+PODFILE CHECKSUM: abe0d316b68d6d62c46e1723699f0d6672d17ab7
 
 COCOAPODS: 1.9.1
