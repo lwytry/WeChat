@@ -7,6 +7,7 @@
 //
 
 #import "MessageManager.h"
+#import "TextMessage.h"
 @interface MessageManager ()<SRWebSocketDelegate>
 
 @property (nonatomic, strong) SRWebSocket *ws;
@@ -46,7 +47,15 @@ static MessageManager *messageManager;
 // 接收消息
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
+    
     NSLog(@"收到消息:%@", message);
+    return;
+    // 判断接受的数据类型
+    TextMessage *receiveMsg = [[TextMessage alloc] init];
+    if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
+        [self.messageDelegate didReceivedMessage:receiveMsg];
+    }
+    
 }
 
 // 连接失败

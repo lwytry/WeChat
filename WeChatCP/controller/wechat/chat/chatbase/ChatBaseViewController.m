@@ -9,6 +9,7 @@
 #import "ChatBaseViewController.h"
 #import <Masonry/Masonry.h>
 #import "ChatBaseViewController+ChatBar.h"
+#import "ChatBaseViewController+MessageDisplayView.h"
 
 
 @interface ChatBaseViewController ()
@@ -19,8 +20,6 @@
 -(void)loadView
 {
     [super loadView];
-//    return RGBAColor(235.0, 235.0, 235.0, 1.0);
-    [self.view setBackgroundColor:[UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1]];
     [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatBar];
 
@@ -55,6 +54,18 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
+}
+#pragma mark - # Public Methods
+
+- (void)setPartner:(id<ChatUserProtocol>)partner
+{
+    [self resetChatVC];
+}
+
+- (void)resetChatVC
+{
+    [self.view setBackgroundColor:[UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1]];
+    [self resetChatTVC];
 }
 
 #pragma mark - # Private methods

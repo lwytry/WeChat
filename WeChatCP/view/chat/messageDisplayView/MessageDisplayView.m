@@ -15,6 +15,8 @@
 
 @interface MessageDisplayView ()
 
+// 用户决定新消息是否显示时间
+@property (nonatomic, strong) NSDate *curDate;
 
 @end
 
@@ -73,7 +75,7 @@
 {
     if (_tableView == nil) {
         _tableView = [[UITableView alloc] init];
-//        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_tableView setBackgroundColor:[UIColor clearColor]];
         [_tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)]];
         [_tableView setDelegate:self];
@@ -83,6 +85,33 @@
     return _tableView;
 }
 
+
+#pragma mark - # Public Methods
+
+- (void)addMessage:(Message *)message
+{
+    
+    [self.data addObject:message];
+    [self.tabView reloadData];
+}
+
+- (void)updateMessage:(Message *)message
+{
+//    NSArray *visibleCells = [self.tabView visibleCells];
+}
+
+- (void)reloadData
+{
+    [self.tabView reloadData];
+}
+
+- (void)resetMessageView
+{
+    [self.data removeAllObjects];
+    [self.tabView reloadData];
+    self.curDate = [NSDate date];
+    
+}
 
 
 @end

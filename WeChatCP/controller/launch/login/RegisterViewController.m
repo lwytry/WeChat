@@ -60,13 +60,17 @@
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确认手机号码" message:[NSString stringWithFormat:@"我们将发送短信到这个号码: %@", self.phoneFieldView.text] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // 发送验证码
-//        [MBProgressHUD showSuccess:@"加持成"];
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:
-        [UIApplication sharedApplication].keyWindow animated:YES];
-            hud.label.text = @"请稍等...";
-//        [hud hideAnimated:YES];
-        [hud hideAnimated:YES afterDelay:2.0];
-        
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSString *url = [NSString stringWithFormat:@"http://localhost:8080/v1/sendCaptcha?phone=%@", self.phoneFieldView.text];
+        [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            NSLog(@"%@", responseObject);
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+        }];
         // 成功则启动定时器
         [self sentPhoneCodeTimeMethod];
     }];
@@ -81,6 +85,7 @@
 }
 
 - (void)sentPhoneCodeTimeMethod {
+    NSLog(@"send sendCaptcha");
     //倒计时时间 - 60S
     __block NSInteger timeOut = 5;
     self.timeOut = timeOut;

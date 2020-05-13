@@ -230,7 +230,6 @@
         }
         self.state = ChatBarStateKeyboard;
     }
-    NSLog(@"shouldbeginedit");
     return YES;
 }
 

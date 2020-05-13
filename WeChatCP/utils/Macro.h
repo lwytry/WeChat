@@ -13,6 +13,9 @@
 #define     HEIGHT_MAX_CHATBAR_TEXTVIEW     111.5f
 #define     HEIGHT_CHAT_KEYBOARD            215.0f
 
+#pragma mark - chat // 重置聊天窗口
+#define     NOTI_CHAT_VIEW_RESET            @"NT_ResetChatView"
+
 #pragma mark - chat NS_ENUM
 typedef NS_ENUM(NSInteger, ChatBarState) {
     ChatBarStateInit,

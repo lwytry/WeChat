@@ -75,8 +75,8 @@ static NSString *ID = @"wechatCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ChatViewController *chatVC = [[ChatViewController alloc] init];
-    chatVC.hidesBottomBarWhenPushed = true;
+    ChatViewController *chatVC = [[ChatViewController alloc] initWithUserId:@"1002"];
+    chatVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:chatVC animated:YES];
 }
 

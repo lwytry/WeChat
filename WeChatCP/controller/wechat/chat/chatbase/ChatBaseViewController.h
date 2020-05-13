@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  重置chatVC
  */
-//- (void)resetChatVC;
+- (void)resetChatVC;
 
 /**
  *  发送图片信息

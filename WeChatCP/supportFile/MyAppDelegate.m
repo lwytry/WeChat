@@ -17,10 +17,12 @@
 @implementation MyAppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> *)launchOptions
 {
+    NSString *homePath = NSHomeDirectory();
+    NSLog(@"home根目录:%@", homePath);
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *phone = [userDefault objectForKey:@"phone"];
-    if (phone) {
+    NSString *token = [userDefault objectForKey:@"token"];
+    if (token) {
         self.rootVC = [[RootTabBarController alloc]init];
         [[MessageManager sharedInstance] createWebSocekt];
     } else {

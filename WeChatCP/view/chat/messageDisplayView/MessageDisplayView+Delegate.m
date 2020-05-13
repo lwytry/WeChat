@@ -11,9 +11,17 @@
 @implementation MessageDisplayView (Delegate)
 - (void)registerCellClassForTableView:(UITableView *)tabView
 {
+    [tabView registerClass:[TextMessageCell class] forCellReuseIdentifier:@"TextMessageCell"];
     [tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    Message *message = self.data[indexPath.row];
+    if (message.messageType == MessageTypeText) {
+        TextMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TextMessageCell"];
+        [cell setMessage:message];
+        [cell setDelegate:self];
+        return cell;
+    }
     return [tableView dequeueReusableCellWithIdentifier:@"EmptyCell"];
 }
 

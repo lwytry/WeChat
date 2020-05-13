@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ChatBaseViewController.h"
+#import "Macro.h"
 
 @interface ChatViewController : ChatBaseViewController
 

@@ -28,7 +28,7 @@ static NSString *ID = @"homeCell";
 -(void)initializeData
 {
     User* user = [[User alloc] init];
-    user.avatar = @"IMG_0595";
+    user.avatarPath = @"IMG_0595";
     user.name = @"Try";
     user.wechatId = @"2020783236";
     _dataArr = @[

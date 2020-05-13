@@ -18,4 +18,19 @@
     [self dismissKeyobard];
 }
 
+- (void)addToShowMessage:(Message *)message
+{
+//    message.showTime = self
+    [self.messageDisplayView addMessage:message];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.messageDisplayView scrollToBottomWithAnimation:YES];
+    });
+}
+
+- (void)resetChatTVC
+{
+    [self.messageDisplayView resetMessageView];
+    
+}
+
 @end

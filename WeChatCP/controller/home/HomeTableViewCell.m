@@ -23,7 +23,7 @@
 -(void)setUserInfo:(User *)userInfo
 {
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    self.avatarImageView.image = [UIImage imageNamed:userInfo.avatar];
+    self.avatarImageView.image = [UIImage imageNamed:userInfo.avatarPath];
     self.nameLabel.text = userInfo.name;
     self.wechatIdLabel.text = [NSString stringWithFormat:@"微信号: %@", userInfo.wechatId];
     self.barcodeImageView.image = [UIImage imageNamed:@"mine_cell_myQR"];

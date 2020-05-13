@@ -7,15 +7,20 @@
 //
 
 #import "ChatBaseViewController+Proxy.h"
+#import "ChatBaseViewController+MessageDisplayView.h"
+#import "User.h"
+#import "User+Chat.h"
+
 
 @implementation ChatBaseViewController (Proxy)
 
 - (void)sendMessage:(Message *)message
 {
     message.ownerTyper = MessageOwnerTypeSelf;
-//    message.userID =
-//    message.fromUser =
     message.date = [NSDate date];
+    message.userID = @"1001";
+    
+    [self addToShowMessage:message];
     [[MessageManager sharedInstance] sendMessage:message progress:^(Message *message, CGFloat progress) {
         
     } success:^(Message *message) {
@@ -25,9 +30,13 @@
     }];
 }
 
-- (void)didReceivedMessage:(id)message
+// 为接受消息
+- (void)didReceivedMessage:(Message *)message
 {
-    
+    if ([message.userID isEqualToString:self.user.chat_userID]) {
+        
+        [self addToShowMessage:message];
+    }
 }
 
 @end

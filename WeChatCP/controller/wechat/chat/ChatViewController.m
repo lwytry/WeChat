@@ -24,6 +24,9 @@
 - (instancetype)initWithUserId:(NSString *)userId
 {
     if (self = [super init]) {
+        User *user = [[User alloc] init];
+        user.userID = userId;
+        self.partner = user;
     }
     return self;
 }
@@ -40,6 +43,8 @@
 {
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_back"] style:UIBarButtonItemStylePlain target:self action:@selector(leftClick:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_more"] style:UIBarButtonItemStylePlain target:self action:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(resetChatVC) name:NOTI_CHAT_VIEW_RESET object:nil];
 }
 
 - (void)leftClick:(UIBarButtonItem *)left

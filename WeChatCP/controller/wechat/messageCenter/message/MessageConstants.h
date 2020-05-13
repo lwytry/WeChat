@@ -5,7 +5,7 @@
 //  Created by lwy on 2020/5/2.
 //  Copyright © 2020 lwy. All rights reserved.
 //
-
+#import "Macro.h"
 #ifndef MessageConstants_h
 #define MessageConstants_h
 

@@ -193,10 +193,10 @@
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if ([responseObject[@"errCode"]  isEqual: @0]) {
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-            [userDefault setObject:self.phoneText forKey:@"phone"];
-            [userDefault setObject:responseObject[@"data"] forKey:@"token"];
+            [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
+            [userDefault setObject:responseObject[@"data"][@"userInfo"] forKey:@"userInfo"];
             [userDefault synchronize];
-            
+
             RootTabBarController *tabBar = [[RootTabBarController alloc] init];
             CATransition *transtition = [CATransition animation];
             transtition.duration = 0.5;

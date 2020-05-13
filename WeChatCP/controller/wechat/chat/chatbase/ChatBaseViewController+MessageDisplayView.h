@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  添加展示消息（添加到chatVC）
  */
-//- (void)addToShowMessage:(Message *)message;
-//
-//- (void)resetChatTVC;
+- (void)addToShowMessage:(Message *)message;
+
+- (void)resetChatTVC;
 
 @end
 

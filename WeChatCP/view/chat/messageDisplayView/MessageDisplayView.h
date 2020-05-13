@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 /*
     发送消息
  */
-- (void)sendMessage:(Message *)message;
+- (void)addMessage:(Message *)message;
 
 /**
     删除消息

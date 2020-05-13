@@ -10,15 +10,20 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef NS_ENUM(NSInteger, ChatUserType) {
+    ChatUserTypeUser = 0,
+    ChatUserTypeGroup,
+};
+
 @protocol ChatUserProtocol <NSObject>
 
-@property (nonatomic, strong, readonly) NSString *userID;
+@property (nonatomic, strong, readonly) NSString *chat_userID;
 
-@property (nonatomic, strong, readonly) NSString *username;
+@property (nonatomic, strong, readonly) NSString *chat_username;
 
-@property (nonatomic, strong, readonly) NSString *avatarURL;
+@property (nonatomic, strong, readonly) NSString *chat_avatarURL;
 
-@property (nonatomic, assign, readonly) NSInteger userType;
+@property (nonatomic, assign, readonly) NSInteger chat_userType;
 
 @optional;
 
