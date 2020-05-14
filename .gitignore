@@ -18,5 +18,6 @@
 Pods
 !Podfile
 !Podfile.lock
+#mac
 .DS_Store
 */.DS_Store
