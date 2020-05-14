@@ -31,17 +31,6 @@
 
 @implementation MessageBaseCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self == [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -119,6 +108,24 @@
 - (void)updateMessage:(Message *)message
 {
     [self setMessage:message];
+}
+
+#pragma mark - Event Response -
+- (void)avatarButtonDown:(UIButton *)sender
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(messageCellDidClickAvatarForUser:)]) {
+        
+    }
+}
+
+- (void)longPressMessageBGView:(UIGestureRecognizer *)gestureRecognizer
+{
+    
+}
+
+- (void)doubleTapMessageBGView
+{
+
 }
 
 #pragma mark - Getter -

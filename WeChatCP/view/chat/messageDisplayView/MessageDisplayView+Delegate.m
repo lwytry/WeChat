@@ -29,4 +29,13 @@
     return self.data.count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row >= self.data.count) {
+        return 0.0f;
+    }
+    Message * message = self.data[indexPath.row];
+    return message.messageFrame.height;
+}
+
 @end

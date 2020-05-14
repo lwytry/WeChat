@@ -18,3 +18,5 @@
 Pods
 !Podfile
 !Podfile.lock
+.DS_Store
+*/.DS_Store

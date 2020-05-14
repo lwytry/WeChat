@@ -34,14 +34,14 @@
     if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
         return;
     }
-    MessageOwnerType lastOwnType = MessageOwnerTypeSelf;
+    MessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;
     [super setMessage:message];
     [self.messageLabel setAttributedText:[message attrText]];
     
     [self.messageLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
     [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
-    
-//    if (lastOwnType != message.ownerTyper) {
+    NSLog(@"lastOwnType----%ld, ownerTyper===%ld",(long)lastOwnType,  (long)message.ownerTyper);
+    if (lastOwnType != message.ownerTyper) {
         if (message.ownerTyper == MessageOwnerTypeSelf) {
             [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_bg"]];
             [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_bgHL"]];
@@ -67,7 +67,8 @@
                 make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
             }];
         }
-//    }
+    }
+    
     [self.messageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(message.messageFrame.contentSize);
     }];

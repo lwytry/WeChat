@@ -19,7 +19,6 @@
     message.ownerTyper = MessageOwnerTypeSelf;
     message.date = [NSDate date];
     message.userID = @"1001";
-    
     [self addToShowMessage:message];
     [[MessageManager sharedInstance] sendMessage:message progress:^(Message *message, CGFloat progress) {
         

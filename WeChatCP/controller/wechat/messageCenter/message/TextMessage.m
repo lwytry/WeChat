@@ -12,7 +12,28 @@
 static UILabel *textLabel = nil;
 
 @implementation TextMessage
+@synthesize text = _text;
 
+- (id)init
+{
+    if (self = [super init]) {
+        [self setMessageType:MessageTypeText];
+        if (textLabel == nil) {
+            textLabel = [[UILabel alloc] init];
+            [textLabel setFont:[UIFont systemFontOfSize:16.0f]];
+            [textLabel setNumberOfLines:0];
+        }
+    }
+    return self;
+}
+
+- (NSString *)text
+{
+    if (_text == nil) {
+        _text = [self.content objectForKey:@"text"];
+    }
+    return _text;
+}
 
 - (MessageFrame *)messageFrame
 {
