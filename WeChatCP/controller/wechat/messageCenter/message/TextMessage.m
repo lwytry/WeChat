@@ -35,6 +35,12 @@ static UILabel *textLabel = nil;
     return _text;
 }
 
+- (void)setText:(NSString *)text
+{
+    _text = text;
+    [self.content setObject:text forKey:@"text"];
+}
+
 - (MessageFrame *)messageFrame
 {
     if (messageFrame == nil) {

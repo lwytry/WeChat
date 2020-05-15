@@ -8,6 +8,7 @@
 
 #import "MessageManager.h"
 #import "TextMessage.h"
+#import <AFNetworking.h>
 @interface MessageManager ()<SRWebSocketDelegate>
 
 @property (nonatomic, strong) SRWebSocket *ws;
@@ -68,16 +69,36 @@ static MessageManager *messageManager;
 - (void)sendMessage:(Message *)message progress:(void (^)(Message *, CGFloat))progress success:(void (^)(Message *))success failure:(void (^)(Message *))failure
 {
     // 发送消息
-    NSDictionary *dic = @{@"userId": @"1001"};
-    NSError * error = nil;
-    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
-    NSString * jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    [self.ws send:jsonStr];
-    NSLog(@"Messagemanager send message");
+    NSString *text = [message.content objectForKey:@"text"];
+    NSDictionary *dic = @{
+        @"id": message.ID,
+        @"userId": message.userID,
+        @"dstType": message.partnerType == PartnerTypeUser ? @0 : @1,
+        @"dstId": @"12000",
+        @"msgType": @1,
+        @"content": text
+    };
+    NSString *urlStr = @"http://localhost:8080/v1/chat/message";
+
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlStr parameters:dic error:nil];
+//    [formRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+
+    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+
+    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+
+    }];
+    [dataTask resume];
     
+    
+//    NSError * error = nil;
+//    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
+//    NSString * jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     // 将json字符串转换成字典
-    NSData * getJsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary * getDict = [NSJSONSerialization JSONObjectWithData:getJsonData options:NSJSONReadingMutableContainers error:&error];
+//    NSData * getJsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+//    NSDictionary * getDict = [NSJSONSerialization JSONObjectWithData:getJsonData options:NSJSONReadingMutableContainers error:&error];
     // 存储数据库
     
 }
