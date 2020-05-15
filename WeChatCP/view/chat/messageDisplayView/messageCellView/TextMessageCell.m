@@ -31,7 +31,7 @@
 
 - (void)setMessage:(TextMessage *)message
 {
-    if (self.message && [self.message.messageID isEqualToString:message.messageID]) {
+    if (self.message && [self.message.ID isEqualToString:message.ID]) {
         return;
     }
     MessageOwnerType lastOwnType = self.message ? self.message.ownerTyper : -1;

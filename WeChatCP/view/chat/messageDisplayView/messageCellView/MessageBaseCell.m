@@ -48,7 +48,7 @@
 
 - (void)setMessage:(Message *)message
 {
-    if (_message && [_message.messageID isEqualToString:message.messageID]) {
+    if (_message && [_message.ID isEqualToString:message.ID]) {
         return;
     }
     [self.timeLabel setText:[NSString stringWithFormat:@" %@ ", message.date]];

@@ -8,7 +8,18 @@
 
 #import "User.h"
 
+static User *user;
+
 @implementation User
+
++ (User *)sharedInstance
+{
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        user = [[User alloc] init];
+    });
+    return user;
+}
 
 + (id)getUserInfo
 {

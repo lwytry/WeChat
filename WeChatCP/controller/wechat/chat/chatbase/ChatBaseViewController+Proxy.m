@@ -29,7 +29,7 @@
     }];
 }
 
-// 为接受消息
+// 未接受消息
 - (void)didReceivedMessage:(Message *)message
 {
     if ([message.userID isEqualToString:self.user.chat_userID]) {

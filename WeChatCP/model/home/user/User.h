@@ -31,6 +31,8 @@ NS_ASSUME_NONNULL_BEGIN
 // 头像Path
 @property (nonatomic, strong) NSString *avatarPath;
 
++ (User *)sharedInstance;
+
 + (id)getUserInfo;
 + (id)getFromUser;
 

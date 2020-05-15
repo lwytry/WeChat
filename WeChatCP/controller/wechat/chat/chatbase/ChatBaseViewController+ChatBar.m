@@ -112,7 +112,6 @@
 {
     TextMessage *message = [[TextMessage alloc] init];
     message.text = text;
-    message.messageType = MessageTypeText;
     [self sendMessage: message];
 }
 
