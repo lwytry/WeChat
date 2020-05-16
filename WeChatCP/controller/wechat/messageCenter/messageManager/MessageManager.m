@@ -68,27 +68,35 @@ static MessageManager *messageManager;
 
 - (void)sendMessage:(Message *)message progress:(void (^)(Message *, CGFloat))progress success:(void (^)(Message *))success failure:(void (^)(Message *))failure
 {
+    NSInteger partnerType = message.partnerType;
+    NSNumber *pt = [NSNumber numberWithLong:partnerType];
+    NSInteger messageType = message.messageType;
+    NSNumber *mt = [NSNumber numberWithLong:messageType];
+    NSString *dstId = partnerType ? message.dstID : message.groupID;
     // 发送消息
     NSString *text = [message.content objectForKey:@"text"];
     NSDictionary *dic = @{
         @"id": message.ID,
         @"userId": message.userID,
-        @"dstType": message.partnerType == PartnerTypeUser ? @0 : @1,
-        @"dstId": @"12000",
-        @"msgType": @1,
+        @"dstType": pt,
+        @"dstId": @1002,
+        @"msgType": mt,
         @"content": text
     };
-    NSString *urlStr = @"http://localhost:8080/v1/chat/message";
+    NSString *urlStr = [NSString stringWithFormat:@"http://localhost:8080/v1/chat/message?userId=%@", message.userID];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *token = [userDefault objectForKey:@"token"];
+    
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlStr parameters:dic error:nil];
-//    [formRequest setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [req addValue:token forHTTPHeaderField:@"token"];
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
 
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
-
+        
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-
+            
     }];
     [dataTask resume];
     
