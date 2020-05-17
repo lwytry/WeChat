@@ -20,9 +20,11 @@
 -(void)loadView
 {
     [super loadView];
+    
+    [[MessageManager sharedInstance] setMessageDelegate:self];
+    
     [self.view addSubview:self.messageDisplayView];
     [self.view addSubview:self.chatBar];
-
     if (SAFEAREA_INSETS_BOTTOM > 0) {
         UIView *bottomView = [[UIView alloc] init];
         bottomView.backgroundColor = [UIColor colorWithWhite:.95 alpha:1];
@@ -59,6 +61,8 @@
 
 - (void)setPartner:(id<ChatUserProtocol>)partner
 {
+    _partner = partner;
+    [self.navigationItem setTitle:[_partner chat_username]];
     [self resetChatVC];
 }
 
