@@ -33,9 +33,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (User *)sharedInstance;
 
-+ (id)getUserInfo;
-+ (id)getFromUser;
-
 @end
 
 NS_ASSUME_NONNULL_END

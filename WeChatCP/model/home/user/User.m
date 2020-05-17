@@ -17,27 +17,15 @@ static User *user;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         user = [[User alloc] init];
+        NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+        NSDictionary *userInfo = [userDefault objectForKey:@"userInfo"];
+        user.userID = userInfo[@"id"];
+        user.name = userInfo[@"username"];
+        user.avatarPath = userInfo[@"avatarPath"];
+        user.wechatId = userInfo[@"identifier"];
     });
     return user;
 }
 
-+ (id)getUserInfo
-{
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSDictionary *userInfo = [userDefault objectForKey:@"userInfo"];
-    User *user = [[User alloc] init];
-    user.userID = userInfo[@"id"];
-    user.name = userInfo[@"username"];
-    user.avatarPath = userInfo[@"avatarPath"];
-    user.wechatId = userInfo[@"identifier"];
-    return self;
-}
 
-+ (id)getFromUser
-{
-    User *user = [[User alloc] init];
-    user.userID = @"1002";
-    user.name = @"liwuyi";
-    return self;
-}
 @end
