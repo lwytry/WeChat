@@ -18,7 +18,11 @@
 {
     message.ownerTyper = MessageOwnerTypeSelf;
     message.date = [NSDate date];
-    message.userID = @"1001";
+    message.userID = [User sharedInstance].userID;
+    if ([self.partner chat_userType] == ChatUserTypeUser) {
+        message.partnerType = PartnerTypeUser;
+        message.dstID = [self.partner chat_userID];
+    }
     [self addToShowMessage:message];
     [[MessageManager sharedInstance] sendMessage:message progress:^(Message *message, CGFloat progress) {
         
@@ -32,7 +36,7 @@
 // 未接受消息
 - (void)didReceivedMessage:(Message *)message
 {
-    if ([message.userID isEqualToString:self.user.chat_userID]) {
+    if ([message.dstID isEqualToString:self.user.chat_userID]) {
         
         [self addToShowMessage:message];
     }
