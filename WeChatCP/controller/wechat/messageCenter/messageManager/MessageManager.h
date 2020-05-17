@@ -11,13 +11,14 @@
 #import "MessageManagerChatVCDelegate.h"
 #import "MessageManagerConvVCDelegate.h"
 #import <SRWebSocket.h>
+#import "User.h"
 
 @interface MessageManager : NSObject
 
 @property (nonatomic, assign) id<MessageManagerChatVCDelegate>messageDelegate;
 @property (nonatomic, assign) id<MessageManagerConvVCDelegate>conversationDelegate;
 
-@property (nonatomic, strong, readonly) NSString *userID;
+@property (nonatomic, strong) NSString *userId;
 
 //@property (nonatomic, strong) DBMessageStore *messageStore;
 

@@ -24,13 +24,16 @@ static MessageManager *messageManager;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         messageManager = [[MessageManager alloc] init];
+        messageManager.userId = [User sharedInstance].userID;
     });
     return messageManager;
 }
 
 - (void)createWebSocekt
 {
-    self.ws = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:@"ws://127.0.0.1:8001/acc?userId=1001"]];
+    NSString *topicId = self.userId;
+    NSString *urlString = [NSString stringWithFormat:@"ws://127.0.0.1:8001/acc?topicId=%@", topicId];
+    self.ws = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
     self.ws.delegate = self;
     [self.ws open];
 }
@@ -48,14 +51,32 @@ static MessageManager *messageManager;
 // 接收消息
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message
 {
-    
-    NSLog(@"收到消息:%@", message);
-    return;
-    // 判断接受的数据类型
-    TextMessage *receiveMsg = [[TextMessage alloc] init];
-    if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
-        [self.messageDelegate didReceivedMessage:receiveMsg];
+    NSError *error;
+    NSData * jsonData = [message dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *dataDic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&error];
+    if (error) {
+        return;
     }
+    
+    // 判断接收的数据类型
+    NSNumber *msgTypeNum = [dataDic objectForKey:@"msgType"];
+    NSInteger msgType = [msgTypeNum integerValue];
+    NSNumber *dstTypeNum = [dataDic objectForKey:@"dstType"];
+    NSInteger dstType = [dstTypeNum integerValue];
+    if (msgType == MessageTypeText) {
+        TextMessage *receiveMsg = [[TextMessage alloc] init];
+        receiveMsg.ID = [dataDic objectForKey:@"id"];
+        receiveMsg.userID = [dataDic objectForKey:@"userId"];
+        receiveMsg.dstID = [dataDic objectForKey:@"dstId"];
+        receiveMsg.text = [dataDic objectForKey:@"content"];
+        receiveMsg.messageType = msgType;
+        receiveMsg.partnerType = dstType;
+        receiveMsg.ownerTyper = [dataDic objectForKey:@"userId"] == nil ? MessageOwnerTypeSystem : MessageOwnerTypeFriend;
+        if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
+            [self.messageDelegate didReceivedMessage:receiveMsg];
+        }
+    }
+    
     
 }
 
@@ -72,18 +93,18 @@ static MessageManager *messageManager;
     NSNumber *pt = [NSNumber numberWithLong:partnerType];
     NSInteger messageType = message.messageType;
     NSNumber *mt = [NSNumber numberWithLong:messageType];
-    NSString *dstId = partnerType ? message.dstID : message.groupID;
+    NSString *dstId = partnerType == PartnerTypeUser ? message.dstID : message.groupID;
     // 发送消息
     NSString *text = [message.content objectForKey:@"text"];
     NSDictionary *dic = @{
         @"id": message.ID,
         @"userId": message.userID,
         @"dstType": pt,
-        @"dstId": @1002,
+        @"dstId": dstId,
         @"msgType": mt,
         @"content": text
     };
-    NSString *urlStr = [NSString stringWithFormat:@"http://localhost:8080/v1/chat/message?userId=%@", message.userID];
+    NSString *urlStr = [NSString stringWithFormat:@"http://localhost:8080/v1/chat/message?userId=%@", message.dstID];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -99,23 +120,8 @@ static MessageManager *messageManager;
             
     }];
     [dataTask resume];
-    
-    
-//    NSError * error = nil;
-//    NSData * jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&error];
-//    NSString * jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    // 将json字符串转换成字典
-//    NSData * getJsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-//    NSDictionary * getDict = [NSJSONSerialization JSONObjectWithData:getJsonData options:NSJSONReadingMutableContainers error:&error];
     // 存储数据库
     
-}
-
-#pragma mark - # Private
-- (BOOL)p_sendMessage:(Message *)message
-{
-    NSLog(@"p_sendMessage");
-    return YES;
 }
 
 @end
