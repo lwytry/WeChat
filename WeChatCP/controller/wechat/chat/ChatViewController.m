@@ -19,13 +19,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setnavigationItem];
+    self.user = [User sharedInstance];
 }
 
 - (instancetype)initWithUserId:(NSString *)userId
 {
     if (self = [super init]) {
         User *user = [[User alloc] init];
-        user.userID = userId;
+        user.userID = @"1002";
+        user.name = @"liwuyi";
         self.partner = user;
     }
     return self;
