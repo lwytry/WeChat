@@ -192,11 +192,20 @@
         
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if ([responseObject[@"errCode"]  isEqual: @0]) {
+            NSDictionary *dataDic = responseObject[@"data"];
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-            [userDefault setObject:responseObject[@"data"][@"token"] forKey:@"token"];
-            [userDefault setObject:responseObject[@"data"][@"userInfo"] forKey:@"userInfo"];
+            [userDefault setObject:dataDic[@"token"] forKey:@"token"];
+            
+            NSMutableDictionary *userInfoDic = [NSMutableDictionary dictionary];
+            NSString *userId = [NSString stringWithFormat:@"%@", dataDic[@"userInfo"][@"id"]];
+            [userInfoDic setValue:userId forKey:@"id"];
+            [userInfoDic setValue:dataDic[@"userInfo"][@"username"] forKey:@"username"];
+            [userInfoDic setValue:dataDic[@"userInfo"][@"identifier"] forKey:@"identifier"];
+            [userInfoDic setValue:dataDic[@"userInfo"][@"phone"] forKey:@"phone"];
+            [userInfoDic setValue:dataDic[@"userInfo"][@"avatarPath"] forKey:@"avatarPath"];
+            
+            [userDefault setObject:userInfoDic forKey:@"userInfo"];
             [userDefault synchronize];
-
             RootTabBarController *tabBar = [[RootTabBarController alloc] init];
             CATransition *transtition = [CATransition animation];
             transtition.duration = 0.5;
