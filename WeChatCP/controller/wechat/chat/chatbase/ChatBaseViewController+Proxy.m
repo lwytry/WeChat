@@ -38,7 +38,7 @@
 // 未接受消息
 - (void)didReceivedMessage:(Message *)message
 {
-    if ([message.dstID isEqualToString:self.user.chat_userID]) {
+    if ([message.userID isEqualToString:self.user.chat_userID]) {
         
         [self addToShowMessage:message];
     }
