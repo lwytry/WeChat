@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, MessageOwnerType){
 typedef NS_ENUM(NSInteger, MessageSendState){
     MessageSendSuccess,       // 消息发送成功
     MessageSendFail,          // 消息发送失败
+    MessageSendRecall         // 撤回
 };
 
 /**
