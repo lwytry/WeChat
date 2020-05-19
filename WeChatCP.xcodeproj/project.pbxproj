@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		74B136A589813FF765CBD5F5 /* Pods_WeChatCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6D58A871783E5A159C94641 /* Pods_WeChatCP.framework */; };
+		A949C9F12473C3D600B279E4 /* Messagestore.m in Sources */ = {isa = PBXBuildFile; fileRef = A949C9F02473C3D600B279E4 /* Messagestore.m */; };
 		A96A66B12450994700399267 /* MobileLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66AF2450994700399267 /* MobileLoginViewController.m */; };
 		A96A66B22450994700399267 /* MobileLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66B02450994700399267 /* MobileLoginViewController.xib */; };
 		A96A66B524517D5600399267 /* LoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66B424517D5600399267 /* LoginBaseViewController.m */; };
@@ -78,6 +79,8 @@
 
 /* Begin PBXFileReference section */
 		34A075BCC309FA8AB043E297 /* Pods-WeChatCP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatCP.release.xcconfig"; path = "Target Support Files/Pods-WeChatCP/Pods-WeChatCP.release.xcconfig"; sourceTree = "<group>"; };
+		A949C9EF2473C3D600B279E4 /* Messagestore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Messagestore.h; sourceTree = "<group>"; };
+		A949C9F02473C3D600B279E4 /* Messagestore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Messagestore.m; sourceTree = "<group>"; };
 		A95402FC2472529C00C2404E /* MessageSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageSQL.h; sourceTree = "<group>"; };
 		A96A66AE2450994700399267 /* MobileLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileLoginViewController.h; sourceTree = "<group>"; };
 		A96A66AF2450994700399267 /* MobileLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobileLoginViewController.m; sourceTree = "<group>"; };
@@ -585,6 +588,8 @@
 			isa = PBXGroup;
 			children = (
 				A95402FC2472529C00C2404E /* MessageSQL.h */,
+				A949C9EF2473C3D600B279E4 /* Messagestore.h */,
+				A949C9F02473C3D600B279E4 /* Messagestore.m */,
 			);
 			path = store;
 			sourceTree = "<group>";
@@ -828,6 +833,7 @@
 				A98FC9F7245D7FB6009B691C /* ChatBaseViewController+Proxy.m in Sources */,
 				A98FCA13247183A2009B691C /* DBManager.m in Sources */,
 				A98FC9DF245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m in Sources */,
+				A949C9F12473C3D600B279E4 /* Messagestore.m in Sources */,
 				A979986E24430846009B6096 /* ContactViewController.m in Sources */,
 				A98FC9E4245D492A009B691C /* Message.m in Sources */,
 				A97998522442C690009B6096 /* RootTabBarController.m in Sources */,
