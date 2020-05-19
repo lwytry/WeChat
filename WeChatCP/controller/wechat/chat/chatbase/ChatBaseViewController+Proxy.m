@@ -23,6 +23,8 @@
         message.partnerType = PartnerTypeUser;
         message.dstID = [self.partner chat_userID];
     }
+    NSNumber *insertId = [[MessageManager sharedInstance] addMessageStore:message];
+    message.ID = insertId;
     [self addToShowMessage:message];
     [[MessageManager sharedInstance] sendMessage:message progress:^(Message *message, CGFloat progress) {
         
