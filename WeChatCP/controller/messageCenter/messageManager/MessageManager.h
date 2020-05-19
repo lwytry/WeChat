@@ -12,6 +12,7 @@
 #import "MessageManagerConvVCDelegate.h"
 #import <SRWebSocket.h>
 #import "User.h"
+#import "Messagestore.h"
 
 @interface MessageManager : NSObject
 
@@ -20,7 +21,7 @@
 
 @property (nonatomic, strong) NSString *userId;
 
-//@property (nonatomic, strong) DBMessageStore *messageStore;
+@property (nonatomic, strong) Messagestore *messageStore;
 
 //@property (nonatomic, strong) DBConversationStore *conversationStore;
 
@@ -29,6 +30,8 @@
 - (void)closeWebSocekt;
 
 + (MessageManager *)sharedInstance;
+
+- (NSNumber *)addMessageStore:(Message *)message;
 
 #pragma mark - 发送
 - (void)sendMessage:(Message *)message

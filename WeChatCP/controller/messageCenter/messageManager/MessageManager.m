@@ -77,7 +77,6 @@ static MessageManager *messageManager;
         }
     }
     
-    
 }
 
 // 连接失败
@@ -97,31 +96,44 @@ static MessageManager *messageManager;
     // 发送消息
     NSString *text = [message.content objectForKey:@"text"];
     NSDictionary *dic = @{
-        @"id": message.ID,
-        @"userId": message.userID,
-        @"dstType": pt,
-        @"dstId": dstId,
-        @"msgType": mt,
-        @"content": text
+       @"id": message.ID,
+       @"userId": message.userID,
+       @"dstType": pt,
+       @"dstId": dstId,
+       @"msgType": mt,
+       @"content": text
     };
     NSString *urlStr = [NSString stringWithFormat:@"http://localhost:8080/v1/chat/message?userId=%@", message.dstID];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     NSString *token = [userDefault objectForKey:@"token"];
-    
+
     NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlStr parameters:dic error:nil];
     [req addValue:token forHTTPHeaderField:@"token"];
     NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
 
     } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
-        
+       
     } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-            
+           
     }];
     [dataTask resume];
-    // 存储数据库
-    
+}
+
+- (NSNumber *)addMessageStore:(Message *)message
+{
+    NSNumber *insertId = [self.messageStore addMessageRetID:message];
+    return insertId;
+}
+
+#pragma mark - # Getters
+- (Messagestore *)messageStore
+{
+    if (_messageStore == nil) {
+        _messageStore = [[Messagestore alloc] init];
+    }
+    return _messageStore;
 }
 
 @end
