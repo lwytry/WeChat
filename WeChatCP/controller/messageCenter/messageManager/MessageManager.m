@@ -57,7 +57,7 @@ static MessageManager *messageManager;
     if (error) {
         return;
     }
-    
+    NSLog(@"接收到信息%@", dataDic);
     // 判断接收的数据类型
     NSNumber *msgTypeNum = [dataDic objectForKey:@"msgType"];
     NSInteger msgType = [msgTypeNum integerValue];
@@ -66,12 +66,15 @@ static MessageManager *messageManager;
     if (msgType == MessageTypeText) {
         TextMessage *receiveMsg = [[TextMessage alloc] init];
         receiveMsg.ID = [dataDic objectForKey:@"id"];
-        receiveMsg.userID = [dataDic objectForKey:@"userId"];
-        receiveMsg.dstID = [dataDic objectForKey:@"dstId"];
+        NSString *tempID = [dataDic objectForKey:@"userId"];
+        receiveMsg.userID = [dataDic objectForKey:@"dstId"];
+        receiveMsg.dstID = tempID;
         receiveMsg.text = [dataDic objectForKey:@"content"];
         receiveMsg.messageType = msgType;
         receiveMsg.partnerType = dstType;
+        receiveMsg.date = [NSDate date];
         receiveMsg.ownerTyper = [dataDic objectForKey:@"userId"] == nil ? MessageOwnerTypeSystem : MessageOwnerTypeFriend;
+        [self p_receiveMessageStore:receiveMsg];
         if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
             [self.messageDelegate didReceivedMessage:receiveMsg];
         }
@@ -103,7 +106,7 @@ static MessageManager *messageManager;
        @"msgType": mt,
        @"content": text
     };
-    NSString *urlStr = [NSString stringWithFormat:@"http://localhost:8080/v1/chat/message?userId=%@", message.dstID];
+    NSString *urlStr = [NSString stringWithFormat:@"http://localhost:8080/v1/chat/message?dstId=%@", message.dstID];
 
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -121,10 +124,16 @@ static MessageManager *messageManager;
     [dataTask resume];
 }
 
+
 - (NSNumber *)addMessageStore:(Message *)message
 {
     NSNumber *insertId = [self.messageStore addMessageRetID:message];
     return insertId;
+}
+#pragma mark - # private
+- (BOOL)p_receiveMessageStore:(Message *)message
+{
+    return [self.messageStore addMessage:message];
 }
 
 #pragma mark - # Getters
