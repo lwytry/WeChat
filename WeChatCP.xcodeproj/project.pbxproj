@@ -52,6 +52,10 @@
 		A98FCA052466965C009B691C /* TextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FCA042466965B009B691C /* TextMessageCell.m */; };
 		A98FCA09246BD29E009B691C /* NSString+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FCA08246BD29E009B691C /* NSString+Message.m */; };
 		A98FCA0C246BD2D7009B691C /* UIFont+Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FCA0B246BD2D7009B691C /* UIFont+Chat.m */; };
+		A98FCA1024718204009B691C /* DBBaseStore.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FCA0F24718204009B691C /* DBBaseStore.m */; };
+		A98FCA13247183A2009B691C /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FCA12247183A2009B691C /* DBManager.m */; };
+		A98FCA1624718AF9009B691C /* NSFileManager+Chat.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FCA1524718AF9009B691C /* NSFileManager+Chat.m */; };
+		A98FCA1924718C11009B691C /* NSFileManager+path.m in Sources */ = {isa = PBXBuildFile; fileRef = A98FCA1824718C11009B691C /* NSFileManager+path.m */; };
 		A9B8219A244C34FB00517C58 /* MyAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B82199244C34FB00517C58 /* MyAppDelegate.m */; };
 		A9B8219C244C63E400517C58 /* Conversation.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B8219B244C63E400517C58 /* Conversation.xcassets */; };
 		A9B8219E244C7CF700517C58 /* Discover.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9B8219D244C7CF700517C58 /* Discover.xcassets */; };
@@ -74,6 +78,7 @@
 
 /* Begin PBXFileReference section */
 		34A075BCC309FA8AB043E297 /* Pods-WeChatCP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatCP.release.xcconfig"; path = "Target Support Files/Pods-WeChatCP/Pods-WeChatCP.release.xcconfig"; sourceTree = "<group>"; };
+		A95402FC2472529C00C2404E /* MessageSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageSQL.h; sourceTree = "<group>"; };
 		A96A66AE2450994700399267 /* MobileLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileLoginViewController.h; sourceTree = "<group>"; };
 		A96A66AF2450994700399267 /* MobileLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobileLoginViewController.m; sourceTree = "<group>"; };
 		A96A66B02450994700399267 /* MobileLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MobileLoginViewController.xib; sourceTree = "<group>"; };
@@ -167,6 +172,14 @@
 		A98FCA08246BD29E009B691C /* NSString+Message.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+Message.m"; sourceTree = "<group>"; };
 		A98FCA0A246BD2D7009B691C /* UIFont+Chat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+Chat.h"; sourceTree = "<group>"; };
 		A98FCA0B246BD2D7009B691C /* UIFont+Chat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Chat.m"; sourceTree = "<group>"; };
+		A98FCA0E24718204009B691C /* DBBaseStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBBaseStore.h; sourceTree = "<group>"; };
+		A98FCA0F24718204009B691C /* DBBaseStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBBaseStore.m; sourceTree = "<group>"; };
+		A98FCA11247183A2009B691C /* DBManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		A98FCA12247183A2009B691C /* DBManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		A98FCA1424718AF9009B691C /* NSFileManager+Chat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+Chat.h"; sourceTree = "<group>"; };
+		A98FCA1524718AF9009B691C /* NSFileManager+Chat.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+Chat.m"; sourceTree = "<group>"; };
+		A98FCA1724718C11009B691C /* NSFileManager+path.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+path.h"; sourceTree = "<group>"; };
+		A98FCA1824718C11009B691C /* NSFileManager+path.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+path.m"; sourceTree = "<group>"; };
 		A9B82198244C34FB00517C58 /* MyAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAppDelegate.h; sourceTree = "<group>"; };
 		A9B82199244C34FB00517C58 /* MyAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAppDelegate.m; sourceTree = "<group>"; };
 		A9B8219B244C63E400517C58 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
@@ -228,6 +241,8 @@
 		A96A66B62451A4E800399267 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				A98FC9E0245D48FE009B691C /* messageCenter */,
+				A98FCA0D247181DC009B691C /* dbManager */,
 				A96A66B82451A64C00399267 /* launch */,
 				A97998382442C52C009B6096 /* wechat */,
 				A97998372442C52C009B6096 /* contact */,
@@ -358,7 +373,6 @@
 		A96A66E9245807EE00399267 /* chat */ = {
 			isa = PBXGroup;
 			children = (
-				A98FC9E0245D48FE009B691C /* messageCenter */,
 				A98FC9D7245C13ED009B691C /* keyboard */,
 				A96A66F62459351D00399267 /* chatBar */,
 				A96A66EA2458084800399267 /* messageDisplayView */,
@@ -538,7 +552,7 @@
 				A98FC9E1245D48FE009B691C /* message */,
 			);
 			name = messageCenter;
-			path = WeChatCP/controller/wechat/messageCenter;
+			path = WeChatCP/controller/messageCenter;
 			sourceTree = SOURCE_ROOT;
 		};
 		A98FC9E1245D48FE009B691C /* message */ = {
@@ -570,6 +584,7 @@
 		A98FC9EE245D5FB2009B691C /* store */ = {
 			isa = PBXGroup;
 			children = (
+				A95402FC2472529C00C2404E /* MessageSQL.h */,
 			);
 			path = store;
 			sourceTree = "<group>";
@@ -597,8 +612,23 @@
 				A98FCA08246BD29E009B691C /* NSString+Message.m */,
 				A98FCA0A246BD2D7009B691C /* UIFont+Chat.h */,
 				A98FCA0B246BD2D7009B691C /* UIFont+Chat.m */,
+				A98FCA1424718AF9009B691C /* NSFileManager+Chat.h */,
+				A98FCA1524718AF9009B691C /* NSFileManager+Chat.m */,
+				A98FCA1724718C11009B691C /* NSFileManager+path.h */,
+				A98FCA1824718C11009B691C /* NSFileManager+path.m */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		A98FCA0D247181DC009B691C /* dbManager */ = {
+			isa = PBXGroup;
+			children = (
+				A98FCA0E24718204009B691C /* DBBaseStore.h */,
+				A98FCA0F24718204009B691C /* DBBaseStore.m */,
+				A98FCA11247183A2009B691C /* DBManager.h */,
+				A98FCA12247183A2009B691C /* DBManager.m */,
+			);
+			path = dbManager;
 			sourceTree = "<group>";
 		};
 		A9B821A3244C7D7C00517C58 /* chat */ = {
@@ -779,6 +809,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A96A66ED2458087400399267 /* MessageDisplayView.m in Sources */,
+				A98FCA1624718AF9009B691C /* NSFileManager+Chat.m in Sources */,
 				A979989124445CB7009B6096 /* GetContactPermisson.m in Sources */,
 				A98FC9E8245D4BE3009B691C /* MessageFrame.m in Sources */,
 				A98FCA09246BD29E009B691C /* NSString+Message.m in Sources */,
@@ -795,12 +826,14 @@
 				A979982B2442C458009B6096 /* main.m in Sources */,
 				A9B8219A244C34FB00517C58 /* MyAppDelegate.m in Sources */,
 				A98FC9F7245D7FB6009B691C /* ChatBaseViewController+Proxy.m in Sources */,
+				A98FCA13247183A2009B691C /* DBManager.m in Sources */,
 				A98FC9DF245D16FF009B691C /* ChatBaseViewController+MessageDisplayView.m in Sources */,
 				A979986E24430846009B6096 /* ContactViewController.m in Sources */,
 				A98FC9E4245D492A009B691C /* Message.m in Sources */,
 				A97998522442C690009B6096 /* RootTabBarController.m in Sources */,
 				A98FC9FA246426F2009B691C /* MessageBaseCell.m in Sources */,
 				A96A66F124582EF400399267 /* MessageDisplayView+Delegate.m in Sources */,
+				A98FCA1024718204009B691C /* DBBaseStore.m in Sources */,
 				A98FCA0224644C37009B691C /* User+Chat.m in Sources */,
 				A96A66E12458076500399267 /* PasswordView.m in Sources */,
 				A9B821CA244DAAB800517C58 /* HomeTableViewCell.m in Sources */,
@@ -810,6 +843,7 @@
 				A96A66C32452A3FA00399267 /* RegisterViewController.m in Sources */,
 				A96A66B12450994700399267 /* MobileLoginViewController.m in Sources */,
 				A96A66CB2457FA6900399267 /* ChatBaseViewController.m in Sources */,
+				A98FCA1924718C11009B691C /* NSFileManager+path.m in Sources */,
 				A98FC9DA245C142E009B691C /* BaseKeyboard.m in Sources */,
 				A96A66E82458076500399267 /* CaptchaView.m in Sources */,
 				A96A66F92459353400399267 /* ChatBar.m in Sources */,
