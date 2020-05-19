@@ -31,6 +31,29 @@
     return [self createTable:MESSAGE_TABLE_NAME withSQL:sqlString];
 }
 
+- (BOOL)addMessage:(Message *)message
+{
+    if (message == nil || message.dstID == nil) {
+        return NO;
+    }
+    
+    NSString *sqlString = [NSString stringWithFormat:SQL_ADD_MESSAGE, MESSAGE_TABLE_NAME];
+    NSArray *arrPara = [NSArray arrayWithObjects:
+                        message.userID,
+                        message.ID,
+                        message.dstID,
+                        [NSNumber numberWithInteger:message.partnerType],
+                        [NSNumber numberWithInteger:message.ownerTyper],
+                        [NSNumber numberWithInteger:message.messageType],
+                        [message.content mj_JSONString],
+                        [NSNumber numberWithInteger:message.sendState],
+                        [NSNumber numberWithInteger:message.readState],
+                        TimeStamp(message.date),
+                        nil];
+    BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
+    return ok;
+}
+
 - (NSNumber *)addMessageRetID:(Message *)message
 {
     if (message == nil || message.dstID == nil) {

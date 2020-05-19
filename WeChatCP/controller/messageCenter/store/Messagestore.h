@@ -14,6 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Messagestore : DBBaseStore
 #pragma mark - 添加
 /**
+ *  添加消息记录
+ */
+- (BOOL)addMessage:(Message *)message;
+/**
  *  添加消息记录 返回插入id
  */
 - (NSNumber *)addMessageRetID:(Message *)message;
