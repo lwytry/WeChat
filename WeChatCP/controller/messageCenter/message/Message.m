@@ -34,7 +34,6 @@
 - (id)init
 {
     if (self = [super init]) {
-        self.ID = [NSString stringWithFormat:@"%lld", (long long)([[NSDate date] timeIntervalSince1970] * 10000)];
     }
     return self;
 }

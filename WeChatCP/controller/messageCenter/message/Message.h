@@ -17,7 +17,7 @@
     MessageFrame *messageFrame;
 }
 
-@property (nonatomic, strong) NSString *ID;                         // 消息ID
+@property (nonatomic, assign) NSNumber *ID;                         // 消息ID
 @property (nonatomic, strong) NSString *userID;                     // 发送者ID
 @property (nonatomic, strong) NSString *dstID;                      // 接收者ID
 @property (nonatomic, strong) NSString *groupID;                    // 讨论组ID（无则为nil）
