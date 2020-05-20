@@ -15,9 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 // 用户ID
 @property (nonatomic, strong) NSString *userID;
 // 用户头像
-//@property (nonatomic, copy) NSString* avatar;
-
-// 用户头像
 @property (nonatomic, copy) NSString* name;
 
 // 微信号

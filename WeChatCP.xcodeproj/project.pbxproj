@@ -244,11 +244,18 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A949C9F524751A6E00B279E4 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				A98FCA0D247181DC009B691C /* dbManager */,
+				A98FC9E0245D48FE009B691C /* messageCenter */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
 		A96A66B62451A4E800399267 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				A98FC9E0245D48FE009B691C /* messageCenter */,
-				A98FCA0D247181DC009B691C /* dbManager */,
 				A96A66B82451A64C00399267 /* launch */,
 				A97998382442C52C009B6096 /* wechat */,
 				A97998372442C52C009B6096 /* contact */,
@@ -445,6 +452,7 @@
 				A9E0DDF02449614500E8AF43 /* utils */,
 				A979983F2442C563009B6096 /* model */,
 				A96A66B62451A4E800399267 /* controller */,
+				A949C9F524751A6E00B279E4 /* service */,
 				A97998352442C52C009B6096 /* view */,
 				A96A66BF2451AB0400399267 /* supportFile */,
 				A96A66BC2451A8B200399267 /* Info.plist */,
@@ -558,7 +566,7 @@
 				A98FC9E1245D48FE009B691C /* message */,
 			);
 			name = messageCenter;
-			path = WeChatCP/controller/messageCenter;
+			path = WeChatCP/service/messageCenter;
 			sourceTree = SOURCE_ROOT;
 		};
 		A98FC9E1245D48FE009B691C /* message */ = {
