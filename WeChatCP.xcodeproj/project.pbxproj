@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		74B136A589813FF765CBD5F5 /* Pods_WeChatCP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6D58A871783E5A159C94641 /* Pods_WeChatCP.framework */; };
 		A949C9F12473C3D600B279E4 /* Messagestore.m in Sources */ = {isa = PBXBuildFile; fileRef = A949C9F02473C3D600B279E4 /* Messagestore.m */; };
+		A949C9F42474118400B279E4 /* MessageManager+MessageRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = A949C9F32474118400B279E4 /* MessageManager+MessageRecord.m */; };
 		A96A66B12450994700399267 /* MobileLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66AF2450994700399267 /* MobileLoginViewController.m */; };
 		A96A66B22450994700399267 /* MobileLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A96A66B02450994700399267 /* MobileLoginViewController.xib */; };
 		A96A66B524517D5600399267 /* LoginBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A96A66B424517D5600399267 /* LoginBaseViewController.m */; };
@@ -81,6 +82,8 @@
 		34A075BCC309FA8AB043E297 /* Pods-WeChatCP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeChatCP.release.xcconfig"; path = "Target Support Files/Pods-WeChatCP/Pods-WeChatCP.release.xcconfig"; sourceTree = "<group>"; };
 		A949C9EF2473C3D600B279E4 /* Messagestore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Messagestore.h; sourceTree = "<group>"; };
 		A949C9F02473C3D600B279E4 /* Messagestore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Messagestore.m; sourceTree = "<group>"; };
+		A949C9F22474118400B279E4 /* MessageManager+MessageRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MessageManager+MessageRecord.h"; sourceTree = "<group>"; };
+		A949C9F32474118400B279E4 /* MessageManager+MessageRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MessageManager+MessageRecord.m"; sourceTree = "<group>"; };
 		A95402FC2472529C00C2404E /* MessageSQL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageSQL.h; sourceTree = "<group>"; };
 		A96A66AE2450994700399267 /* MobileLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileLoginViewController.h; sourceTree = "<group>"; };
 		A96A66AF2450994700399267 /* MobileLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobileLoginViewController.m; sourceTree = "<group>"; };
@@ -578,6 +581,8 @@
 			children = (
 				A98FC9EF245D5FD4009B691C /* MessageManager.h */,
 				A98FC9F0245D5FD4009B691C /* MessageManager.m */,
+				A949C9F22474118400B279E4 /* MessageManager+MessageRecord.h */,
+				A949C9F32474118400B279E4 /* MessageManager+MessageRecord.m */,
 				A98FC9F2245D5FF6009B691C /* MessageManagerChatVCDelegate.h */,
 				A98FC9F3245D6015009B691C /* MessageManagerConvVCDelegate.h */,
 			);
@@ -859,6 +864,7 @@
 				A9B821DF244FF7EE00517C58 /* LoginViewController.m in Sources */,
 				A97998692443082C009B6096 /* HomeViewController.m in Sources */,
 				A9B821D8244FDEC100517C58 /* BootLoginViewController.m in Sources */,
+				A949C9F42474118400B279E4 /* MessageManager+MessageRecord.m in Sources */,
 				A9B821B2244C840F00517C58 /* SearchResultController.m in Sources */,
 				A96A66B524517D5600399267 /* LoginBaseViewController.m in Sources */,
 				A96A66E42458076500399267 /* AccountView.m in Sources */,

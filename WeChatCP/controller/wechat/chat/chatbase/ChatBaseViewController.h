@@ -12,6 +12,7 @@
 #import "Macro.h"
 #import "ChatBar.h"
 #import "MessageManager.h"
+#import "MessageManager+MessageRecord.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

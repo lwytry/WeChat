@@ -75,11 +75,15 @@
     NSNumber *insertId = [self excuteAdd:sqlString withArrParameter:arrPara];
     return insertId;
 }
-
-- (void)messagesByDstId:(NSString *)userID dstId:(NSString *)dstId count:(NSUInteger)count complete:(void (^)(NSArray * _Nonnull, BOOL))complete
+- (void)messagesByUserID:(NSString *)userID dstId:(NSString *)dstId count:(NSUInteger)count complete:(void (^)(NSArray * _Nonnull, BOOL))complete
 {
+   
     __block NSMutableArray *data = [NSMutableArray array];
-    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_MESSAGES_PAGE, MESSAGE_TABLE_NAME, dstId, (long)(count + 1)];
+    NSString *sqlString = [NSString stringWithFormat:
+                           SQL_SELECT_MESSAGES_PAGE,
+                           MESSAGE_TABLE_NAME,
+                           dstId,
+                           (long)(count + 1)];
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet * _Nonnull rsSet) {
         while ([rsSet next]) {
             Message *message = [self p_createDBMessageByFMResultSet:rsSet];
@@ -95,6 +99,7 @@
     }
     complete(data, hasMore);
 }
+
 #pragma mark - Private Methods -
 - (Message *)p_createDBMessageByFMResultSet:(FMResultSet *)rsSet
 {

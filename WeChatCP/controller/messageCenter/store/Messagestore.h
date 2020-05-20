@@ -26,9 +26,9 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  获取与某个好友的聊天记录
  */
-- (void)messagesByDstID:(NSString *)userID
-                dstId:(NSString *)dstId
-                count:(NSUInteger)count
+- (void)messagesByUserID:(NSString *)userID
+                   dstId:(NSString *)dstId
+                   count:(NSUInteger)count
                 complete:(void (^)(NSArray *data, BOOL hasMore))complete;
 @end
 

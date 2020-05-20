@@ -56,7 +56,13 @@
     if ([message.fromUser chat_avatarURL].length > 0) {
         // 网络读取图片
     } else {
-        [self.avatarButton setImage:[UIImage imageNamed:@"wechatDF"] forState:UIControlStateNormal];
+        if(message.ownerTyper == MessageOwnerTypeSelf) {
+
+            [self.avatarButton setImage:[UIImage imageNamed:@"IMG_0595"] forState:UIControlStateNormal];
+        } else {
+
+            [self.avatarButton setImage:[UIImage imageNamed:@"IMG_1572"] forState:UIControlStateNormal];
+        }
     }
     
     // 时间

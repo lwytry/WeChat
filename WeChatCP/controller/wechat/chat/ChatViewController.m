@@ -27,7 +27,7 @@
     if (self = [super init]) {
         User *user = [[User alloc] init];
         user.userID = @"1002";
-        user.name = @"liwuyi";
+        user.name = @"李玉松";
         self.partner = user;
     }
     return self;

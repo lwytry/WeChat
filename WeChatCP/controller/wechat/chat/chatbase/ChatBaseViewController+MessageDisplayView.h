@@ -8,6 +8,8 @@
 
 #import "ChatBaseViewController.h"
 
+#define     MAX_SHOWTIME_MSG_COUNT      10
+#define     MAX_SHOWTIME_MSG_SECOND     30
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ChatBaseViewController (MessageDisplayView) <MessageDisplayViewDelegate>

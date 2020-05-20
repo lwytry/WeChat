@@ -14,16 +14,16 @@
 {
     NSString *className;
     if (type == MessageTypeText) {
-        className = @"TLTextMessage";
+        className = @"TextMessage";
     }
     else if (type == MessageTypeImage) {
-        className = @"TLImageMessage";
+        className = @"ImageMessage";
     }
     else if (type == MessageTypeExpression) {
-        className = @"TLExpressionMessage";
+        className = @"ExpressionMessage";
     }
     else if (type == MessageTypeVoice) {
-        className = @"TLVoiceMessage";
+        className = @"VoiceMessage";
     }
     if (className) {
         return [[NSClassFromString(className) alloc] init];
