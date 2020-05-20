@@ -33,8 +33,6 @@
         // 1.创建控制器
         Class class = NSClassFromString(vcName);
         UIViewController *vc = [[class alloc] init];
-//        UIStoryboard *sb = [UIStoryboard storyboardWithName:vcName bundle:nil];
-//        UIViewController *vc = [sb instantiateInitialViewController];
         // 2.设置属性
         vc.navigationItem.title = title;
         vc.tabBarItem.title = title;

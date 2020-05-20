@@ -12,7 +12,7 @@
 
 - (NSString *)chat_userID
 {
-    return self.userID;
+    return self.userId;
 }
 
 - (NSString *)chat_username

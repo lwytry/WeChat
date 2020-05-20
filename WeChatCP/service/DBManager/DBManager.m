@@ -7,7 +7,7 @@
 //
 
 #import "DBManager.h"
-#import "User.h"
+#import "UserHelper.h"
 #import "NSFileManager+Chat.h"
 
 static DBManager *manager;
@@ -17,7 +17,7 @@ static DBManager *manager;
 + (DBManager *)sharedInstance
 {
     static dispatch_once_t once;
-    NSString *userId = [User sharedInstance].userID;
+    NSString *userId = [UserHelper sharedHelper].userId;
     dispatch_once(&once, ^{
         manager = [[DBManager alloc] initWithUserId:userId];
     });

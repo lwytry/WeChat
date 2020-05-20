@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface User : NSObject
 // 用户ID
-@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *userId;
 // 用户头像
 @property (nonatomic, copy) NSString* name;
 
@@ -27,8 +27,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 // 头像Path
 @property (nonatomic, strong) NSString *avatarPath;
-
-+ (User *)sharedInstance;
 
 @end
 

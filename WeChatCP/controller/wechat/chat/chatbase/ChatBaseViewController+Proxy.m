@@ -8,7 +8,7 @@
 
 #import "ChatBaseViewController+Proxy.h"
 #import "ChatBaseViewController+MessageDisplayView.h"
-#import "User.h"
+#import "UserHelper.h"
 #import "User+Chat.h"
 
 
@@ -18,7 +18,7 @@
 {
     message.ownerTyper = MessageOwnerTypeSelf;
     message.date = [NSDate date];
-    message.userID = [User sharedInstance].userID;
+    message.userID = [UserHelper sharedHelper].userId;
     if ([self.partner chat_userType] == ChatUserTypeUser) {
         message.partnerType = PartnerTypeUser;
         message.dstID = [self.partner chat_userID];

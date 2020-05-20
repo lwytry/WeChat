@@ -7,7 +7,7 @@
 //
 
 #import "ChatViewController.h"
-#import "User.h"
+#import "UserHelper.h"
 
 @interface ChatViewController ()
 
@@ -19,14 +19,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setnavigationItem];
-    self.user = [User sharedInstance];
+    self.user = [UserHelper sharedHelper].user;
 }
 
 - (instancetype)initWithUserId:(NSString *)userId
 {
     if (self = [super init]) {
         User *user = [[User alloc] init];
-        user.userID = @"1002";
+        user.userId = @"1002";
         user.name = @"李玉松";
         self.partner = user;
     }

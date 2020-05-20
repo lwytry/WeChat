@@ -11,7 +11,7 @@
 #import "MessageManagerChatVCDelegate.h"
 #import "MessageManagerConvVCDelegate.h"
 #import <SRWebSocket.h>
-#import "User.h"
+#import "UserHelper.h"
 #import "Messagestore.h"
 
 @interface MessageManager : NSObject

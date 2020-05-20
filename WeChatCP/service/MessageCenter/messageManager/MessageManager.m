@@ -24,7 +24,7 @@ static MessageManager *messageManager;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
         messageManager = [[MessageManager alloc] init];
-        messageManager.userId = [User sharedInstance].userID;
+        messageManager.userId = [UserHelper sharedHelper].userId;
     });
     return messageManager;
 }

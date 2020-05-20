@@ -10,6 +10,7 @@
 #import "RootTabBarController.h"
 #import "BootLoginViewController.h"
 #import "MessageManager.h"
+#import "UserHelper.h"
 
 @interface MyAppDelegate()
 @property (nonatomic, strong) UIViewController *rootVC;
@@ -20,9 +21,7 @@
     NSString *homePath = NSHomeDirectory();
     NSLog(@"home根目录:%@", homePath);
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDefault objectForKey:@"token"];
-    if (token) {
+    if ([UserHelper sharedHelper].isLogin) {
         self.rootVC = [[RootTabBarController alloc]init];
         [[MessageManager sharedInstance] createWebSocekt];
     } else {
