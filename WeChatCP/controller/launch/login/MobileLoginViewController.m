@@ -12,6 +12,7 @@
 #import <Masonry/Masonry.h>
 #import <AFNetworking/AFNetworking.h>
 #import "RootTabBarController.h"
+#import "ApiHelper.h"
 
 @interface MobileLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
@@ -93,15 +94,10 @@
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确认手机号码" message:[NSString stringWithFormat:@"我们将发送短信到这个号码: %@", self.phoneText] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // 发送验证码
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        NSString *url = [NSString stringWithFormat:@"http://localhost:8080/v1/sendCaptcha?phone=%@", self.phoneText];
-        [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSString *urlStr = [HOST_URL stringByAppendingString:[NSString stringWithFormat:@"v1/sendCaptcha?phone=%@", self.phoneText]];
+        [ApiHelper postUrl:urlStr parameters:nil useToken:NO success:^(NSURLSessionDataTask *task, id responseObject) {
             
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            
-            NSLog(@"%@", responseObject);
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
         // 成功则启动定时器
@@ -179,18 +175,8 @@
     NSString *code = self.captchaView.captchaField.text;
     
     NSDictionary *dic = @{@"phone":phone, @"code":code};
-    
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-
-    NSMutableURLRequest* formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://localhost:8080/v1/login" parameters:dic error:nil];
-    
-    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+    NSString *urlStr = [HOST_URL stringByAppendingString:@"/v1/login"];
+    [ApiHelper postUrl:urlStr parameters:dic useToken:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"errCode"]  isEqual: @0]) {
             NSDictionary *dataDic = responseObject[@"data"];
             NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
@@ -215,8 +201,10 @@
         } else {
             NSLog(@"请求失败");
         }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     }];
-    [dataTask resume];
+    
 }
 
 - (IBAction)changeBt:(UIButton *)sender {

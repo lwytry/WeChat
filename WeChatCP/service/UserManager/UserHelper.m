@@ -34,7 +34,7 @@
         NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
         NSDictionary *userInfo = [userDefault objectForKey:@"userInfo"];
         _user.userId = userInfo[@"id"];
-        _user.name = userInfo[@"username"];
+        _user.userName = userInfo[@"username"];
         _user.avatarPath = userInfo[@"avatarPath"];
         _user.wechatId = userInfo[@"identifier"];
     }

@@ -11,6 +11,7 @@
 #import <Masonry/Masonry.h>
 #import <AFNetworking.h>
 #import <MBProgressHUD/MBProgressHUD.h>
+#import "ApiHelper.h"
 
 @interface RegisterViewController ()<MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *phoneFieldView;
@@ -60,15 +61,10 @@
     UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"确认手机号码" message:[NSString stringWithFormat:@"我们将发送短信到这个号码: %@", self.phoneFieldView.text] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         // 发送验证码
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        NSString *url = [NSString stringWithFormat:@"http://localhost:8080/v1/sendCaptcha?phone=%@", self.phoneFieldView.text];
-        [manager GET:url parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        NSString *urlStr = [HOST_URL stringByAppendingString:[NSString stringWithFormat:@"v1/sendCaptcha?phone=%@", self.phoneFieldView.text]];
+        [ApiHelper postUrl:urlStr parameters:nil useToken:NO success:^(NSURLSessionDataTask *task, id responseObject) {
             
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            
-            NSLog(@"%@", responseObject);
-            
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
         // 成功则启动定时器
@@ -155,24 +151,12 @@
     
     NSDictionary *dic = @{@"phone":phone, @"code":code};
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
-
-    NSMutableURLRequest* formRequest = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:@"http://localhost:8080/v1/register" parameters:dic error:nil];
-    
-    [formRequest setValue:@"application/x-www-form-urlencoded; charset=utf-8"forHTTPHeaderField:@"Content-Type"];
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:formRequest uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
+    NSString *urlStr = [HOST_URL stringByAppendingString:@"/v1/register"];
+    [ApiHelper postUrl:urlStr parameters:dic useToken:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         
-    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        if ([responseObject[@"errCode"]  isEqual: @0]) {
-            NSLog(@"请求成功");
-        } else {
-            NSLog(@"请求失败");
-        }
     }];
-    [dataTask resume];
 }
 - (IBAction)cancelBt:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];

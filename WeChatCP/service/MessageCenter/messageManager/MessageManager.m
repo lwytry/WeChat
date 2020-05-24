@@ -9,6 +9,7 @@
 #import "MessageManager.h"
 #import "TextMessage.h"
 #import <AFNetworking.h>
+#import "ApiHelper.h"
 @interface MessageManager ()<SRWebSocketDelegate>
 
 @property (nonatomic, strong) SRWebSocket *ws;
@@ -106,22 +107,12 @@ static MessageManager *messageManager;
        @"msgType": mt,
        @"content": text
     };
-    NSString *urlStr = [NSString stringWithFormat:@"http://localhost:8080/v1/chat/message?dstId=%@", message.dstID];
-
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    NSString *token = [userDefault objectForKey:@"token"];
-
-    NSMutableURLRequest *req = [[AFJSONRequestSerializer serializer] requestWithMethod:@"POST" URLString:urlStr parameters:dic error:nil];
-    [req addValue:token forHTTPHeaderField:@"token"];
-    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:req uploadProgress:^(NSProgress * _Nonnull uploadProgress) {
-
-    } downloadProgress:^(NSProgress * _Nonnull downloadProgress) {
-       
-    } completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-           
+    NSString *urlStr = [HOST_URL stringByAppendingString:[NSString stringWithFormat:@"v1/chat/message?dstId=%@", message.dstID]];
+    [ApiHelper postUrl:urlStr parameters:dic useToken:YES success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"发送成功");
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        NSLog(@"发送失败");
     }];
-    [dataTask resume];
 }
 
 
