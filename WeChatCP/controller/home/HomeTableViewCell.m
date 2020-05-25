@@ -24,7 +24,7 @@
 {
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     self.avatarImageView.image = [UIImage imageNamed:userInfo.avatarPath];
-    self.nameLabel.text = userInfo.name;
+    self.nameLabel.text = userInfo.userName;
     self.wechatIdLabel.text = [NSString stringWithFormat:@"微信号: %@", userInfo.wechatId];
     self.barcodeImageView.image = [UIImage imageNamed:@"mine_cell_myQR"];
     self.barcodeImageView.backgroundColor = [UIColor whiteColor];
