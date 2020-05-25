@@ -15,18 +15,21 @@ NS_ASSUME_NONNULL_BEGIN
 // 用户ID
 @property (nonatomic, strong) NSString *userId;
 // 用户头像
-@property (nonatomic, copy) NSString* name;
+@property (nonatomic, copy) NSString* userName;
 
 // 微信号
 @property (nonatomic, copy) NSString* wechatId;
-// 昵称
-@property (nonatomic, strong) NSString *nikeName;
 
 // 头像URL
 @property (nonatomic, strong) NSString *avatarURL;
 
 // 头像Path
 @property (nonatomic, strong) NSString *avatarPath;
+
+// 手机号
+@property (nonatomic, strong) NSString *phone;
+
+@property (nonatomic, copy) NSString * pinyin;
 
 @end
 

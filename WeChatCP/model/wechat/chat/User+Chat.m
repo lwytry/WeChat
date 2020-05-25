@@ -17,7 +17,7 @@
 
 - (NSString *)chat_username
 {
-    return self.name;
+    return self.userName;
 }
 
 - (NSString *)chat_avatarURL
