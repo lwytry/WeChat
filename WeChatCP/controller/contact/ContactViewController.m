@@ -8,13 +8,25 @@
 
 #import "ContactViewController.h"
 #import <NSArray+SortContact.h>
+#import "ContactHelper.h"
+#import "ContactTableViewCell.h"
+
 @interface ContactViewController ()<UITableViewDelegate, UITableViewDataSource>
+
 @property(nonatomic, strong) NSArray *sectionTitles;
+
 @property (nonatomic, copy) NSArray* firstSectionData;
+
 @property(nonatomic, copy) NSArray *contacts;
+
+@property (nonatomic, copy) NSArray<NSArray *> *contactArr;
+
 @property(nonatomic, copy) NSArray<NSArray *> *contactSortArray;
+
 @property(nonatomic, strong) UITableView *tabView;
+
 @property(nonatomic, strong) UISearchController *searchController;
+
 @end
 
 @implementation ContactViewController
@@ -29,39 +41,14 @@ static NSString *ID = @"contactCell";
 }
 - (void)initializeData
 {
-  self.firstSectionData = @[
-    @[ @"friends_new", @"新的朋友" ],
-    @[ @"friends_group", @"群聊" ],
-    @[ @"friends_tag", @"标签" ],
-    @[ @"friends_public", @"公众号" ]
-  ];
-
-  self.contacts = @[
-    @"吴正祥",
-    @"陈维",
-    @"赖杰",
-    @"范熙丹",
-    @"丁亮",
-    @"赵雨彤",
-    @"落落",
-    @"Leo琦仔",
-    @"廖宇超",
-    @"Darui Li",
-    @"刘洋",
-    @"阿光",
-    @"王杰",
-    @"蔡依林",
-    @"周杰伦"
-  ];
-
-  [self.contacts sortContactTOTitleAndSectionRow_A_EC:^(
-                   BOOL isSuccess, NSArray* titleArray, NSArray* rowArray) {
-    if (!isSuccess)
-      return;
-
-      self.contactSortArray = rowArray;
-      self.sectionTitles = titleArray;
-  }];
+    self.firstSectionData = @[
+        @[ @"friends_new", @"新的朋友" ],
+        @[ @"friends_group", @"群聊" ],
+        @[ @"friends_tag", @"标签" ],
+        @[ @"friends_public", @"公众号" ]
+    ];
+    self.contactArr = [ContactHelper sharedContactHelper].sortdata;
+    self.sectionTitles = [ContactHelper sharedContactHelper].sectionHeader;
 }
 - (void)buildTableView
 {
@@ -83,80 +70,92 @@ static NSString *ID = @"contactCell";
 #pragma mark - footer
 - (UIView*)tableFooterView
 {
-  UIView* view = [[UIView alloc]
+    UIView* view = [[UIView alloc]
     initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 50)];
-  UILabel* label = [[UILabel alloc] initWithFrame:view.bounds];
-  label.text = [NSString
-    stringWithFormat:@"%lu位联系人 ", (unsigned long)self.contacts.count];
-  label.textAlignment = NSTextAlignmentCenter;
-  label.textColor = [UIColor lightGrayColor];
-  [view addSubview:label];
+    UILabel* label = [[UILabel alloc] initWithFrame:view.bounds];
+    NSInteger num = [ContactHelper sharedContactHelper].contactCount;
+    label.text = [NSString
+                  stringWithFormat:@"%ld位联系人 ", (long)num];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor lightGrayColor];
+    [view addSubview:label];
 
-  return view;
+    return view;
 }
+
+
+#pragma mark - UITableViewDelegate UITableViewDataSource
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return self.sectionTitles.count + 1;
+    return self.sectionTitles.count;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     if (section == 0)
         return self.firstSectionData.count;
-    return [self.contactSortArray[section - 1] count];
+    return self.contactArr[section - 1].count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
-    if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-//        [cell setRestorationIdentifier:@"aaa"]
-        //调整分割线长度
-        cell.preservesSuperviewLayoutMargins = false;
-        cell.layoutMargins = UIEdgeInsetsZero;
-        cell.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
-    }
-    
-    return cell;
-}
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
     if (indexPath.section == 0) {
-        cell.imageView.image = [UIImage imageNamed:self.firstSectionData[indexPath.row][0]];
-        cell.textLabel.text = self.firstSectionData[indexPath.row][1];
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+        if(cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+            //调整分割线长度
+            cell.preservesSuperviewLayoutMargins = false;
+            cell.layoutMargins = UIEdgeInsetsZero;
+            cell.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
+            cell.imageView.image = [UIImage imageNamed:self.firstSectionData[indexPath.row][0]];
+            cell.textLabel.text = self.firstSectionData[indexPath.row][1];
+        }
+        return cell;
     } else {
-        cell.textLabel.text = self.contactSortArray[indexPath.section-1][indexPath.row];
-        cell.imageView.image = [UIImage imageNamed:@"friends_public"];
-        
+        ContactTableViewCell *cell = [[ContactTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+        [cell setModel:self.contactArr[indexPath.section-1][indexPath.row]];
+        return cell;
     }
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-   
-    if (section == 0)
-        return nil;
-    return self.sectionTitles[section-1];
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+
+    return self.sectionTitles;
 }
 
 - (UIView*)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section
 {
-  if (section == 0)
+    if (section == 0)
     return nil;
 
-  UIView* headerView = [[UIView alloc]
+    UIView* headerView = [[UIView alloc]
     initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 20)];
-  headerView.backgroundColor = [UIColor colorWithWhite:.95 alpha:1];
+    headerView.backgroundColor = [UIColor colorWithWhite:.95 alpha:1];
 
-  UILabel* headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-  headerLabel.textColor = [UIColor lightGrayColor];
-  headerLabel.font = [UIFont boldSystemFontOfSize:14];
-  headerLabel.text = self.sectionTitles[section - 1];
-  headerLabel.frame = CGRectMake(10, 0, headerView.bounds.size.width,
+    UILabel* headerLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+    headerLabel.textColor = [UIColor lightGrayColor];
+    headerLabel.font = [UIFont boldSystemFontOfSize:14];
+    headerLabel.text = self.sectionTitles[section];
+    headerLabel.frame = CGRectMake(10, 0, headerView.bounds.size.width,
                                  headerView.bounds.size.height);
 
-  [headerView addSubview:headerLabel];
-  return headerView;
+    [headerView addSubview:headerLabel];
+    return headerView;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section == 0) {
+        return 10;
+    }
+    return 30;
+}
+
 
 -(NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index{
     
