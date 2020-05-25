@@ -7,10 +7,16 @@
 //
 
 #import "DBBaseStore.h"
-
+@class User;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ContactStore : DBBaseStore
+
+- (BOOL)add:(User *)user;
+
+- (NSMutableArray *)getList;
+
+- (NSDictionary *)getInfoByUId:(NSString *)uid;
 
 @end
 

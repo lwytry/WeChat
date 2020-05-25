@@ -28,7 +28,7 @@
     }
     return self;
 }
-- (void) configCell:(WeChat *)wechat
+- (void)setModel:(WeChat *)wechat
 {
     self.imgView.image = [UIImage imageNamed:wechat.picName];
     self.imgView.layer.cornerRadius = 8;

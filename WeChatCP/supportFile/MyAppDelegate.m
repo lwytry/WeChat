@@ -11,6 +11,7 @@
 #import "BootLoginViewController.h"
 #import "MessageManager.h"
 #import "UserHelper.h"
+#import "ContactHelper.h"
 
 @interface MyAppDelegate()
 @property (nonatomic, strong) UIViewController *rootVC;
@@ -31,6 +32,7 @@
     
     [self.window makeKeyAndVisible];
     [self changeNav];
+    [[ContactHelper alloc] init];
     return YES;
 }
 

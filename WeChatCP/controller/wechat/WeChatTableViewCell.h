@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-- (void) configCell:(WeChat *)wechat;
+- (void) setModel:(WeChat *)wechat;
 @end
 
 NS_ASSUME_NONNULL_END

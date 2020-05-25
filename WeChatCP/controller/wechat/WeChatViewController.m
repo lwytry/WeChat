@@ -86,8 +86,7 @@ static NSString *ID = @"wechatCell";
         cell = [[WeChatTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
 
     }
-    [cell configCell:self.wechats[indexPath.row]];
-    
+    [cell setModel:self.wechats[indexPath.row]];
     
     return cell;
 }

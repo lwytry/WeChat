@@ -44,4 +44,5 @@ typedef NS_ENUM(NSInteger, ChatBarState) {
 
 #define     SAFEAREA_INSETS_BOTTOM      (SAFEAREA_INSETS.bottom)
 
+#define FILE_SERVER_DOMAIN_NAME @"/Users/lwy/www/file/"
 #endif /* Macro_h */
