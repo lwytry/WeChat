@@ -55,14 +55,9 @@
     [self.usernameLabel setText:[message.fromUser chat_username]];
     if ([message.fromUser chat_avatarURL].length > 0) {
         // 网络读取图片
+        [self.avatarButton setImage:[UIImage imageNamed:[message.fromUser chat_avatarURL]] forState:UIControlStateNormal];
     } else {
-        if(message.ownerTyper == MessageOwnerTypeSelf) {
-
-            [self.avatarButton setImage:[UIImage imageNamed:@"IMG_0595"] forState:UIControlStateNormal];
-        } else {
-
-            [self.avatarButton setImage:[UIImage imageNamed:@"IMG_1572"] forState:UIControlStateNormal];
-        }
+        [self.avatarButton setImage:[UIImage imageNamed:[message.fromUser chat_avatarURL]] forState:UIControlStateNormal];
     }
     
     // 时间

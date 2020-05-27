@@ -102,7 +102,7 @@
 
 - (Message *)lastMessageByUserID:(NSString *)dstId
 {
-    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_MESSAGES_PAGE, MESSAGE_TABLE_NAME, dstId, (long)0];
+    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_MESSAGES_PAGE, MESSAGE_TABLE_NAME, dstId, (long)1];
     __block Message * message;
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
         while ([retSet next]) {
