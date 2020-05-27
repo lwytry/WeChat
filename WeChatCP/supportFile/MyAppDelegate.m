@@ -11,7 +11,7 @@
 #import "BootLoginViewController.h"
 #import "MessageManager.h"
 #import "UserHelper.h"
-#import "ContactHelper.h"
+#import "LaunchManager.h"
 
 @interface MyAppDelegate()
 @property (nonatomic, strong) UIViewController *rootVC;
@@ -21,18 +21,10 @@
 {
     NSString *homePath = NSHomeDirectory();
     NSLog(@"home根目录:%@", homePath);
+
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    if ([UserHelper sharedHelper].isLogin) {
-        self.rootVC = [[RootTabBarController alloc]init];
-        [[MessageManager sharedInstance] createWebSocekt];
-    } else {
-        self.rootVC = [[BootLoginViewController alloc] init];
-    }
-    self.window.rootViewController = self.rootVC;
-    
-    [self.window makeKeyAndVisible];
+    [[LaunchManager sharedInstance] launchInWindow:self.window];
     [self changeNav];
-    [[ContactHelper alloc] init];
     return YES;
 }
 
