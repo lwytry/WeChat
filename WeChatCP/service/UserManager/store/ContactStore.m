@@ -64,19 +64,20 @@
     return data;
 }
 
-- (User *)getInfoByUId:(NSString *)uid
+- (User *)getInfoByUId:(NSString *)uId
 {
     __block User *user = [[User alloc] init];
-    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_CONTACT_INFO, CONTACT_TABLE_NAME, uid];
+    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_CONTACT_INFO, CONTACT_TABLE_NAME, uId];
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
-        user.userId = [retSet stringForColumn:@"uid"];
-        user.userName = [retSet stringForColumn:@"username"];
-        user.wechatId = [retSet stringForColumn:@"wechatId"];
-        user.avatarPath = [retSet stringForColumn:@"avatarPath"];
-        user.phone = [retSet stringForColumn:@"phone"];
+        while ([retSet next]) {
+            user.userId = [retSet stringForColumn:@"userId"];
+            user.userName = [retSet stringForColumn:@"username"];
+            user.wechatId = [retSet stringForColumn:@"wechatId"];
+            user.avatarPath = [retSet stringForColumn:@"avatarPath"];
+            user.phone = [retSet stringForColumn:@"phone"];
+        }
         [retSet close];
     }];
-    
     return user;
 }
 @end

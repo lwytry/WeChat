@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSMutableArray *)getList;
 
-- (NSDictionary *)getInfoByUId:(NSString *)uid;
+- (User *)getInfoByUId:(NSString *)uId;
 
 @end
 
