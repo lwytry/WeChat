@@ -10,6 +10,11 @@
 
 @implementation MessageManager (MessageRecord)
 
+- (BOOL)addMessage:(Message *)message
+{
+    return [self.messageStore addMessage:message];
+}
+
 - (void)messageRecordForDstId:(NSString *)dstId
                      fromDate:(NSDate *)date
                         count:(NSUInteger)count

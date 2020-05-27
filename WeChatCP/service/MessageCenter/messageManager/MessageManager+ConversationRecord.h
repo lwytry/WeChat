@@ -14,11 +14,10 @@
 
 - (void)conversationRecord:(void (^)(NSArray *))complete;
 
+- (BOOL)updateConversationUnread:(NSString *)uId unreadCount:(NSInteger)unreadCount;
+
 - (BOOL)deleteConversationByUserId:(NSString *)userId;
 
-/**
- *  未读消息条数
- */
 - (NSInteger)unreadMessageByUId:(NSString *)uId;
 
 @end

@@ -12,6 +12,7 @@
 #import "ApiHelper.h"
 #import "ConversationController.h"
 #import "MessageManager+ConversationRecord.h"
+#import "MessageManager+MessageRecord.h"
 
 @class WeChatViewController;
 @class ChatViewController;
@@ -81,6 +82,7 @@ static MessageManager *messageManager;
         receiveMsg.date = [NSDate date];
         receiveMsg.ownerTyper = [dataDic objectForKey:@"userId"] == nil ? MessageOwnerTypeSystem : MessageOwnerTypeFriend;
         [self p_receiveMessageStore:receiveMsg];
+        [self p_receiveMessageConvStore:receiveMsg];
         if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
             [self.messageDelegate didReceivedMessage:receiveMsg];
         }
@@ -129,9 +131,12 @@ static MessageManager *messageManager;
 #pragma mark - # private
 - (BOOL)p_receiveMessageStore:(Message *)message
 {
-    [self addConversationByMessage:message];
-    [self.messageStore addMessage:message];
-    return YES;
+    return [self addMessage:message];
+}
+
+- (BOOL)p_receiveMessageConvStore:(Message *)message
+{
+    return [self addConversationByMessage:message];
 }
 
 #pragma mark - # Getters

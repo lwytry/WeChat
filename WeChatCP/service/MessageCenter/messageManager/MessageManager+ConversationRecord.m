@@ -16,9 +16,9 @@
     if (message.partnerType == PartnerTypeGroup) {
         type = 1;
     }
-    NSInteger unread = [self.conversationStore unreadMessageByUId:message.dstID];
+    
     BOOL ok = NO;
-    if (unread == 0) {
+    if (![self.conversationStore isExistConversation:message.dstID]) {
         ok = [self.conversationStore addConversationByUId:message.dstID type:type date:message.date];
     } else {
         ok = [self.conversationStore updateConversationByUId:message.dstID date:message.date];
@@ -30,6 +30,11 @@
 {
     NSArray *data = [self.conversationStore conversationGetAll];
     complete(data);
+}
+
+- (BOOL)updateConversationUnread:(NSString *)uId unreadCount:(NSInteger)unreadCount
+{
+    return [self.conversationStore updateConversationUnread:uId unreadCount:unreadCount];
 }
 
 - (NSInteger)unreadMessageByUId:(NSString *)uId

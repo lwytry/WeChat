@@ -11,6 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MessageManager (MessageRecord)
+
+- (BOOL)addMessage:(Message *)message;
+
 /**
  *  查询聊天记录
  */
