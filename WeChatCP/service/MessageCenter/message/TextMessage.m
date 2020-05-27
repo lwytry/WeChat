@@ -61,5 +61,9 @@ static UILabel *textLabel = nil;
     return _attrText;
 }
 
+- (NSString *)conversationContent
+{
+    return self.text;
+}
 
 @end

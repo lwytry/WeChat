@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) NSAttributedString *attrText;
 
+- (NSString *)conversationContent;
+
 @end
