@@ -42,9 +42,6 @@
 
 
 #define     SQL_SELECT_MESSAGES_PAGE        @"SELECT * FROM %@ WHERE dstId = '%@' order by createAt desc LIMIT '%ld'"
-#define     SQL_SELECT_CHAT_FILES           @"SELECT * FROM %@ WHERE uId = '%@' and dstId = '%@' and msgType = '2'"
-#define     SQL_SELECT_CHAT_MEDIA           @"SELECT * FROM %@ WHERE uId = '%@' and dstId = '%@' and msgType = '2'"
-#define     SQL_SELECT_LAST_MESSAGE         @"SELECT * FROM %@ WHERE createAt = ( SELECT MAX(createAt) FROM %@ WHERE uId = '%@' and detId = '%@' )"
 
 
 #define     SQL_DELETE_MESSAGE              @"DELETE FROM %@ WHERE id = '%@'"

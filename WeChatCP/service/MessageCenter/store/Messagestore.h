@@ -26,10 +26,15 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  获取与某个好友的聊天记录
  */
-- (void)messagesByUserID:(NSString *)userID
+- (void)messagesByUserID:(NSString *)userId
                    dstId:(NSString *)dstId
                    count:(NSUInteger)count
                 complete:(void (^)(NSArray *data, BOOL hasMore))complete;
+/**
+ *  最后一条聊天记录（消息页用）
+ */
+- (Message *)lastMessageByUserID:(NSString *)dstId;
+
 @end
 
 NS_ASSUME_NONNULL_END
