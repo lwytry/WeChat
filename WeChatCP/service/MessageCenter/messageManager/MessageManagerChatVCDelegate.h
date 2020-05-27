@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Message.h"
 
 @protocol MessageManagerChatVCDelegate <NSObject>
 

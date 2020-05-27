@@ -42,6 +42,15 @@ static ContactHelper *contactHelper = nil;
     return self;
 }
 
+- (User *)getContactInfoByUserId:(NSString *)userId
+{
+    if (userId == nil) {
+        return nil;
+    }
+    User *user = [self.contactStore getInfoByUId:userId];
+    return user;
+}
+
 #pragma mark - Private Methods -
 - (void)p_loadData
 {

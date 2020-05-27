@@ -7,10 +7,7 @@
 //
 
 #import "RootTabBarController.h"
-#import "WeChatViewController.h"
-#import "ContactViewController.h"
-#import "DiscoverViewController.h"
-#import "HomeViewController.h"
+
 @interface RootTabBarController ()
 
 @end
@@ -19,13 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self addChildWithVCName:@"WeChatViewController" title:@"微信" image:@"tabbar_mainframe" selectedImg:@"tabbar_mainframeHL"];
-    [self addChildWithVCName:@"ContactViewController" title:@"通讯录" image:@"tabbar_contacts" selectedImg:@"tabbar_contactsHL"];
-    [self addChildWithVCName:@"DiscoverViewController" title:@"发现" image:@"tabbar_discover" selectedImg:@"tabbar_discoverHL"];
-    [self addChildWithVCName:@"HomeViewController" title:@"我的" image:@"tabbar_me" selectedImg:@"tabbar_meHL"];
-    self.tabBar.tintColor =
-    [UIColor colorWithRed:9 / 255.0 green:187 / 255.0 blue:7 / 255.0 alpha:1];
 }
 
 - (void) addChildWithVCName:(NSString *)vcName title:(NSString *)title image:(NSString *)image selectedImg:(NSString *)selectedImg

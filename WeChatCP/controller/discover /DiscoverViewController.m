@@ -16,6 +16,15 @@
 
 @implementation DiscoverViewController
 static NSString *ID = @"discoverCell";
+
+- (id)init
+{
+    if (self = [super init]) {
+        [self initTabBarItem];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -40,6 +49,15 @@ static NSString *ID = @"discoverCell";
       @[ @"discover_shopping", @"discover_game" ]
     ];
 }
+
+- (void)initTabBarItem
+{
+    self.tabBarItem.title = @"发现";
+    self.tabBarItem.image = [UIImage imageNamed:@"tabbar_discover"];
+    self.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_discoverHL"];
+    [self.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:34/255.0 green:172/255.0 blue:37/255.0 alpha:1.0]} forState:UIControlStateNormal];
+}
+
 -(void) buildTableView
 {
     if (_tabView == nil) {

@@ -17,10 +17,18 @@
 
 @implementation HomeViewController
 static NSString *ID = @"homeCell";
+
+- (id)init
+{
+    if (self = [super init]) {
+        [self initTabBarItem];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_camera"] style:UIBarButtonItemStylePlain target:nil action:nil];
     [self initializeData];
     [self buildTableView];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -29,7 +37,7 @@ static NSString *ID = @"homeCell";
 {
     User* user = [[User alloc] init];
     user.avatarPath = @"IMG_0595";
-    user.name = @"Try";
+    user.userName = @"Try";
     user.wechatId = @"2020783236";
     _dataArr = @[
       @[ user ],
@@ -50,6 +58,17 @@ static NSString *ID = @"homeCell";
       @[ @"mine_setting" ]
     ];
 }
+
+- (void)initTabBarItem
+{
+    self.tabBarItem.title = @"我";
+    self.tabBarItem.image = [UIImage imageNamed:@"tabbar_me"];
+    self.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_meHL"];
+    [self.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:34/255.0 green:172/255.0 blue:37/255.0 alpha:1.0]} forState:UIControlStateNormal];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_camera"] style:UIBarButtonItemStylePlain target:nil action:nil];
+}
+
 -(void)buildTableView
 {
     if (_tabView == nil) {
