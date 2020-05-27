@@ -7,7 +7,6 @@
 //
 
 #import "ContactViewController.h"
-#import <NSArray+SortContact.h>
 #import "ContactHelper.h"
 #import "ContactTableViewCell.h"
 #import "UserDetailViewController.h"

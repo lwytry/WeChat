@@ -13,6 +13,7 @@
 #import "ContactViewController.h"
 #import "DiscoverViewController.h"
 #import "HomeViewController.h"
+#import "BootLoginViewController.h"
 
 @interface LaunchManager()
 
@@ -41,7 +42,7 @@
         [self setCurRootVC:self.tabBarController];
         [[MessageManager sharedInstance] createWebSocekt];
     } else {
-//        self.rootVC = [[BootLoginViewController alloc] init];
+        [self setCurRootVC:[[BootLoginViewController alloc] init]];
     }
 }
 

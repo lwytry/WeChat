@@ -98,7 +98,6 @@
         Message * message = [self.messageStore lastMessageByUserID:conversation.dstID];
         if (message) {
             conversation.content = [message conversationContent];
-            conversation.date = message.date;
             User *user = [[ContactHelper sharedContactHelper] getContactInfoByUserId:conversation.dstID];
             conversation.avatarURL = user.avatarURL;
             conversation.dstName = user.userName;
