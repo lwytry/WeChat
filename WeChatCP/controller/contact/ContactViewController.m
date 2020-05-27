@@ -10,6 +10,7 @@
 #import <NSArray+SortContact.h>
 #import "ContactHelper.h"
 #import "ContactTableViewCell.h"
+#import "UserDetailViewController.h"
 
 @interface ContactViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -32,10 +33,18 @@
 @implementation ContactViewController
 static NSString *ID = @"contactCell";
 
+- (id)init
+{
+    if (self = [super init]) {
+        [self initTabBarItem];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"contacts_add_friend"] style:UIBarButtonItemStylePlain target:nil action:nil];
+    
     [self initializeData];
     [self buildTableView];
 }
@@ -50,6 +59,16 @@ static NSString *ID = @"contactCell";
     self.contactArr = [ContactHelper sharedContactHelper].sortdata;
     self.sectionTitles = [ContactHelper sharedContactHelper].sectionHeader;
 }
+
+- (void)initTabBarItem
+{
+    self.tabBarItem.title = @"通讯录";
+    self.tabBarItem.image = [UIImage imageNamed:@"tabbar_contacts"];
+    self.tabBarItem.selectedImage = [UIImage imageNamed:@"tabbar_contactsHL"];
+    [self.tabBarItem setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:34/255.0 green:172/255.0 blue:37/255.0 alpha:1.0]} forState:UIControlStateNormal];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"contacts_add_friend"] style:UIBarButtonItemStylePlain target:nil action:nil];
+}
+
 - (void)buildTableView
 {
     if (_tabView == nil) {
@@ -88,7 +107,13 @@ static NSString *ID = @"contactCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.section == 0) {
+        return;
+    }
+    UserDetailViewController *detailVc = [[UserDetailViewController alloc] initWithUserModdel:self.contactArr[indexPath.section-1][indexPath.row]];
+    detailVc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:detailVc animated:YES];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
