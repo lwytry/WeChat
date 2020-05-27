@@ -7,7 +7,6 @@ target 'WeChatCP' do
 
   # Pods for WeChatCP
   pod 'Masonry', '~> 1.1.0'
-  pod 'YSMChineseSort','~>0.1.0'
   pod 'MJRefresh'
   pod 'AFNetworking', '~> 3.0'
   pod 'MBProgressHUD', '1.2.0'
