@@ -29,7 +29,6 @@ static NSString *ID = @"wechatCell";
     if (self = [super init]) {
         [self initTabBarItem];
         [self p_setManagerDelegate];
-        [self p_loadData];
     }
     return self;
 }
@@ -45,6 +44,13 @@ static NSString *ID = @"wechatCell";
     [[MessageManager sharedInstance] conversationRecord:^(NSArray *data) {
         [self.data addObjectsFromArray:data];
     }];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.data removeAllObjects];
+    [self p_loadData];
+    [self.tabView reloadData];
 }
 
 - (void)viewDidLoad {
@@ -137,11 +143,14 @@ static NSString *ID = @"wechatCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if ([[MessageManager sharedInstance] updateConversationUnread:self.data[indexPath.row].dstID unreadCount:0]) {
+        ConversationTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell clearBadge];
+    }
+    
     ChatViewController *chatVC = [[ChatViewController alloc] initWithUserId:self.data[indexPath.row].dstID];
-    ConversationTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell clearBadge];
     chatVC.hidesBottomBarWhenPushed = YES;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.navigationController pushViewController:chatVC animated:YES];
 }
 
