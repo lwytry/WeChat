@@ -23,9 +23,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)addConversationByUId:(NSString *)uId type:(NSInteger)type date:(NSDate *)date;
 
 /**
- *  更新会话状态（已读）
+ *  更新会话状态
  */
 - (BOOL)updateConversationByUId:(NSString *)uId date:(NSDate *)date;
+
+/**
+ *  查询会话是否存在
+ */
+- (BOOL)isExistConversation:(NSString *)uId;
+
+/**
+ *  更新会话状态(已读) 标记为未读 或者 未读清零
+ */
+- (BOOL)updateConversationUnread:(NSString *)uId unreadCount:(NSInteger)unreadCount;
 
 /**
  *  查询所有会话

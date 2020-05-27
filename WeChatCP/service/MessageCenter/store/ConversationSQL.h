@@ -29,4 +29,6 @@
 #define     SQL_ADD_CONVERSATION                @"INSERT INTO %@ (uId, type, unreadCount, date) VALUES ( ?, ?, ?, ?)"
 #define     SQL_UPDATE_CONVERSATION             @"UPDATE %@ SET unreadCount = ?, date = ? WHERE uId = %@"
 #define     SQL_SELECT_CONVERSATION_UNREAD      @"SELECT unreadCount FROM %@ WHERE uId = %@"
+#define     SQL_UPDATE_UNREAD                   @"UPDATE %@ SET unreadCount = ? WHERE uId = %@"
+#define     SQL_SELECT_CONVERSATION_BY_UID      @"SELECT id FROM %@ WHERE uId = %@"
 #endif /* ConversationSQL_h */

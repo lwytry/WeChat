@@ -64,6 +64,16 @@
     return ok;
 }
 
+- (BOOL)updateConversationUnread:(NSString *)uId unreadCount:(NSInteger)unreadCount
+{
+    NSString *sqlString = [NSString stringWithFormat:SQL_UPDATE_UNREAD, CONVERSATION_TABLE_NAME, uId];
+    NSArray *arrPara = [NSArray arrayWithObjects:
+                        [NSNumber numberWithInteger:unreadCount],
+                        nil];
+    BOOL ok = [self excuteSQL:sqlString withArrParameter:arrPara];
+    return ok;
+}
+
 - (NSArray *)conversationGetAll
 {
     __block NSMutableArray *data = [[NSMutableArray alloc] init];
@@ -96,6 +106,22 @@
     }
     
     return data;
+}
+
+- (BOOL)isExistConversation:(NSString *)uId
+{
+    __block NSInteger columnId = 0;
+    NSString *sqlString = [NSString stringWithFormat:SQL_SELECT_CONVERSATION_BY_UID, CONVERSATION_TABLE_NAME, uId];
+    [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet *retSet) {
+        if ([retSet next]) {
+            columnId = [retSet intForColumn:@"id"];
+        }
+        [retSet close];
+    }];
+    if (columnId == 0) {
+        return NO;
+    }
+    return YES;
 }
 
 - (NSInteger)unreadMessageByUId:(NSString *)uId
