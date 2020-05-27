@@ -154,7 +154,13 @@
         if (count > 0) {
             [weakSelf.tabView reloadData];
             dispatch_async(dispatch_get_main_queue(), ^{
-//                [weakSelf.tabView scrollToBottomWithAnimation:NO];
+                CGFloat viewHeight = weakSelf.tabView.frame.size.height;
+                if (weakSelf.tabView.contentSize.height > viewHeight) {
+                    CGFloat offsetY = weakSelf.tabView.contentSize.height - viewHeight;
+                    CGPoint point = weakSelf.tabView.contentOffset;
+                    point.y = offsetY;
+                    [weakSelf.tabView setContentOffset:point animated:NO];
+                }
             });
         }
     }];
