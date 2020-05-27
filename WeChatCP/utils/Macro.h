@@ -15,6 +15,7 @@
 
 #pragma mark - chat // 重置聊天窗口
 #define     NOTI_CHAT_VIEW_RESET            @"NT_ResetChatView"
+#define     NOTI_MESSAGE_RECEIVED_DELEGATE  @"NOTI_MESSAGE_RECEIVED_DELEGATE"
 
 #pragma mark - chat NS_ENUM
 typedef NS_ENUM(NSInteger, ChatBarState) {
@@ -44,5 +45,6 @@ typedef NS_ENUM(NSInteger, ChatBarState) {
 
 #define     SAFEAREA_INSETS_BOTTOM      (SAFEAREA_INSETS.bottom)
 
-#define FILE_SERVER_DOMAIN_NAME @"/Users/lwy/www/file/"
+#define     FILE_SERVER_DOMAIN_NAME     @"/Users/lwy/www/file/"
+
 #endif /* Macro_h */
