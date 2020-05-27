@@ -14,4 +14,5 @@ target 'WeChatCP' do
   pod 'SocketRocket'
   pod 'MJExtension', '~> 3.0.13'
   pod "FMDB"
+  pod 'WZLBadge'
 end
