@@ -9,21 +9,20 @@
 #import <Foundation/Foundation.h>
 #import "Message.h"
 #import "MessageManagerChatVCDelegate.h"
-#import "MessageManagerConvVCDelegate.h"
 #import <SRWebSocket.h>
 #import "UserHelper.h"
 #import "Messagestore.h"
+#import "ConversationStore.h"
 
 @interface MessageManager : NSObject
 
 @property (nonatomic, assign) id<MessageManagerChatVCDelegate>messageDelegate;
-@property (nonatomic, assign) id<MessageManagerConvVCDelegate>conversationDelegate;
 
 @property (nonatomic, strong) NSString *userId;
 
 @property (nonatomic, strong) Messagestore *messageStore;
 
-//@property (nonatomic, strong) DBConversationStore *conversationStore;
+@property (nonatomic, strong) ConversationStore *conversationStore;
 
 - (void)createWebSocekt;
 

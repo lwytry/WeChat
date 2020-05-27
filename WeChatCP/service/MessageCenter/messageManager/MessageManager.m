@@ -10,9 +10,14 @@
 #import "TextMessage.h"
 #import <AFNetworking.h>
 #import "ApiHelper.h"
+#import "ConversationController.h"
+#import "MessageManager+ConversationRecord.h"
+
+@class WeChatViewController;
+@class ChatViewController;
 @interface MessageManager ()<SRWebSocketDelegate>
 
-@property (nonatomic, strong) SRWebSocket *ws;
+@property (nonatomic, strong)SRWebSocket *ws;
 
 @end
 
@@ -124,7 +129,9 @@ static MessageManager *messageManager;
 #pragma mark - # private
 - (BOOL)p_receiveMessageStore:(Message *)message
 {
-    return [self.messageStore addMessage:message];
+    [self addConversationByMessage:message];
+    [self.messageStore addMessage:message];
+    return YES;
 }
 
 #pragma mark - # Getters
@@ -134,6 +141,14 @@ static MessageManager *messageManager;
         _messageStore = [[Messagestore alloc] init];
     }
     return _messageStore;
+}
+
+- (ConversationStore *)conversationStore
+{
+    if (_conversationStore == nil) {
+        _conversationStore = [[ConversationStore alloc] init];
+    }
+    return _conversationStore;
 }
 
 @end
