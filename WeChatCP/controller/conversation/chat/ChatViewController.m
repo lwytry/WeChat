@@ -24,6 +24,7 @@
 - (instancetype)initWithUserId:(NSString *)userId
 {
     if (self = [super init]) {
+        self.user = [UserHelper sharedHelper].user;
         User *user = [[ContactHelper sharedContactHelper] getContactInfoByUserId:userId];
         self.partner = user;
     }

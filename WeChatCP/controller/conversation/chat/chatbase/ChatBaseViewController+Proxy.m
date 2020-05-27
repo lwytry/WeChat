@@ -9,7 +9,9 @@
 #import "ChatBaseViewController+Proxy.h"
 #import "ChatBaseViewController+MessageDisplayView.h"
 #import "UserHelper.h"
+#import "ContactHelper.h"
 #import "User+Chat.h"
+#import "MessageManager+ConversationRecord.h"
 
 
 @implementation ChatBaseViewController (Proxy)
@@ -18,12 +20,17 @@
 {
     message.ownerTyper = MessageOwnerTypeSelf;
     message.date = [NSDate date];
-    message.userID = [UserHelper sharedHelper].userId;
+    message.fromUser = self.user;
+    message.userID = self.user.chat_userID;
+    message.dstID = self.partner.chat_userID;
+    
     if ([self.partner chat_userType] == ChatUserTypeUser) {
         message.partnerType = PartnerTypeUser;
         message.dstID = [self.partner chat_userID];
     }
     NSNumber *insertId = [[MessageManager sharedInstance] addMessageStore:message];
+    [[MessageManager sharedInstance] addConversationByMessage:message];
+    [[MessageManager sharedInstance] updateConversationUnread:message.dstID unreadCount:0];
     message.ID = insertId;
     [self addToShowMessage:message];
     [[MessageManager sharedInstance] sendMessage:message progress:^(Message *message, CGFloat progress) {
@@ -38,10 +45,12 @@
 // 未接受消息
 - (void)didReceivedMessage:(Message *)message
 {
-    if ([message.userID isEqualToString:self.user.chat_userID]) {
-        
+    if ([message.dstID isEqualToString:self.partner.chat_userID]) {
+        User *user = [[ContactHelper sharedContactHelper] getContactInfoByUserId:message.dstID];
+        message.fromUser = user;
         [self addToShowMessage:message];
     }
+    [[MessageManager sharedInstance] updateConversationUnread:message.dstID unreadCount:0];
 }
 
 @end
