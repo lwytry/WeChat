@@ -13,6 +13,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "RootTabBarController.h"
 #import "ApiHelper.h"
+#import "LaunchManager.h"
 
 @interface MobileLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
@@ -175,7 +176,7 @@
     NSString *code = self.captchaView.captchaField.text;
     
     NSDictionary *dic = @{@"phone":phone, @"code":code};
-    NSString *urlStr = [HOST_URL stringByAppendingString:@"/v1/login"];
+    NSString *urlStr = [HOST_URL stringByAppendingString:@"v1/login"];
     [ApiHelper postUrl:urlStr parameters:dic useToken:NO success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"errCode"]  isEqual: @0]) {
             NSDictionary *dataDic = responseObject[@"data"];
@@ -192,12 +193,9 @@
             
             [userDefault setObject:userInfoDic forKey:@"userInfo"];
             [userDefault synchronize];
-            RootTabBarController *tabBar = [[RootTabBarController alloc] init];
-            CATransition *transtition = [CATransition animation];
-            transtition.duration = 0.5;
-            transtition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-            [UIApplication sharedApplication].keyWindow.rootViewController = tabBar;
-            [[UIApplication sharedApplication].keyWindow.layer addAnimation:transtition forKey:@"animation"];
+            
+            UIWindow *window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+            [[LaunchManager sharedInstance] launchInWindow:window];
         } else {
             NSLog(@"请求失败");
         }
