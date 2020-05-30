@@ -9,6 +9,7 @@
 #import "ChatBar.h"
 #import <Masonry/Masonry.h>
 #import "Macro.h"
+#import "TalkButton.h"
 
 @interface ChatBar ()<UITextViewDelegate>
 {
@@ -28,7 +29,7 @@
 
 @property (nonatomic, strong) UITextView *textView;
 
-@property (nonatomic, strong) UIButton *talkButton;
+@property (nonatomic, strong) TalkButton *talkButton;
 
 @property (nonatomic, strong) UIButton *emojiButton;
 
@@ -107,33 +108,6 @@
     }];
 }
 
-#pragma mark - Getter
-- (UIButton *)modeButton
-{
-    if (_modeButton == nil) {
-        _modeButton = [[UIButton alloc] init];
-        [_modeButton setImage:[UIImage imageNamed:@"chat_toolbar_texttolist"] forState:UIControlStateNormal];
-        [_modeButton setImage:[UIImage imageNamed:@"chat_toolbar_texttolist_HL"] forState:UIControlStateHighlighted];
-//        [_modeButton addTarget:self action:@selector(modeButtonDown) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _modeButton;
-}
-
-- (UIButton *)voiceButton
-{
-    if (_voiceButton == nil) {
-        _voiceButton = [[UIButton alloc] init];
-        [_voiceButton setImage:kVoiceImage forState:UIControlStateNormal];
-        [_voiceButton setImage:kVoiceImageHL forState:UIControlStateHighlighted];
-        [_voiceButton addTarget:self action:@selector(voiceButtonDown) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _voiceButton;
-}
-
-- (void)voiceButtonDown
-{
-    NSLog(@"voiceButtonDown");
-}
 
 - (UITextView *)textView
 {
@@ -151,29 +125,52 @@
     return _textView;
 }
 
-- (UIButton *)talkButton
+#pragma mark - Getter
+- (UIButton *)modeButton
+{
+    if (_modeButton == nil) {
+        _modeButton = [[UIButton alloc] init];
+        [_modeButton setImage:[UIImage imageNamed:@"chat_toolbar_texttolist"] forState:UIControlStateNormal];
+        [_modeButton setImage:[UIImage imageNamed:@"chat_toolbar_texttolist_HL"] forState:UIControlStateHighlighted];
+        [_modeButton addTarget:self action:@selector(modeButtonDown) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _modeButton;
+}
+
+- (UIButton *)voiceButton
+{
+    if (_voiceButton == nil) {
+        _voiceButton = [[UIButton alloc] init];
+        [_voiceButton setImage:kVoiceImage forState:UIControlStateNormal];
+        [_voiceButton setImage:kVoiceImageHL forState:UIControlStateHighlighted];
+        [_voiceButton addTarget:self action:@selector(voiceButtonDown) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _voiceButton;
+}
+
+- (TalkButton *)talkButton
 {
     if (_talkButton == nil) {
-        _talkButton = [[UIButton alloc] init];
+        _talkButton = [[TalkButton alloc] init];
         [_talkButton setHidden:YES];
-//        __weak typeof(self) weakSelf = self;
-//        [_talkButton setTouchBeginAction:^{
-//            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarStartRecording:)]) {
-//                [weakSelf.delegate chatBarStartRecording:weakSelf];
-//            }
-//        } willTouchCancelAction:^(BOOL cancel) {
-//            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarWillCancelRecording:cancel:)]) {
-//                [weakSelf.delegate chatBarWillCancelRecording:weakSelf cancel:cancel];
-//            }
-//        } touchEndAction:^{
-//            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarFinishedRecoding:)]) {
-//                [weakSelf.delegate chatBarFinishedRecoding:weakSelf];
-//            }
-//        } touchCancelAction:^{
-//            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarDidCancelRecording:)]) {
-//                [weakSelf.delegate chatBarDidCancelRecording:weakSelf];
-//            }
-//        }];
+        __weak typeof(self) weakSelf = self;
+        [_talkButton setTouchBeginAction:^{
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarStartRecording:)]) {
+                [weakSelf.delegate chatBarStartRecording:weakSelf];
+            }
+        } willTouchCancelAction:^(BOOL cancel) {
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarWillCancelRecording:cancel:)]) {
+                [weakSelf.delegate chatBarWillCancelRecording:weakSelf cancel:cancel];
+            }
+        } touchEndAction:^{
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarFinishedRecoding:)]) {
+                [weakSelf.delegate chatBarFinishedRecoding:weakSelf];
+            }
+        } touchCancelAction:^{
+            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(chatBarDidCancelRecording:)]) {
+                [weakSelf.delegate chatBarDidCancelRecording:weakSelf];
+            }
+        }];
     }
     return _talkButton;
 }
@@ -188,9 +185,107 @@
     }
     return _emojiButton;
 }
+
+#pragma mark - Event Response
+- (void)modeButtonDown
+{
+    if (self.state == ChatBarStateEmoji) {
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+            [self.delegate chatBar:self changeStatusFrom:self.state to:ChatBarStateInit];
+        }
+        [self.emojiButton setImage:kEmojiImage forState:UIControlStateNormal];
+        [self.emojiButton setImage:kEmojiImageHL forState:UIControlStateHighlighted];
+        self.state = ChatBarStateInit;
+    } else if (self.state == ChatBarStateMore) {
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+            [self.delegate chatBar:self changeStatusFrom:self.state to:ChatBarStateInit];
+        }
+        [self.moreButton setImage:kMoreImage forState:UIControlStateNormal];
+        [self.moreButton setImage:kMoreImageHL forState:UIControlStateHighlighted];
+        self.state = ChatBarStateInit;
+    }
+
+}
+
+static NSString *textRec = @"";
+- (void)voiceButtonDown
+{
+    [self.textView resignFirstResponder];
+    
+    // 开始文字输入
+    if (self.state == ChatBarStateVoice) {
+        if (textRec.length > 0) {
+            [self.textView setText:textRec];
+            textRec = @"";
+            [self p_reloadTextViewWithAnimation:YES];
+        }
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+            [self.delegate chatBar:self changeStatusFrom:self.state to:ChatBarStateKeyboard];
+        }
+        [_voiceButton setImage:kVoiceImage forState:UIControlStateNormal];
+        [_voiceButton setImage:kVoiceImageHL forState:UIControlStateHighlighted];
+        [self.textView becomeFirstResponder];
+        [self.textView setHidden:NO];
+        [self.talkButton setHidden:YES];
+        self.state = ChatBarStateKeyboard;
+    } else {          // 开始语音
+        if (self.textView.text.length > 0) {
+            textRec = self.textView.text;
+            self.textView.text = @"";
+            [self p_reloadTextViewWithAnimation:YES];
+        }
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+            [self.delegate chatBar:self changeStatusFrom:self.state to:ChatBarStateVoice];
+        }
+        if (self.state == ChatBarStateKeyboard) {
+            [self.textView resignFirstResponder];
+        } else if (self.state == ChatBarStateEmoji) {
+            [_emojiButton setImage:kEmojiImage forState:UIControlStateNormal];
+            [_emojiButton setImage:kEmojiImageHL forState:UIControlStateHighlighted];
+        } else if (self.state == ChatBarStateMore) {
+            [self.moreButton setImage:kMoreImage forState:UIControlStateNormal];
+            [self.moreButton setImage:kMoreImageHL forState:UIControlStateHighlighted];
+        }
+        [self.talkButton setHidden:NO];
+        [self.textView setHidden:YES];
+        [_voiceButton setImage:kVoiceImage forState:UIControlStateNormal];
+        [_voiceButton setImage:kVoiceImageHL forState:UIControlStateHighlighted];
+        self.state = ChatBarStateVoice;
+    }
+}
+
+
+
+
 - (void)emojiButtonDown
 {
-    NSLog(@"emojiButtonDown");
+    // 开始文字输入
+//    if (self.state == ChatBarStateEmoji) {
+//        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+//            [self.delegate chatBar:self changeStatusFrom:self.state to:ChatBarStateKeyboard];
+//        }
+//        [_emojiButton setImage:kEmojiImage forState:UIControlStateNormal];
+//        [_emojiButton setImage:kEmojiImageHL forState:UIControlStateHighlighted];
+//        [self.textView becomeFirstResponder];
+//        self.state = ChatBarStateKeyboard;
+//    } else {      // 打开表情键盘
+//        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+//            [self.delegate chatBar:self changeStatusFrom:self.state to:ChatBarStateEmoji];
+//        }
+//        if (self.state == ChatBarStateVoice) {
+//            [_voiceButton setImage:kVoiceImage forState:UIControlStateNormal];
+//            [_voiceButton setImage:kVoiceImageHL forState:UIControlStateHighlighted];
+//            [self.talkButton setHidden:YES];
+//            [self.textView setHidden:NO];
+//        } else if (self.state == ChatBarStateMore) {
+//            [self.moreButton setImage:kMoreImage forState:UIControlStateNormal];
+//            [self.moreButton setImage:kMoreImageHL forState:UIControlStateHighlighted];
+//        }
+//        [_emojiButton setImage:kEmojiImage forState:UIControlStateNormal];
+//        [_emojiButton setImage:kEmojiImageHL forState:UIControlStateHighlighted];
+//        [self.textView resignFirstResponder];
+//        self.state = ChatBarStateEmoji;
+//    }
 }
 - (UIButton *)moreButton
 {
@@ -202,9 +297,36 @@
     }
     return _moreButton;
 }
+
 - (void)moreButtonDown
 {
-    NSLog(@"moreButtonDown");
+    // 开始文字输入
+    if (self.state == ChatBarStateMore) {
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+            [self.delegate chatBar:self changeStatusFrom:self.state to:ChatBarStateKeyboard];
+        }
+        [self.moreButton setImage:kMoreImage forState:UIControlStateNormal];
+        [self.moreButton setImage:kMoreImageHL forState:UIControlStateHighlighted];
+        [self.textView becomeFirstResponder];
+        self.state = ChatBarStateKeyboard;
+    } else {      // 打开更多键盘
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:changeStatusFrom:to:)]) {
+            [self.delegate chatBar:self changeStatusFrom:self.state to:ChatBarStateMore];
+        }
+        if (self.state == ChatBarStateVoice) {
+            [_voiceButton setImage:kVoiceImage forState:UIControlStateNormal];
+            [_voiceButton setImage:kVoiceImageHL forState:UIControlStateHighlighted];
+            [self.talkButton setHidden:YES];
+            [self.textView setHidden:NO];
+        } else if (self.state == ChatBarStateEmoji) {
+            [_emojiButton setImage:kEmojiImage forState:UIControlStateNormal];
+            [_emojiButton setImage:kEmojiImageHL forState:UIControlStateHighlighted];
+        }
+        [self.moreButton setImage:kKeyboardImage forState:UIControlStateNormal];
+        [self.moreButton setImage:kKeyboardImageHL forState:UIControlStateHighlighted];
+        [self.textView resignFirstResponder];
+        self.state = ChatBarStateMore;
+    }
 }
 
 - (NSString *)curText
@@ -323,24 +445,32 @@
                 [self.textView setContentOffset:CGPointMake(0, textHeight - height) animated:YES];
             }
         }
-    }
-    else if (textHeight > height) {
+    } else if (textHeight > height) {
         if (animation) {
             CGFloat offsetY = self.textView.contentSize.height - self.textView.frame.size.height;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.textView setContentOffset:CGPointMake(0, offsetY) animated:YES];
             });
-        }
-        else {
+        } else {
             [self.textView setContentOffset:CGPointMake(0, self.textView.contentSize.height - self.textView.frame.size.height) animated:NO];
         }
     }
 }
 
+- (BOOL)isFirstResponder
+{
+    if (self.state == ChatBarStateEmoji || self.state == ChatBarStateKeyboard || self.state == ChatBarStateMore) {
+        return YES;
+    }
+    return NO;
+}
+
 - (BOOL)resignFirstResponder
 {
-//    [self.moreButton setImage:kMoreImage imageHL:kMoreImageHL];
-//    [self.emojiButton setImage:kEmojiImage imageHL:kEmojiImageHL];
+    [self.moreButton setImage:kMoreImage forState:UIControlStateNormal];
+    [self.moreButton setImage:kMoreImageHL forState:UIControlStateHighlighted];
+    [self.emojiButton setImage:kEmojiImage forState:UIControlStateNormal];
+    [self.emojiButton setImage:kEmojiImageHL forState:UIControlStateHighlighted];
     if (self.state == ChatBarStateKeyboard) {
         [self.textView resignFirstResponder];
         self.state = ChatBarStateInit;
