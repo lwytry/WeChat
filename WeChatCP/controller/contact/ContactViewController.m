@@ -27,6 +27,8 @@
 
 @property(nonatomic, strong) UISearchController *searchController;
 
+@property(nonatomic, strong)ContactHelper *contactHelper;
+
 @end
 
 @implementation ContactViewController
@@ -36,6 +38,7 @@ static NSString *ID = @"contactCell";
 {
     if (self = [super init]) {
         [self initTabBarItem];
+        self.contactHelper = [ContactHelper sharedContactHelper];
     }
     return self;
 }
@@ -55,8 +58,8 @@ static NSString *ID = @"contactCell";
         @[ @"friends_tag", @"标签" ],
         @[ @"friends_public", @"公众号" ]
     ];
-    self.contactArr = [ContactHelper sharedContactHelper].sortdata;
-    self.sectionTitles = [ContactHelper sharedContactHelper].sectionHeader;
+    self.contactArr = self.contactHelper.sortdata;
+    self.sectionTitles = self.contactHelper.sectionHeader;
 }
 
 - (void)initTabBarItem
