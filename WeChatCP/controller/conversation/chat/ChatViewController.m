@@ -8,8 +8,11 @@
 
 #import "ChatViewController.h"
 #import "ContactHelper.h"
+#import "MoreKeyboardHelper.h"
 
 @interface ChatViewController ()
+
+@property (nonatomic, strong) MoreKeyboardHelper *moreKBhelper;
 
 @end
 
@@ -19,6 +22,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setnavigationItem];
+    self.moreKBhelper = [[MoreKeyboardHelper alloc] init];
+    [self setChatMoreKeyboardData:self.moreKBhelper.chatMoreKeyboardData];
 }
 
 - (instancetype)initWithUserId:(NSString *)userId
