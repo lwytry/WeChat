@@ -44,6 +44,7 @@
 
 - (void)dealloc
 {
+    [[MoreKeyboard keyboard] dismissWithAnimation:NO];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -56,6 +57,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardFrameWillChange:) name:UIKeyboardWillChangeFrameNotification object:nil];
     
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 #pragma mark - # Public Methods
 
@@ -70,6 +77,11 @@
 {
     [self.view setBackgroundColor:[UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1]];
     [self resetChatTVC];
+}
+
+- (void)setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData
+{
+    [self.moreKeyboard setChatMoreKeyboardData:moreKeyboardData];
 }
 
 #pragma mark - # Private methods

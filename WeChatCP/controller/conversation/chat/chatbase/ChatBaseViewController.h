@@ -13,10 +13,11 @@
 #import "ChatBar.h"
 #import "MessageManager.h"
 #import "MessageManager+MessageRecord.h"
+#import "MoreKeyboardDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChatBaseViewController : UIViewController
+@interface ChatBaseViewController : UIViewController<MoreKeyboardDelegate>
 {
     ChatBarState laseState;
     ChatBarState curState;
@@ -46,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  设置“更多”键盘元素
  */
-//- (void)setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData;
+- (void)setChatMoreKeyboardData:(NSMutableArray *)moreKeyboardData;
 
 /**
  *  设置“表情”键盘元素

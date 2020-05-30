@@ -15,11 +15,24 @@
 
 - (void)loadKeyboard
 {
-    
+    [self.moreKeyboard setKeyboardDelegate:self];
+    [self.moreKeyboard setDelegate:self];
+}
+
+- (MoreKeyboard *)moreKeyboard
+{
+    return [MoreKeyboard keyboard];
 }
 
 - (void)dismissKeyobard
 {
+    if (curState == ChatBarStateMore) {
+        [self.moreKeyboard dismissWithAnimation:YES];
+        curState = ChatBarStateInit;
+    } else if (curState == ChatBarStateEmoji) {
+//        [self.emojiKeyboard dismissWithAnimation:YES];
+        curState = ChatBarStateInit;
+    }
     [self.chatBar resignFirstResponder];
 }
 
@@ -36,6 +49,9 @@
     if (curState != ChatBarStateKeyboard) {
         return;
     }
+    if (laseState == ChatBarStateMore) {
+        [self.moreKeyboard dismissWithAnimation:NO];
+    }
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }
 
@@ -45,6 +61,13 @@
         return;
     }
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    if (laseState == ChatBarStateMore || laseState == ChatBarStateEmoji) {
+        if (keyboardFrame.size.height <= HEIGHT_CHAT_KEYBOARD) {
+           return;
+        }
+    } else if (curState == ChatBarStateEmoji || curState == ChatBarStateMore) {
+       return;
+    }
     [self.chatBar mas_updateConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.view).mas_offset(MIN(-keyboardFrame.size.height, -SAFEAREA_INSETS_BOTTOM));
     }];
@@ -72,7 +95,6 @@
 //MARK: - chatBar状态切换
 - (void)chatBar:(ChatBar *)chatBar changeStatusFrom:(ChatBarState)fromState to:(ChatBarState)toState
 {
-//    NSLog(@"---%ldto--%ld", (long)fromState, (long)toState);
     if (curState == toState) {
         return;
     }
@@ -80,25 +102,23 @@
     curState = toState;
     if (toState == ChatBarStateInit) {
         if (fromState == ChatBarStateMore) {
-//            [self.moreKeyboard dismissWithAnimation:YES];
+            [self.moreKeyboard dismissWithAnimation:YES];
         }
         else if (fromState == ChatBarStateEmoji) {
 //            [self.emojiKeyboard dismissWithAnimation:YES];
         }
-    }
-    else if (toState == ChatBarStateVoice) {
+    } else if (toState == ChatBarStateVoice) {
+        
         if (fromState == ChatBarStateMore) {
 //            [self.moreKeyboard dismissWithAnimation:YES];
         }
         else if (fromState == ChatBarStateEmoji) {
 //            [self.emojiKeyboard dismissWithAnimation:YES];
         }
-    }
-    else if (toState == ChatBarStateEmoji) {
+    } else if (toState == ChatBarStateEmoji) {
 //        [self.emojiKeyboard showInView:self.view withAnimation:YES];
-    }
-    else if (toState == ChatBarStateMore) {
-//        [self.moreKeyboard showInView:self.view withAnimation:YES];
+    } else if (toState == ChatBarStateMore) {
+        [self.moreKeyboard showInView:self.view withAnimation:YES];
     }
 }
 
@@ -127,7 +147,7 @@
     if (curState == ChatBarStateMore && laseState == ChatBarStateEmoji) {
         
     } else if (curState == ChatBarStateEmoji && laseState == ChatBarStateMore) {
-        
+        [self.moreKeyboard dismissWithAnimation:NO];
     }
     [self.messageDisplayView scrollToBottomWithAnimation:YES];
 }

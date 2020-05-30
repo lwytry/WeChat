@@ -8,11 +8,14 @@
 
 #import "ChatBaseViewController.h"
 #import "KeyboardDelegate.h"
+#import "MoreKeyboard.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ChatBaseViewController (ChatBar) <ChatBarDelegate, KeyboardDelegate>
+
+@property (nonatomic, strong) MoreKeyboard *moreKeyboard;
 
 - (void)loadKeyboard;
 - (void)dismissKeyobard;
