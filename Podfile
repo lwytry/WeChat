@@ -14,4 +14,6 @@ target 'WeChatCP' do
   pod 'MJExtension', '~> 3.0.13'
   pod "FMDB"
   pod 'WZLBadge'
+  pod 'QNRTCKit', '2.1.1'
+  pod 'AliyunOSSiOS'
 end
