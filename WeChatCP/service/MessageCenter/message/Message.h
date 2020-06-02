@@ -11,6 +11,7 @@
 #import "MessageFrame.h"
 #import "MessageConstants.h"
 #import "ChatUserProtocol.h"
+#import <MJExtension/MJExtension.h>
 
 @interface Message : NSObject <MessageProtocol>
 {
