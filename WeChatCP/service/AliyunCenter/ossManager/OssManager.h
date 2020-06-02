@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (OssManager *)sharedOssManager;
 
+- (NSString *)getChatFileURL:(NSString *)fileName;
+
 - (void)uploadFile:(NSString *)picName
               data:(NSData *)data;
 @end

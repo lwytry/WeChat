@@ -9,6 +9,7 @@
 #import "OssManager.h"
 #import "AliyunMacro.h"
 #import "ApiHelper.h"
+#import "NSFileManager+Chat.h"
 
 @interface OssManager()
 
@@ -94,6 +95,12 @@
         }
         return nil;
     }];
+}
+
+- (NSString *)getChatFileURL:(NSString *)path
+{
+    NSString *domain = [NSString stringWithFormat:@"https://%@.%@/", Aliyun_OSS_BUCKET, Aliyun_OSS_ENDPOINT];
+    return [domain stringByAppendingString:path];
 }
 
 @end
