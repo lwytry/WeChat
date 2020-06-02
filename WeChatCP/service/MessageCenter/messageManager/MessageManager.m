@@ -8,11 +8,14 @@
 
 #import "MessageManager.h"
 #import "TextMessage.h"
+#import "ImageMessage.h"
 #import <AFNetworking.h>
 #import "ApiHelper.h"
 #import "ConversationController.h"
 #import "MessageManager+ConversationRecord.h"
 #import "MessageManager+MessageRecord.h"
+#import "NSFileManager+Chat.h"
+#import "OssManager.h"
 
 @class WeChatViewController;
 @class ChatViewController;
@@ -86,6 +89,25 @@ static MessageManager *messageManager;
         if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
             [self.messageDelegate didReceivedMessage:receiveMsg];
         }
+    } else if (msgType == MessageTypeImage) {
+        ImageMessage *receiveMsg = [[ImageMessage alloc] init];
+        receiveMsg.ID = [dataDic objectForKey:@"id"];
+        NSString *tempID = [dataDic objectForKey:@"userId"];
+        receiveMsg.userID = [dataDic objectForKey:@"dstId"];
+        receiveMsg.dstID = tempID;
+        receiveMsg.content = [NSMutableDictionary dictionaryWithDictionary:[[dataDic objectForKey:@"content"] mj_JSONObject]];
+        receiveMsg.messageType = msgType;
+        receiveMsg.partnerType = dstType;
+        receiveMsg.date = [NSDate date];
+        receiveMsg.ownerTyper = [dataDic objectForKey:@"userId"] == nil ? MessageOwnerTypeSystem : MessageOwnerTypeFriend;
+        // 图片处理 可以下载到本地
+        NSString *imageURL = [[OssManager sharedOssManager] getChatFileURL:[NSFileManager pathPartnerImageForOss:[receiveMsg.content objectForKey:@"url"] dstId:receiveMsg.dstID]];
+        [receiveMsg.content setValue:imageURL forKey:@"url"];
+        [self p_receiveMessageStore:receiveMsg];
+        [self p_receiveMessageConvStore:receiveMsg];
+        if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
+            [self.messageDelegate didReceivedMessage:receiveMsg];
+        }
     }
     
 }
@@ -105,14 +127,19 @@ static MessageManager *messageManager;
     NSNumber *mt = [NSNumber numberWithLong:messageType];
     NSString *dstId = partnerType == PartnerTypeUser ? message.dstID : message.groupID;
     // 发送消息
-    NSString *text = [message.content objectForKey:@"text"];
+    NSString *content = [NSString new];
+    if (message.messageType == MessageTypeText) {
+        content = [message.content objectForKey:@"text"];
+    } else {
+        content = [message.content mj_JSONString];
+    }
     NSDictionary *dic = @{
        @"id": message.ID,
        @"userId": message.userID,
        @"dstType": pt,
        @"dstId": dstId,
        @"msgType": mt,
-       @"content": text
+       @"content": content
     };
     NSString *urlStr = [HOST_URL stringByAppendingString:[NSString stringWithFormat:@"v1/chat/message?dstId=%@", message.dstID]];
     [ApiHelper postUrl:urlStr parameters:dic useToken:YES success:^(NSURLSessionDataTask *task, id responseObject) {
