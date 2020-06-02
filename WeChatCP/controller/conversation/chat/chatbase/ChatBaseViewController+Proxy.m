@@ -33,8 +33,9 @@
     [[MessageManager sharedInstance] updateConversationUnread:message.dstID unreadCount:0];
     message.ID = insertId;
     [self addToShowMessage:message];
+    
     [[MessageManager sharedInstance] sendMessage:message progress:^(Message *message, CGFloat progress) {
-        
+
     } success:^(Message *message) {
         NSLog(@"sendsuccess");
     } failure:^(Message *message) {
@@ -49,8 +50,8 @@
         User *user = [[ContactHelper sharedContactHelper] getContactInfoByUserId:message.dstID];
         message.fromUser = user;
         [self addToShowMessage:message];
+        [[MessageManager sharedInstance] updateConversationUnread:message.dstID unreadCount:0];
     }
-    [[MessageManager sharedInstance] updateConversationUnread:message.dstID unreadCount:0];
 }
 
 @end
