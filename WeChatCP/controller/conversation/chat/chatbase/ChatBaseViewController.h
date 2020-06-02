@@ -14,6 +14,9 @@
 #import "MessageManager.h"
 #import "MessageManager+MessageRecord.h"
 #import "MoreKeyboardDelegate.h"
+#import "NSFileManager+Chat.h"
+#import "TextMessage.h"
+#import "ImageMessage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -59,10 +62,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)resetChatVC;
 
-/**
- *  发送图片信息
- */
-//- (void)sendImageMessage:(UIImage *)image;
 
 @end
 
