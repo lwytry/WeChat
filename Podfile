@@ -16,4 +16,5 @@ target 'WeChatCP' do
   pod 'WZLBadge'
   pod 'QNRTCKit', '2.1.1'
   pod 'AliyunOSSiOS'
+  pod 'SDWebImage'
 end
