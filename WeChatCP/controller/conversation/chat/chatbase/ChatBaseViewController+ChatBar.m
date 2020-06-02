@@ -9,7 +9,6 @@
 #import "ChatBaseViewController+ChatBar.h"
 #import <Masonry/Masonry.h>
 #import "ChatBaseViewController+Proxy.h"
-#import "TextMessage.h"
 
 @implementation ChatBaseViewController (ChatBar)
 
