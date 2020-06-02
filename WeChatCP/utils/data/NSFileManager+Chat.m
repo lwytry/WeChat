@@ -36,4 +36,30 @@
     }
     return [path stringByAppendingString:@"message.sqlite3"];
 }
+
++ (NSString *)pathUserChatImage:(NSString *)imageName dstId:(nonnull NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/%@/image/", [NSFileManager documentsPath], [UserHelper sharedHelper].userId, dstId];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            NSLog(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathUserChatImageForOss:(NSString *)imageName dstId:(nonnull NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"User/%@/Chat/%@/image/", [UserHelper sharedHelper].userId, dstId];
+    return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathPartnerImageForOss:(NSString *)imageName dstId:(NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"User/%@/Chat/%@/image/", dstId, [UserHelper sharedHelper].userId];
+    return [path stringByAppendingString:imageName];
+}
+
 @end

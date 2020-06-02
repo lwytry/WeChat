@@ -22,6 +22,15 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)pathDBMessage;
 
+/**
+ *  图片 — 聊天
+ */
++ (NSString *)pathUserChatImage:(NSString*)imageName dstId:(NSString *)dstId;
+
++ (NSString *)pathUserChatImageForOss:(NSString*)imageName dstId:(NSString *)dstId;
+
++ (NSString *)pathPartnerImageForOss:(NSString*)imageName dstId:(NSString *)dstId;
+
 @end
 
 NS_ASSUME_NONNULL_END
