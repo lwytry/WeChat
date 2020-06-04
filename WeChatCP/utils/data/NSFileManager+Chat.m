@@ -50,7 +50,7 @@
     return [path stringByAppendingString:imageName];
 }
 
-+ (NSString *)pathUserChatImageForOss:(NSString *)imageName dstId:(nonnull NSString *)dstId
++ (NSString *)pathUserChatImageForOss:(NSString *)imageName dstId:(NSString *)dstId
 {
     NSString *path = [NSString stringWithFormat:@"User/%@/Chat/%@/image/", [UserHelper sharedHelper].userId, dstId];
     return [path stringByAppendingString:imageName];
@@ -60,6 +60,56 @@
 {
     NSString *path = [NSString stringWithFormat:@"User/%@/Chat/%@/image/", dstId, [UserHelper sharedHelper].userId];
     return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathUserChatVideoImage:(NSString*)imageName dstId:(NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/%@/videoimage/", [NSFileManager documentsPath], [UserHelper sharedHelper].userId, dstId];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            NSLog(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathUserChatVideo:(NSString*)videoName dstId:(NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"%@/User/%@/Chat/%@/video/", [NSFileManager documentsPath], [UserHelper sharedHelper].userId, dstId];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSError *error;
+        [[NSFileManager defaultManager] createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            NSLog(@"File Create Failed: %@", path);
+        }
+    }
+    return [path stringByAppendingString:videoName];
+}
+
++ (NSString *)pathUserChatVideoImageForOss:(NSString*)imageName dstId:(NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"User/%@/Chat/%@/videoimage/", dstId, [UserHelper sharedHelper].userId];
+    return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathUserChatVideoForOss:(NSString*)videoName dstId:(NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"User/%@/Chat/%@/video/", dstId, [UserHelper sharedHelper].userId];
+    return [path stringByAppendingString:videoName];
+}
+
++ (NSString *)pathPartnerVideoImageForOss:(NSString*)imageName dstId:(NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"User/%@/Chat/%@/videoimage/", dstId, [UserHelper sharedHelper].userId];
+    return [path stringByAppendingString:imageName];
+}
+
++ (NSString *)pathPartnerVideoForOss:(NSString*)videoName dstId:(NSString *)dstId
+{
+    NSString *path = [NSString stringWithFormat:@"User/%@/Chat/%@/video/", dstId, [UserHelper sharedHelper].userId];
+    return [path stringByAppendingString:videoName];
 }
 
 @end

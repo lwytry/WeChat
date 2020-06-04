@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 + (NSString *)pathDBMessage;
 
+// 区分目录的原因用来 查找和删除图片便利
 /**
  *  图片 — 聊天
  */
@@ -30,6 +31,22 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)pathUserChatImageForOss:(NSString*)imageName dstId:(NSString *)dstId;
 
 + (NSString *)pathPartnerImageForOss:(NSString*)imageName dstId:(NSString *)dstId;
+
+/**
+ *  视频 — 聊天
+ */
++ (NSString *)pathUserChatVideoImage:(NSString*)imageName dstId:(NSString *)dstId;
+
++ (NSString *)pathUserChatVideo:(NSString*)videoName dstId:(NSString *)dstId;
+
++ (NSString *)pathUserChatVideoImageForOss:(NSString*)imageName dstId:(NSString *)dstId;
+
++ (NSString *)pathUserChatVideoForOss:(NSString*)videoName dstId:(NSString *)dstId;
+
++ (NSString *)pathPartnerVideoImageForOss:(NSString*)imageName dstId:(NSString *)dstId;
+
++ (NSString *)pathPartnerVideoForOss:(NSString*)videoName dstId:(NSString *)dstId;
+
 
 @end
 
