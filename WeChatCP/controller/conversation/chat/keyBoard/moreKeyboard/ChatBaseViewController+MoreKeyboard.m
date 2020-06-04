@@ -20,14 +20,13 @@
         if (funcItem.type == MoreKeyboardItemTypeCamera) {
             if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
                 [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+                [self takePhoto:imagePickerController];
             } else {
                 NSLog(@"相机初始化失败");
             }
         } else {
-            [self localPhotoLibrary];
+            [self localPhotoLibrary:imagePickerController];
         }
-        [imagePickerController setDelegate:self];
-        [self presentViewController:imagePickerController animated:YES completion:nil];
     } else {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
