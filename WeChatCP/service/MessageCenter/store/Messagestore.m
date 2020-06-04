@@ -87,7 +87,9 @@
     [self excuteQuerySQL:sqlString resultBlock:^(FMResultSet * _Nonnull rsSet) {
         while ([rsSet next]) {
             Message *message = [self p_createDBMessageByFMResultSet:rsSet];
-            [data insertObject:message atIndex:0];
+            if (message.ID != nil) {
+                [data insertObject:message atIndex:0];
+            }
         }
         [rsSet close];
     }];
