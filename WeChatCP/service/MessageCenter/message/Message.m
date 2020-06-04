@@ -15,14 +15,11 @@
     NSString *className;
     if (type == MessageTypeText) {
         className = @"TextMessage";
-    }
-    else if (type == MessageTypeImage) {
+    } else if (type == MessageTypeImage) {
         className = @"ImageMessage";
-    }
-    else if (type == MessageTypeExpression) {
-        className = @"ExpressionMessage";
-    }
-    else if (type == MessageTypeVoice) {
+    } else if (type == MessageTypeVideo) {
+        className = @"VideoMessage";
+    } else if (type == MessageTypeVoice) {
         className = @"VoiceMessage";
     }
     if (className) {
