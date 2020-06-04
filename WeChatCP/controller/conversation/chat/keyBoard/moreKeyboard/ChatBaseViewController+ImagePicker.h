@@ -10,6 +10,8 @@
 
 @interface ChatBaseViewController (ImagePicker) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-- (void)localPhotoLibrary;
+- (void)takePhoto:(UIImagePickerController *)picker;
+
+- (void)localPhotoLibrary:(UIImagePickerController *)picker;
 
 @end
