@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+
+@class Message;
 @class MessageDisplayView;
+
 @protocol MessageDisplayViewDelegate <NSObject>
 
 // 聊天界面被点击, 用于收键盘
@@ -25,5 +28,11 @@
             getRecordsFromDate:(NSDate *)date
                          count:(NSUInteger)count
                      completed:(void (^)(NSDate *, NSArray *, BOOL))completed;
+/**
+ *  Message点击事件
+ */
+- (void)chatMessageDisplayView:(MessageDisplayView *)chatTVC
+               didClickMessage:(Message *)message;
+
 @end
 

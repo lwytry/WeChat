@@ -13,8 +13,12 @@
 {
     [tabView registerClass:[TextMessageCell class] forCellReuseIdentifier:@"TextMessageCell"];
     [tabView registerClass:[ImageMessageCell class] forCellReuseIdentifier:@"ImageMessageCell"];
+    [tabView registerClass:[VideoMessageCell class] forCellReuseIdentifier:@"VideoMessageCell"];
     [tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
+
+#pragma mark - # Delegate
+//MARK: UITableViewDataSouce
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     Message *message = self.data[indexPath.row];
     if (message.messageType == MessageTypeText) {
@@ -24,6 +28,11 @@
         return cell;
     } else if (message.messageType == MessageTypeImage) {
         ImageMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ImageMessageCell"];
+        [cell setMessage:message];
+        [cell setDelegate:self];
+        return cell;
+    } else if (message.messageType == MessageTypeVideo) {
+        VideoMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VideoMessageCell"];
         [cell setMessage:message];
         [cell setDelegate:self];
         return cell;
@@ -42,6 +51,14 @@
     }
     Message * message = self.data[indexPath.row];
     return message.messageFrame.height;
+}
+
+//MARK: MessageCellDelegate
+- (void)messageCellTap:(Message *)message
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(chatMessageDisplayView:didClickMessage:)]) {
+        [self.delegate chatMessageDisplayView:self didClickMessage:message];
+    }
 }
 
 @end

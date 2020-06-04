@@ -9,6 +9,7 @@
 #import "MessageDisplayView.h"
 #import "TextMessageCell.h"
 #import "ImageMessageCell.h"
+#import "VideoMessageCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

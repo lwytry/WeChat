@@ -1,24 +1,26 @@
 //
-//  ImageMessageCell.m
+//  VideoMessageCell.m
 //  WeChatCP
 //
-//  Created by lwy on 2020/6/2.
+//  Created by lwy on 2020/6/3.
 //  Copyright © 2020 lwy. All rights reserved.
 //
 
-#import "ImageMessageCell.h"
+#import "VideoMessageCell.h"
 #import "MessageImageView.h"
-#import "ImageMessage.h"
+#import "VideoMessage.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSFileManager+Chat.h"
 
-@interface ImageMessageCell ()
+@interface VideoMessageCell ()
 
 @property (nonatomic, strong) MessageImageView *messageImageView;
 
+@property (nonatomic, strong) UIImageView *playView;
+
 @end
 
-@implementation ImageMessageCell
+@implementation VideoMessageCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -40,7 +42,7 @@
     return self;
 }
 
-- (void)setMessage:(ImageMessage *)message
+- (void)setMessage:(VideoMessage *)message
 {
     [self.messageImageView setAlpha:1.0];
     if (self.message && [self.message.ID isEqualToNumber:message.ID]) {
@@ -51,7 +53,7 @@
     
     if ([message imagePath]) {
         // 从本地读
-        NSString *imagePath = [NSFileManager pathUserChatImage:[message imagePath] dstId:message.dstID];
+        NSString *imagePath = [NSFileManager pathUserChatVideoImage:[message imagePath] dstId:message.dstID];
         [self.messageImageView setTumbnailPath:imagePath hightDefinitionImageURL:[message imagePath]];
     } else {
         [self.messageImageView setTumbnailPath:nil hightDefinitionImageURL:[message imageURL]];
@@ -73,6 +75,11 @@
             }];
         }
     }
+    [self.messageImageView addSubview:self.playView];
+    [self.playView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(40);
+        make.center.mas_equalTo(self.messageImageView.center);
+    }];
     [self.messageImageView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(message.messageFrame.contentSize);
     }];
@@ -84,6 +91,15 @@
     if (self.delegate && [self.delegate respondsToSelector:@selector(messageCellTap:)]) {
         [self.delegate messageCellTap:self.message];
     }
+}
+
+- (UIImageView *)playView
+{
+    if (_playView == nil) {
+        _playView = [[UIImageView alloc] init];
+        _playView.image = [UIImage imageNamed:@"message_video_play"];
+    }
+    return _playView;
 }
 
 - (MessageImageView *)messageImageView
@@ -98,6 +114,5 @@
     }
     return _messageImageView;
 }
-
 
 @end
