@@ -8,6 +8,10 @@
 
 #import "ChatBaseViewController+MessageDisplayView.h"
 #import "ChatBaseViewController+ChatBar.h"
+#import <MWPhotoBrowser/MWPhotoBrowser.h>
+#import "NSFileManager+Chat.h"
+#import <AVKit/AVKit.h>
+
 
 @implementation ChatBaseViewController (MessageDisplayView)
 #pragma mark - # Delegate
@@ -61,6 +65,40 @@
 {
     [self.messageDisplayView resetMessageView];
     
+}
+
+- (void)chatMessageDisplayView:(MessageDisplayView *)chatTVC didClickMessage:(Message *)message
+{
+    if (message.messageType == MessageTypeImage) {
+        // 展示聊天图片
+        NSMutableArray *data = [[NSMutableArray alloc] init];
+        
+        NSURL *url;
+        if ([(ImageMessage *)message imagePath]) {
+            NSString *imagePath = [NSFileManager pathUserChatImage:[(ImageMessage *)message imagePath] dstId:message.dstID];
+            url = [NSURL fileURLWithPath:imagePath];
+        }
+        MWPhoto *photo = [MWPhoto photoWithURL:url];
+        [data addObject:photo];
+        MWPhotoBrowser *browser = [[MWPhotoBrowser alloc] initWithPhotos:data];
+        [browser setDisplayNavArrows:YES];
+        [browser setCurrentPhotoIndex:1];
+        UINavigationController *broserNavC = [[UINavigationController alloc] initWithRootViewController:browser];
+        [self presentViewController:broserNavC animated:YES completion:nil];
+    } else if (message.messageType == MessageTypeVideo) {
+        NSURL *url;
+        if ([(VideoMessage *)message videoPath]) {
+            NSString *videoPath = [NSFileManager pathUserChatVideo:[(VideoMessage *)message videoPath] dstId:message.dstID];
+            url = [NSURL fileURLWithPath:videoPath];
+        }
+        AVPlayerViewController *player = [[AVPlayerViewController alloc] init];
+        player.player = [AVPlayer playerWithURL:url];
+        player.videoGravity = AVLayerVideoGravityResizeAspect;
+        [player player];
+        [self presentViewController:player animated:YES completion:nil];
+        
+    }
+
 }
 
 
