@@ -108,7 +108,7 @@ static MessageManager *messageManager;
         if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
             [self.messageDelegate didReceivedMessage:receiveMsg];
         }
-    }
+    } // 视频数据类型  下载视频到本地 
     
 }
 
