@@ -19,8 +19,8 @@
         className = @"ImageMessage";
     } else if (type == MessageTypeVideo) {
         className = @"VideoMessage";
-    } else if (type == MessageTypeVoice) {
-        className = @"VoiceMessage";
+    } else if (type == MessageTypeWebRTC) {
+        className = @"WebRTCMessage";
     }
     if (className) {
         return [[NSClassFromString(className) alloc] init];

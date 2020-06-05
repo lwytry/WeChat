@@ -42,6 +42,7 @@ typedef NS_ENUM(NSInteger, MessageSendState){
 typedef NS_ENUM(NSInteger, MessageReadState) {
     MessageUnRead,            // 消息未读
     MessageReaded,            // 消息已读
+    MessageRefuse             // 拒绝 用于实时通讯
 };
 
 /**
@@ -54,6 +55,7 @@ typedef NS_ENUM(NSInteger, MessageType) {
     MessageTypeExpression,    // 表情
     MessageTypeVoice,         // 语音
     MessageTypeVideo,         // 视频
+    MessageTypeWebRTC,        // 实时音视频
     MessageTypeURL,           // 链接
     MessageTypePosition,      // 位置
     MessageTypeBusinessCard,  // 名片
