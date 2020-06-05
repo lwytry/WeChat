@@ -9,8 +9,7 @@
 #import "ConversationController+Proxy.h"
 #import "ContactHelper.h"
 #import "MessageManager+ConversationRecord.h"
-
-
+#import "ConversationController+WebRTC.h"
 
 @implementation ConversationController (Proxy)
 
@@ -35,6 +34,12 @@
         conv.unreadCount = 1;
         conv.date = message.date;
         [self addConversation:conv];
+    }
+    
+    if (message.messageType == MessageTypeWebRTC) {
+        User *user = [[ContactHelper sharedContactHelper] getContactInfoByUserId:message.dstID];
+        message.fromUser = user;
+        [self launchRTCWithMessage:message];
     }
 }
 
