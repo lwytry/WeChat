@@ -31,8 +31,8 @@
     MoreKeyboardItem *videoItem = [MoreKeyboardItem createByType:MoreKeyboardItemTypeVideo
                                                                title:@"小视频"
                                                            imagePath:@"moreKB_sight"];
-    MoreKeyboardItem *videoCallItem = [MoreKeyboardItem createByType:MoreKeyboardItemTypeVideoCall
-                                                                   title:@"视频聊天"
+    MoreKeyboardItem *videoCallItem = [MoreKeyboardItem createByType:MoreKeyboardItemTypeRTC
+                                                                   title:@"视频通话"
                                                                imagePath:@"moreKB_video_call"];
     MoreKeyboardItem *walletItem = [MoreKeyboardItem createByType:MoreKeyboardItemTypeWallet
                                                                 title:@"红包"

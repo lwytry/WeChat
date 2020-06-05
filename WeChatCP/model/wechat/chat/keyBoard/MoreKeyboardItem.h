@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, MoreKeyboardItemType) {
     MoreKeyboardItemTypeImage,
     MoreKeyboardItemTypeCamera,
     MoreKeyboardItemTypeVideo,
-    MoreKeyboardItemTypeVideoCall,
+    MoreKeyboardItemTypeRTC,
     MoreKeyboardItemTypeWallet,
     MoreKeyboardItemTypeTransfer,
     MoreKeyboardItemTypePosition,
