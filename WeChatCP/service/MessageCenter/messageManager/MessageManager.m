@@ -9,6 +9,8 @@
 #import "MessageManager.h"
 #import "TextMessage.h"
 #import "ImageMessage.h"
+#import "WebRTCMessage.h"
+#import "WebRTCViewController.h"
 #import <AFNetworking.h>
 #import "ApiHelper.h"
 #import "ConversationController.h"
@@ -42,7 +44,7 @@ static MessageManager *messageManager;
 - (void)createWebSocekt
 {
     NSString *topicId = self.userId;
-    NSString *urlString = [NSString stringWithFormat:@"ws://127.0.0.1:8001/acc?topicId=%@", topicId];
+    NSString *urlString = [NSString stringWithFormat:@"ws://192.168.31.15:8001/acc?topicId=%@", topicId];
     self.ws = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
     self.ws.delegate = self;
     [self.ws open];
@@ -108,7 +110,27 @@ static MessageManager *messageManager;
         if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
             [self.messageDelegate didReceivedMessage:receiveMsg];
         }
-    } // 视频数据类型  下载视频到本地 
+    } else if (msgType == MessageTypeVideo) {
+        // 视频数据类型  下载视频到本地
+    } else if (msgType == MessageTypeWebRTC) {
+        // 实时音视频通信
+        WebRTCMessage *receiveMsg = [[WebRTCMessage alloc] init];
+        receiveMsg.ID = [dataDic objectForKey:@"id"];
+        NSString *tempID = [dataDic objectForKey:@"userId"];
+        receiveMsg.userID = [dataDic objectForKey:@"dstId"];
+        receiveMsg.dstID = tempID;
+        receiveMsg.content = [NSMutableDictionary dictionaryWithDictionary:[[dataDic objectForKey:@"content"] mj_JSONObject]];
+        receiveMsg.messageType = msgType;
+        receiveMsg.partnerType = dstType;
+        receiveMsg.date = [NSDate date];
+        receiveMsg.ownerTyper = [dataDic objectForKey:@"userId"] == nil ? MessageOwnerTypeSystem : MessageOwnerTypeFriend;
+        
+        [self p_receiveMessageStore:receiveMsg];
+        [self p_receiveMessageConvStore:receiveMsg];
+        if (self.messageDelegate && [self.messageDelegate respondsToSelector:@selector(didReceivedMessage:)]) {
+            [self.messageDelegate didReceivedMessage:receiveMsg];
+        }
+    }
     
 }
 
