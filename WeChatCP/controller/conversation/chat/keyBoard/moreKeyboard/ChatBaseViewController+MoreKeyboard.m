@@ -8,6 +8,7 @@
 
 #import "ChatBaseViewController+MoreKeyboard.h"
 #import "ChatBaseViewController+ImagePicker.h"
+#import "ChatBaseViewController+WebRTC.h"
 
 @implementation ChatBaseViewController (MoreKeyboard)
 
@@ -27,7 +28,14 @@
         } else {
             [self localPhotoLibrary:imagePickerController];
         }
-    } else {
+    } else if (funcItem.type == MoreKeyboardItemTypeRTC) {
+        WebRTCMessage *message =  [[WebRTCMessage alloc] init];
+        message.rtcType = VideoRTC; // 具体根据设么 可以具体判断 简写
+        message.fromUser = self.partner;
+        message.ownerTyper = MessageOwnerTypeSelf;
+        [self launchRTCWithMessage:message];
+
+    } else{
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:[NSString stringWithFormat:@"选中”%@“ 按钮", funcItem.title] preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:ok];

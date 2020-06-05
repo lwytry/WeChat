@@ -18,6 +18,7 @@
 #import "TextMessage.h"
 #import "ImageMessage.h"
 #import "VideoMessage.h"
+#import "WebRTCMessage.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

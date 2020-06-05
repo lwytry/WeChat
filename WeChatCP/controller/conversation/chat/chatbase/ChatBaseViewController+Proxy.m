@@ -12,6 +12,7 @@
 #import "ContactHelper.h"
 #import "User+Chat.h"
 #import "MessageManager+ConversationRecord.h"
+#import "ChatBaseViewController+WebRTC.h"
 
 
 @implementation ChatBaseViewController (Proxy)
@@ -51,6 +52,9 @@
         message.fromUser = user;
         [self addToShowMessage:message];
         [[MessageManager sharedInstance] updateConversationUnread:message.dstID unreadCount:0];
+        if (message.messageType == MessageTypeWebRTC) {
+            [self launchRTCWithMessage:message];
+        }
     }
 }
 
