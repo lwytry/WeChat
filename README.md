@@ -34,4 +34,4 @@
 * [MJRefresh](https://github.com/CoderMJLee/MJRefresh)：下拉刷新，上拉加载更多，继承简单
 * [SocketRocket](https://github.com/facebookarchive/SocketRocket)：socket通信
 ## 部分截图
-<img src="./Introduce/login.jpg" width = "206" height = "428" alt="login" align=center />  <img src="./Introduce/conversation.jpg" width = "206" height = "428" alt="conversation" align=center /> <img src="./Introduce/chat.jpg" width = "206" height = "428" alt="chat" align=center />  <img src="./Introduce/contact.jpg" width = "206" height = "428" alt="contact" align=center /> <img src="./Introduce/passivecall.gif" width = "206" height = "428" alt="contact" align=center />
+<img src="./Introduce/login.jpg" width = "206" height = "428" alt="login" align=center />  <img src="./Introduce/conversation.jpg" width = "206" height = "428" alt="conversation" align=center /> <img src="./Introduce/chat.jpg" width = "206" height = "428" alt="chat" align=center />  <img src="./Introduce/contact.jpg" width = "206" height = "428" alt="contact" align=center /> ![image](./Introduce/passivecall.gif)
