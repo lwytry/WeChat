@@ -11,19 +11,17 @@
 #import "ImageMessage.h"
 #import "WebRTCMessage.h"
 #import "WebRTCViewController.h"
-#import <AFNetworking.h>
 #import "ApiHelper.h"
 #import "ConversationController.h"
 #import "MessageManager+ConversationRecord.h"
 #import "MessageManager+MessageRecord.h"
 #import "NSFileManager+Chat.h"
 #import "OssManager.h"
+#import "MessageManager+Socket.h"
 
 @class WeChatViewController;
 @class ChatViewController;
-@interface MessageManager ()<SRWebSocketDelegate>
-
-@property (nonatomic, strong)SRWebSocket *ws;
+@interface MessageManager () <SRWebSocketDelegate>
 
 @end
 
@@ -43,21 +41,22 @@ static MessageManager *messageManager;
 
 - (void)createWebSocekt
 {
-    NSString *topicId = self.userId;
-    NSString *urlString = [NSString stringWithFormat:@"ws://192.168.31.15:8001/acc?topicId=%@", topicId];
-    self.ws = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
-    self.ws.delegate = self;
-    [self.ws open];
+    if (self.ws == nil) {
+        NSString *topicId = self.userId;
+        NSString *urlString = [NSString stringWithFormat:@"ws://192.168.31.15:8001/acc?topicId=%@", topicId];
+        self.ws = [[SRWebSocket alloc] initWithURL:[NSURL URLWithString:urlString]];
+        self.ws.delegate = self;
+        [self.ws open];
+    }
 }
 
 - (void)closeWebSocekt
 {
-    [self.ws close];
-}
-
-- (void)webSocketDidOpen:(SRWebSocket *)webSocket
-{
-    NSLog(@"连接成功....");
+    if (self.ws) {
+        [self.ws close];
+        self.ws = nil;
+        [self destoryHeartBeat];
+    }
 }
 
 // 接收消息
@@ -134,12 +133,6 @@ static MessageManager *messageManager;
     
 }
 
-// 连接失败
-- (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error
-{
-    NSLog(@"链接失败 : %@", error);
-}
-
 
 - (void)sendMessage:(Message *)message progress:(void (^)(Message *, CGFloat))progress success:(void (^)(Message *))success failure:(void (^)(Message *))failure
 {
@@ -189,6 +182,8 @@ static MessageManager *messageManager;
 }
 
 #pragma mark - # Getters
+
+
 - (Messagestore *)messageStore
 {
     if (_messageStore == nil) {

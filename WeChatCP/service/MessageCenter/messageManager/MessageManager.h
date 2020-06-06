@@ -15,6 +15,11 @@
 #import "ConversationStore.h"
 
 @interface MessageManager : NSObject
+{
+    int _index;
+    NSTimer * heartBeat;
+    NSTimeInterval reConnectTime;
+}
 
 @property (nonatomic, assign) id<MessageManagerChatVCDelegate>messageDelegate;
 
@@ -23,6 +28,10 @@
 @property (nonatomic, strong) Messagestore *messageStore;
 
 @property (nonatomic, strong) ConversationStore *conversationStore;
+
+@property (nonatomic, strong)SRWebSocket *ws;
+
+@property (nonatomic, assign, readonly) SRReadyState socketReadState;
 
 - (void)createWebSocekt;
 
