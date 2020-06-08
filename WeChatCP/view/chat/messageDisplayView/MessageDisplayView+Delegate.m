@@ -14,6 +14,7 @@
     [tabView registerClass:[TextMessageCell class] forCellReuseIdentifier:@"TextMessageCell"];
     [tabView registerClass:[ImageMessageCell class] forCellReuseIdentifier:@"ImageMessageCell"];
     [tabView registerClass:[VideoMessageCell class] forCellReuseIdentifier:@"VideoMessageCell"];
+    [tabView registerClass:[RTCMessageCell class] forCellReuseIdentifier:@"RTCMessageCell"];
     [tabView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"EmptyCell"];
 }
 
@@ -33,6 +34,11 @@
         return cell;
     } else if (message.messageType == MessageTypeVideo) {
         VideoMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VideoMessageCell"];
+        [cell setMessage:message];
+        [cell setDelegate:self];
+        return cell;
+    } else if (message.messageType == MessageTypeWebRTC) {
+        RTCMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RTCMessageCell"];
         [cell setMessage:message];
         [cell setDelegate:self];
         return cell;

@@ -10,6 +10,7 @@
 #import "TextMessageCell.h"
 #import "ImageMessageCell.h"
 #import "VideoMessageCell.h"
+#import "RTCMessageCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

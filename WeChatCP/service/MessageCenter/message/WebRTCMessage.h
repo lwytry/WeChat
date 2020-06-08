@@ -15,10 +15,23 @@ typedef NS_ENUM(NSInteger, RTCType) {
     VideoRTC
 };
 
+typedef NS_ENUM(NSInteger, AnswerType) {
+    Unknown,
+    Cancel,
+    Agree,
+    Refuse
+};
+
 @interface WebRTCMessage : Message
+
+@property (nonatomic, strong) NSString *text;
+
+@property (nonatomic, strong) NSAttributedString *attrText;
 
 @property (nonatomic, assign) RTCType rtcType;
 
 @property (nonatomic, strong) NSString *duration;
+
+@property (nonatomic, assign) AnswerType answerType;
 
 @end

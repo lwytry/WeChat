@@ -1,0 +1,84 @@
+//
+//  RTCMessageCell.m
+//  WeChatCP
+//
+//  Created by lwy on 2020/6/7.
+//  Copyright © 2020 lwy. All rights reserved.
+//
+
+#import "RTCMessageCell.h"
+#import "WebRTCMessage.h"
+
+#define     MSG_SPACE_TOP       14
+#define     MSG_SPACE_BTM       20
+#define     MSG_SPACE_LEFT      19
+#define     MSG_SPACE_RIGHT     22
+
+@interface RTCMessageCell ()
+
+@property (nonatomic, strong) UILabel *messageLabel;
+
+@end
+
+@implementation RTCMessageCell
+
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        [self.contentView addSubview:self.messageLabel];
+    }
+    return self;
+}
+
+- (void)setMessage:(WebRTCMessage *)message
+{
+    [super setMessage:message];
+    
+    [self.messageLabel setAttributedText:[message attrText]];
+    
+    [self.messageLabel setContentCompressionResistancePriority:500 forAxis:UILayoutConstraintAxisHorizontal];
+    [self.messageBackgroundView setContentCompressionResistancePriority:100 forAxis:UILayoutConstraintAxisHorizontal];
+    if (message.ownerTyper == MessageOwnerTypeSelf) {
+        [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_sender_bg"]];
+        [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_sender_bgHL"]];
+        
+        [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.messageBackgroundView).mas_offset(-MSG_SPACE_RIGHT);
+            make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
+        }];
+        [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.messageLabel).mas_offset(-MSG_SPACE_LEFT);
+            make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
+        }];
+    } else if (message.ownerTyper == MessageOwnerTypeFriend) {
+        [self.messageBackgroundView setImage:[UIImage imageNamed:@"message_receiver_bg"]];
+        [self.messageBackgroundView setHighlightedImage:[UIImage imageNamed:@"message_receiver_bgHL"]];
+        
+        [self.messageLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
+            make.left.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_LEFT);
+            make.top.mas_equalTo(self.messageBackgroundView).mas_offset(MSG_SPACE_TOP);
+        }];
+        [self.messageBackgroundView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.right.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_RIGHT);
+            make.bottom.mas_equalTo(self.messageLabel).mas_offset(MSG_SPACE_BTM);
+        }];
+    }
+    
+    NSLog(@"%f", message.messageFrame.contentSize.height);
+    NSLog(@"%f", message.messageFrame.contentSize.width);
+    [self.messageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(message.messageFrame.contentSize);
+    }];
+}
+
+- (UILabel *)messageLabel
+{
+    if (_messageLabel == nil) {
+        _messageLabel = [[UILabel alloc] init];
+        [_messageLabel setFont:[UIFont systemFontOfSize:16.0f]];
+        [_messageLabel setNumberOfLines:0];
+    }
+    return _messageLabel;
+}
+
+@end
